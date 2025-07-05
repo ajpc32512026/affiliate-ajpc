@@ -1,46 +1,45 @@
 # A&J Personal Collections 🌸🇵🇭  
-*Handmade Soaps, Skincare, and Sweet Filipino Recipes*  
+*Handmade Soaps, Skincare, and Sweet Filipino Recipes*
 
-Welcome to the lovingly curated world of Ana & John — a cross-cultural collaboration built on love, tradition, and handcrafted goodness. From soothing soaps to soulful sweets, A&J is your one-stop corner for Filipino warmth and Aussie grit, sealed with a prayer (and a touch of cocoa butter).
+Welcome to the world of Ana & John — where tradition meets craftsmanship. Here you find lovingly handcrafted soaps and treasured Filipino recipes, built on a foundation of care, culture, and a dash of Aussie grit.
 
 ---
 
 ## 🌐 Live Site  
 **[ajpersonalcollections.com](https://ajpersonalcollections.com)**  
 
-Hosted by [Netlify](https://www.netlify.com) and proudly parked at [Porkbun](https://www.porkbun.com).  
-No bloat, no nonsense — just fast-loading, handcrafted HTML.
+- Hosted on [Netlify](https://www.netlify.com)  
+- Domain parked with [Porkbun](https://www.porkbun.com)  
+- Built for speed, simplicity, and clean HTML — no bloat, no fuss.
 
 ---
 
-## 📦 Features
+## ✨ Core Features
 
-- 🧼 Natural soap product pages with full details
-- 🍰 Dessert recipes in printable PDF format
-- 🛒 Smooth custom checkout (no Stripe bloat!)
-- 💸 GCash-ready payment instructions
-- 📧 Brevo-powered confirmation emails + PDF receipts
-- 📚 Ingredient glossary with shopping list features
-- 🗣️ Feedback form with real reviews + profanity filter
-- 📝 Built-in blog (Markdown + Netlify CMS)
-- 💾 Fully offline-ready local development
+- 🧼 Natural soaps and skincare product pages with full details  
+- 🍰 Filipino dessert recipes available as printable PDFs  
+- 💸 GCash payment instructions for smooth Filipino mobile transactions  
+- 📧 Confirmation emails and PDF receipts powered by Brevo SMTP  
+- 📚 Interactive ingredient glossary to deepen your knowledge  
+- 💾 Fully offline-ready local development environment  
 
 ---
 
 ## 🧰 Built With
 
-- **HTML5 + CSS3** – Clean, handcrafted markup  
-- **Vanilla JavaScript** – Snappy without dependencies  
-- **Netlify Forms + Functions** – Handles the backend magic  
-- **Brevo SMTP** – Sends confirmation and contact emails  
-- **GCash Integration** – Seamless Filipino mobile payments  
-- **Netlify CMS** – Friendly blog/content editor (optional)  
+- **HTML5 + CSS3** — Semantic, handcrafted markup  
+- **Vanilla JavaScript** — Lightweight and dependency-free  
+- **Netlify Functions** — Serverless backend for emails and PDFs  
+- **Brevo SMTP** — Transactional email handling  
+- **Netlify CMS (optional)** — Markdown-based blog editing  
+- **PDFKit (Node)** — On-demand PDF generation  
+- **GCash Integration** — Filipino mobile payment instructions  
 
 ---
 
-## 🧪 Local Setup
+## 🧪 Local Development
 
-Want to play around with it locally?
+Clone the repo and explore locally:
 
 ```bash
 git clone https://github.com/AJPC3251/ajpc-site.git
