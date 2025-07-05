@@ -1,0 +1,8 @@
+{
+  "version": 3,
+  "sources": ["file:///D:/site-ajpc/netlify/functions/test-glossary.js"],
+  "sourceRoot": "C:/Users/johnl/AppData/Local/Temp/tmp-9364-sCt7fpNIoqkg",
+  "sourcesContent": ["const fs = require('fs');\r\nconst path = require('path');\r\n\r\ntry {\r\n  const filePath = path.join(__dirname, 'data', 'glossary-data.json');\r\n  const fileContent = fs.readFileSync(filePath, 'utf8');\r\n  const data = JSON.parse(fileContent);\r\n  console.log('JSON parsed successfully');\r\n} catch (error) {\r\n  console.error('Error parsing JSON:', error);\r\n}\r\n"],
+  "mappings": ";AAAA,IAAM,KAAK,QAAQ,IAAI;AACvB,IAAM,OAAO,QAAQ,MAAM;AAE3B,IAAI;AACF,QAAM,WAAW,KAAK,KAAK,WAAW,QAAQ,oBAAoB;AAClE,QAAM,cAAc,GAAG,aAAa,UAAU,MAAM;AACpD,QAAM,OAAO,KAAK,MAAM,WAAW;AACnC,UAAQ,IAAI,0BAA0B;AACxC,SAAS,OAAO;AACd,UAAQ,MAAM,uBAAuB,KAAK;AAC5C;",
+  "names": []
+}

@@ -1,0 +1,21 @@
+{
+	"siteId": "57539e6d-8573-45fc-8ab9-66b8c1257520",
+	"geolocation": {
+		"data": {
+			"city": "Wollongong",
+			"country": {
+				"code": "AU",
+				"name": "Australia"
+			},
+			"subdivision": {
+				"code": "NSW",
+				"name": "New South Wales"
+			},
+			"timezone": "Australia/Sydney",
+			"latitude": -34.3642,
+			"longitude": 150.9135,
+			"postalCode": "2518"
+		},
+		"timestamp": 1751583707694
+	}
+}
