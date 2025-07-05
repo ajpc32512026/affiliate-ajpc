@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const glossaryList = document.getElementById('glossary-list');
-  glossaryList.innerHTML = '<li>Loading glossary, please wait…</li>';
+  const container = document.getElementById('glossary-container');
+  container.innerHTML = '<p>Loading glossary, please wait…</p>';
 
   fetch('/.netlify/functions/glossary-get')
     .then(res => {
@@ -8,21 +8,14 @@ document.addEventListener('DOMContentLoaded', () => {
       return res.json();
     })
     .then(data => {
-      glossaryList.innerHTML = '';
+      container.innerHTML = '';
 
-      if (!data.length) {
-        glossaryList.innerHTML = '<li>No glossary terms found.</li>';
+      if (!data || Object.keys(data).length === 0) {
+        container.innerHTML = '<p>No glossary terms found.</p>';
         return;
       }
 
-      // Group by category
-      const grouped = data.reduce((acc, { category, term, definition }) => {
-        if (!acc[category]) acc[category] = [];
-        acc[category].push({ term, definition });
-        return acc;
-      }, {});
-
-      for (const category of Object.keys(grouped)) {
+      for (const [category, terms] of Object.entries(data)) {
         const section = document.createElement('section');
         section.style.marginBottom = '30px';
 
@@ -31,14 +24,15 @@ document.addEventListener('DOMContentLoaded', () => {
         section.appendChild(h2);
 
         const dl = document.createElement('dl');
-        grouped[category].forEach(({ term, definition }) => {
+
+        for (const [term, definition] of Object.entries(terms)) {
           const dt = document.createElement('dt');
           dt.textContent = term;
           dt.style.cursor = 'pointer';
           dt.title = 'Click to add this ingredient to your shopping list';
           dt.addEventListener('click', () => {
             addToShoppingList(term);
-            alert(`Added "${term}" to your shopping list.`);
+            showToast(`Added "${term}" to your shopping list.`);
           });
 
           const dd = document.createElement('dd');
@@ -46,16 +40,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
           dl.appendChild(dt);
           dl.appendChild(dd);
-        });
+        }
 
         section.appendChild(dl);
-        glossaryList.appendChild(section);
+        container.appendChild(section);
       }
     })
     .catch(err => {
-      glossaryList.innerHTML = `
-        <li>Error loading glossary: ${err.message}</li>
-        <li><button id="retryBtn">Retry</button></li>
+      container.innerHTML = `
+        <p>Error loading glossary: ${err.message}</p>
+        <button id="retryBtn">Retry</button>
       `;
       document.getElementById('retryBtn').addEventListener('click', () => location.reload());
       console.error('Glossary load error:', err);
@@ -64,5 +58,27 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function addToShoppingList(term) {
   console.log(`Added to shopping list: ${term}`);
-  // Hook into your actual shopping list logic here
+  // Hook your real shopping list logic here
+}
+
+function showToast(message) {
+  // Simple toast example
+  const toast = document.createElement('div');
+  toast.textContent = message;
+  toast.style.position = 'fixed';
+  toast.style.bottom = '20px';
+  toast.style.left = '50%';
+  toast.style.transform = 'translateX(-50%)';
+  toast.style.background = '#333';
+  toast.style.color = '#fff';
+  toast.style.padding = '10px 20px';
+  toast.style.borderRadius = '5px';
+  toast.style.opacity = '0.9';
+  toast.style.zIndex = '1000';
+
+  document.body.appendChild(toast);
+
+  setTimeout(() => {
+    toast.remove();
+  }, 3000);
 }
