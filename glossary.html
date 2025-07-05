@@ -57,11 +57,12 @@
   </section>
 
   <main class="main-container" role="main" id="mainContent">
+
     <section class="controls-group" aria-label="Glossary controls">
       <input id="searchInput" type="search" placeholder="Search glossary..." class="search-input" aria-label="Search glossary terms" />
 
       <label for="categoryFilter" class="visually-hidden">Filter by category</label>
-      <select id="categoryFilter" class="category-select" aria-controls="glossary-entries">
+      <select id="categoryFilter" class="category-select" aria-controls="glossary-table">
         <option value="all">All Categories</option>
         <option value="Dairy">Dairy</option>
         <option value="Dry / Baking">Dry / Baking</option>
@@ -84,9 +85,21 @@
       </label>
     </section>
 
+    <!-- Here's your actual glossary table to be populated by JS -->
     <section id="glossary-list" aria-live="polite" aria-atomic="true" tabindex="0">
-  <!-- JS will fill glossary here -->
-</section>
+      <table id="glossary-table" role="grid" aria-describedby="pageTitle" summary="Glossary terms and definitions. Click terms to add to shopping list.">
+        <thead>
+          <tr>
+            <th scope="col">Term</th>
+            <th scope="col">Definition</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- JavaScript fills glossary terms here -->
+          <tr><td colspan="2">Loading glossary, please wait…</td></tr>
+        </tbody>
+      </table>
+    </section>
 
   </main>
 
@@ -140,9 +153,9 @@
   </footer>
 
   <!-- Scripts loaded at end for faster page rendering -->
-  <script src="js/global.js"></script>
-  <script src="js/glossary.js"></script>
-  <script src="js/glossary-public.js"></script>
+  <script src="js/global.js" defer></script>
+  <script src="js/glossary.js" defer></script>
+  <script src="js/glossary-public.js" defer></script>
 </body>
 
 </html>
