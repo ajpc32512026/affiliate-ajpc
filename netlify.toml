@@ -14,5 +14,5 @@
   status = 200
 
 [functions]
-  node_bundler = "esbuild" # or "zisi"
-  included_files = ["netlify/functions/data/glossary-data.json"]
+  node_bundler = "esbuild"
+  included_files = ["netlify/functions/glossary-data.json"]
