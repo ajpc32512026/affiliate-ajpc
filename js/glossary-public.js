@@ -5,16 +5,15 @@ document.addEventListener('DOMContentLoaded', () => {
     return;
   }
 
-  // Show loading message while fetching data
   glossaryList.innerHTML = '<li>Loading glossary, please wait…</li>';
 
   fetch('/.netlify/functions/glossary-get')
-    .then(response => {
-      if (!response.ok) throw new Error('Failed to fetch glossary.');
-      return response.json();
+    .then(res => {
+      if (!res.ok) throw new Error('Failed to fetch glossary.');
+      return res.json();
     })
     .then(data => {
-      glossaryList.innerHTML = ''; // Clear loading message
+      glossaryList.innerHTML = '';
 
       if (!Array.isArray(data) || data.length === 0) {
         glossaryList.innerHTML = '<li>No glossary terms found.</li>';
@@ -28,35 +27,36 @@ document.addEventListener('DOMContentLoaded', () => {
         return acc;
       }, {});
 
-      // Build and append sections for each category
       Object.entries(grouped).forEach(([category, terms]) => {
-        const section = document.createElement('section');
-        section.style.marginBottom = '30px';
+        // Add category header
+        const categoryHeader = document.createElement('h2');
+        categoryHeader.textContent = category;
+        glossaryList.appendChild(categoryHeader);
 
-        const header = document.createElement('h2');
-        header.textContent = category;
-        section.appendChild(header);
+        // Create nested ul for category terms
+        const ul = document.createElement('ul');
 
-        const dl = document.createElement('dl');
         terms.forEach(({ term, definition }) => {
-          const dt = document.createElement('dt');
-          dt.textContent = term;
-          dt.style.cursor = 'pointer';
-          dt.title = 'Click to add this ingredient to your shopping list';
-          dt.addEventListener('click', () => {
+          const li = document.createElement('li');
+
+          const termSpan = document.createElement('span');
+          termSpan.textContent = term;
+          termSpan.style.cursor = 'pointer';
+          termSpan.title = 'Click to add this ingredient to your shopping list';
+          termSpan.addEventListener('click', () => {
             addToShoppingList(term);
             alert(`Added "${term}" to your shopping list.`);
           });
 
-          const dd = document.createElement('dd');
-          dd.textContent = definition;
+          const defSpan = document.createElement('span');
+          defSpan.textContent = ` — ${definition}`;
 
-          dl.appendChild(dt);
-          dl.appendChild(dd);
+          li.appendChild(termSpan);
+          li.appendChild(defSpan);
+          ul.appendChild(li);
         });
 
-        section.appendChild(dl);
-        glossaryList.appendChild(section);
+        glossaryList.appendChild(ul);
       });
     })
     .catch(error => {
@@ -65,15 +65,12 @@ document.addEventListener('DOMContentLoaded', () => {
         <li><button id="retryBtn">Retry</button></li>
       `;
       const retryBtn = document.getElementById('retryBtn');
-      if (retryBtn) {
-        retryBtn.addEventListener('click', () => location.reload());
-      }
+      if (retryBtn) retryBtn.addEventListener('click', () => location.reload());
       console.error('Glossary load error:', error);
     });
 });
 
-// Stub for adding terms to the shopping list — link this to your real logic
 function addToShoppingList(term) {
   console.log(`Added to shopping list: ${term}`);
-  // TODO: Integrate with your shopping list management system
+  // TODO: connect this to your real shopping list system
 }
