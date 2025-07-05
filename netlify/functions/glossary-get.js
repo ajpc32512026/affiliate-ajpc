@@ -1,24 +1,28 @@
 import fs from 'fs/promises';
 import path from 'path';
 
-const GLOSSARY_PATH = path.join(__dirname, 'glossary-data.json');
+const GLOSSARY_PATH = path.resolve('data/glossary-data.json'); // Adjust this to your actual path
 
 export async function handler() {
   try {
-    const content = await fs.readFile(GLOSSARY_PATH, 'utf-8');
-    const glossary = JSON.parse(content);
+    const file = await fs.readFile(GLOSSARY_PATH, 'utf-8');
+    const rawGlossary = JSON.parse(file);
 
+    // Flatten the nested object into an array of { category, term, definition }
     const flat = [];
-    for (const category in glossary) {
-      for (const term in glossary[category]) {
+
+    for (const category in rawGlossary) {
+      const terms = rawGlossary[category];
+      for (const term in terms) {
         flat.push({
           category,
           term,
-          definition: glossary[category][term]
+          definition: terms[term]
         });
       }
     }
 
+    // Sort alphabetically by category, then by term
     flat.sort((a, b) => {
       if (a.category !== b.category) return a.category.localeCompare(b.category);
       return a.term.localeCompare(b.term);
@@ -28,8 +32,8 @@ export async function handler() {
       statusCode: 200,
       body: JSON.stringify(flat)
     };
-  } catch (error) {
-    console.error('Error loading glossary:', error);
+  } catch (err) {
+    console.error('Failed to load glossary:', err);
     return {
       statusCode: 500,
       body: JSON.stringify({ error: 'Failed to load glossary.' })
