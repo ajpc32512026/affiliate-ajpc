@@ -1,0 +1,5 @@
+User-agent: *
+Disallow:
+
+Sitemap: https://ajpersonalcollections.com/sitemap.xml
+Sitemap: https://ajpersonalcollections.com/sitemap.html

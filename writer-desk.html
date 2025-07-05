@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>A&J Personal Collections - Writer’s Desk</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+  <!-- HEADER BANNER -->
+  <header class="hero-banner">
+    <img src="img/header.png" alt="A&J Personal Collections Banner" class="banner-img">
+  </header>
+
+  <!-- NAVIGATION BAR -->
+  <nav class="topnav" role="navigation" aria-label="Primary navigation">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="health-beauty.html">Products</a></li>
+      <li><a href="recipes.html">Recipes</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="glossary.html">Glossary</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO SECTION -->
+  <section class="page-heading">
+    <h1>Writer’s Desk</h1>
+    <p>Private workspace for ideas, drafts, and reflections. For your eyes only.</p>
+  </section>
+
+
+  <!-- MAIN CONTENT -->
+  <main class="main">
+    <div class="container">
+      <div class="editor-wrapper">
+        <div
+          id="editor"
+          class="editable"
+          contenteditable="true"
+          role="textbox"
+          aria-multiline="true"
+          aria-label="Note editor"
+          spellcheck="true"
+        ></div>
+        <div id="placeholder" class="placeholder" aria-hidden="true">
+          ✏️ Start typing your notes, recipes, thoughts here...
+        </div>
+      </div>
+      <div class="save-info">
+        <button type="button" onclick="saveCard()">💾 Save</button>
+      </div>
+    </div>
+
+    <aside class="sidebar" id="notesContainer" aria-label="Saved notes"></aside>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div id="reviewFooter" class="review-footer">
+      <div id="reviewContainer" class="review-container"></div>
+    </div>
+
+    <p class="footer-main">
+      &copy; 2025 A&amp;J Personal Collections &middot; Handcrafted in the Philippines &middot;
+      <a href="privacy.html">Privacy Policy</a> &middot;
+      <a href="terms.html">T's &amp; C's</a><br>
+
+      <a
+        href="https://au.pinterest.com/ajpersonalcollections"
+        target="_blank"
+        title="Follow us on Pinterest"
+        rel="noopener noreferrer"
+      >
+        <img src="img/pinterest-gold.png" alt="Pinterest" class="footer-icon">
+      </a>
+      <a
+        href="https://x.com/ajPCollections"
+        target="_blank"
+        title="Follow us on X (Twitter)"
+        rel="noopener noreferrer"
+      >
+        <img src="img/x-gold.png" alt="X (Twitter)" class="footer-icon">
+      </a><br>
+
+      <span class="footer-hosting">
+        This site runs on the magic of
+        <a
+          href="https://www.netlify.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          title="Netlify Hosting"
+          >Netlify
+          <img src="img/netlify-logo.png" alt="Netlify" class="footer-icon-small">
+        </a>,
+        hosting with speed and grace.<br>
+        The reliable domains come from
+        <a
+          href="https://www.porkbun.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          title="Porkbun Domains"
+          >Porkbun
+          <img src="img/porkbun-logo.png" alt="Porkbun" class="footer-icon-small">
+        </a>,
+        keeping your web address safe and simple.<br>
+        And your messages soar through
+        <a
+          href="https://www.brevo.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          title="Brevo Email Service"
+          >Brevo
+          <img
+            src="img/brevo.png"
+            alt="Brevo"
+            class="footer-icon-small"
+            style="vertical-align: middle"
+          >
+        </a>,
+        delivering emails securely and on time.
+      </span><br><br>
+
+      <em>
+        Tradition. Love. Patience. Memory. Nourishment.<br>
+        The heart behind every touch and taste.
+      </em>
+    </p>
+  </footer>
+
+  <script src="js/writers-desk.js"></script>
+  <script>
+    // Attach event listener for glossary save button cleanly
+    document.addEventListener('DOMContentLoaded', function () {
+      document.getElementById('save-glo-btn').addEventListener('click', saveGlossaryTerm);
+    });
+  </script>
+</body>
+
+</html>
