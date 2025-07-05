@@ -7,9 +7,14 @@ document.addEventListener('DOMContentLoaded', () => {
   const checkAllToggle = document.getElementById('checkAllToggle');
   const backToTopBtn = document.getElementById('backToTopBtn');
 
+  if (!glossaryList || !searchInput || !categoryFilter || !checkAllToggle || !backToTopBtn) {
+    console.error('One or more required elements are missing from the DOM.');
+    return;
+  }
+
   let glossaryData = [];
 
-  // Create the floating definition box (hidden by default)
+  // Create floating definition box, hidden by default
   const defBox = document.createElement('div');
   defBox.id = 'definition-box';
   Object.assign(defBox.style, {
@@ -26,30 +31,25 @@ document.addEventListener('DOMContentLoaded', () => {
   });
   document.body.appendChild(defBox);
 
-  // Hide the definition box if clicking outside or pressing Escape
-  document.addEventListener('click', (e) => {
+  // Hide definition box when clicking outside or pressing Escape
+  document.addEventListener('click', e => {
     if (!defBox.contains(e.target) && !e.target.classList.contains('glossary-term')) {
       defBox.style.display = 'none';
     }
   });
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
-      defBox.style.display = 'none';
-    }
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') defBox.style.display = 'none';
   });
 
-  // Fetch glossary data from backend function
+  // Fetch glossary data, sort by term, then render
   async function fetchGlossary() {
     try {
       const res = await fetch('/.netlify/functions/glossary-get');
       if (!res.ok) throw new Error(`HTTP error ${res.status}`);
       const data = await res.json();
-
       if (!Array.isArray(data)) throw new Error('Glossary data malformed');
 
-      glossaryData = data;
-      glossaryData.sort((a, b) => a.term.localeCompare(b.term));
-
+      glossaryData = data.sort((a, b) => a.term.localeCompare(b.term));
       renderGlossary(categoryFilter.value, searchInput.value);
     } catch (err) {
       glossaryList.innerHTML = `<li style="color:red;">Error loading glossary: ${err.message}</li>`;
@@ -57,70 +57,71 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // Render the glossary list applying search and category filters
-  function renderGlossary(filterCategory = 'all', searchTerm = '') {
+  // Render glossary list, applying category and search filters
+  function renderGlossary(category = 'all', search = '') {
     glossaryList.innerHTML = '';
     defBox.style.display = 'none';
 
-    const search = searchTerm.trim().toLowerCase();
+    const searchTerm = search.trim().toLowerCase();
 
-    const filtered = glossaryData.filter(item => {
-      const matchesCategory = filterCategory === 'all' || item.category === filterCategory;
-      const matchesSearch = item.term.toLowerCase().includes(search) || item.definition.toLowerCase().includes(search);
-      return matchesCategory && matchesSearch;
+    const filtered = glossaryData.filter(({ term, definition, category: cat }) => {
+      const categoryMatch = category === 'all' || cat === category;
+      const searchMatch =
+        term.toLowerCase().includes(searchTerm) ||
+        definition.toLowerCase().includes(searchTerm);
+      return categoryMatch && searchMatch;
     });
 
-    if (filtered.length === 0) {
+    if (!filtered.length) {
       glossaryList.innerHTML = `<li><em>No matching glossary terms found.</em></li>`;
       resetCheckAllToggle();
       return;
     }
 
-    filtered.forEach(item => {
+    filtered.forEach(({ term, definition, category }) => {
       const li = document.createElement('li');
       li.className = 'glossary-item';
 
-      // Checkbox for selecting the term
+      // Checkbox for selection
       const checkbox = document.createElement('input');
       checkbox.type = 'checkbox';
-      checkbox.id = `chk-${item.term.replace(/\s+/g, '-')}`;
+      checkbox.id = `chk-${term.replace(/\s+/g, '-')}`;
       checkbox.className = 'glossary-checkbox';
 
-      // Label to hold term and category
+      // Label holding term and category
       const label = document.createElement('label');
       label.setAttribute('for', checkbox.id);
       label.className = 'glossary-label';
 
-      // Term span: clickable, keyboard accessible, shows definition inline
+      // Term span - clickable and keyboard accessible
       const termSpan = document.createElement('span');
       termSpan.className = 'glossary-term';
-      termSpan.textContent = item.term;
-      termSpan.tabIndex = 0; // keyboard focus
+      termSpan.textContent = term;
+      termSpan.tabIndex = 0;
       termSpan.setAttribute('role', 'button');
       termSpan.setAttribute('aria-haspopup', 'true');
       termSpan.style.cursor = 'pointer';
       termSpan.style.textDecoration = 'underline dotted';
 
-      termSpan.addEventListener('click', (e) => showDefinition(e.target, item));
-      termSpan.addEventListener('keydown', (e) => {
+      termSpan.addEventListener('click', e => showDefinition(e.target, { term, definition }));
+      termSpan.addEventListener('keydown', e => {
         if (e.key === 'Enter' || e.key === ' ') {
           e.preventDefault();
-          showDefinition(e.target, item);
+          showDefinition(e.target, { term, definition });
         }
       });
 
       label.appendChild(termSpan);
 
-      // Category tag displayed next to term
+      // Category tag
       const catSpan = document.createElement('span');
       catSpan.className = 'glossary-category';
-      catSpan.textContent = ` [${item.category}]`;
+      catSpan.textContent = ` [${category}]`;
       Object.assign(catSpan.style, {
         marginLeft: '6px',
         fontStyle: 'italic',
         color: '#555',
       });
-
       label.appendChild(catSpan);
 
       li.appendChild(checkbox);
@@ -132,43 +133,42 @@ document.addEventListener('DOMContentLoaded', () => {
     resetCheckAllToggle();
   }
 
-  // Show definition box near the clicked term
-  function showDefinition(target, item) {
+  // Show floating definition box next to clicked term
+  function showDefinition(target, { term, definition }) {
     const rect = target.getBoundingClientRect();
-    defBox.innerHTML = `<strong>${item.term}</strong><br>${item.definition}`;
+    defBox.innerHTML = `<strong>${term}</strong><br>${definition}`;
     defBox.style.top = `${window.scrollY + rect.bottom + 5}px`;
     defBox.style.left = `${window.scrollX + rect.left}px`;
     defBox.style.display = 'block';
   }
 
-  // "Check All" toggle handler
+  // Check All toggle logic
   checkAllToggle.addEventListener('change', () => {
-    const checkboxes = document.querySelectorAll('.glossary-checkbox');
-    checkboxes.forEach(chk => chk.checked = checkAllToggle.checked);
+    document.querySelectorAll('.glossary-checkbox').forEach(chk => {
+      chk.checked = checkAllToggle.checked;
+    });
   });
 
-  // Update "Check All" toggle state based on individual checkboxes
-  glossaryList.addEventListener('change', (e) => {
-    if (e.target && e.target.classList.contains('glossary-checkbox')) {
+  // Update Check All toggle state when individual checkboxes change
+  glossaryList.addEventListener('change', e => {
+    if (e.target.classList.contains('glossary-checkbox')) {
       updateCheckAllToggle();
     }
   });
 
   function updateCheckAllToggle() {
-    const checkboxes = document.querySelectorAll('.glossary-checkbox');
-    if (checkboxes.length === 0) {
-      checkAllToggle.checked = false;
-      checkAllToggle.indeterminate = false;
+    const checkboxes = [...document.querySelectorAll('.glossary-checkbox')];
+    if (!checkboxes.length) {
+      resetCheckAllToggle();
       return;
     }
 
-    const total = checkboxes.length;
-    const checkedCount = Array.from(checkboxes).filter(chk => chk.checked).length;
+    const checkedCount = checkboxes.filter(chk => chk.checked).length;
 
     if (checkedCount === 0) {
       checkAllToggle.checked = false;
       checkAllToggle.indeterminate = false;
-    } else if (checkedCount === total) {
+    } else if (checkedCount === checkboxes.length) {
       checkAllToggle.checked = true;
       checkAllToggle.indeterminate = false;
     } else {
@@ -182,26 +182,18 @@ document.addEventListener('DOMContentLoaded', () => {
     checkAllToggle.indeterminate = false;
   }
 
-  // React to search input changes
-  searchInput.addEventListener('input', () => {
-    renderGlossary(categoryFilter.value, searchInput.value);
-  });
-
-  // React to category filter changes
-  categoryFilter.addEventListener('change', () => {
-    renderGlossary(categoryFilter.value, searchInput.value);
-  });
+  // React to search input and category filter changes
+  searchInput.addEventListener('input', () => renderGlossary(categoryFilter.value, searchInput.value));
+  categoryFilter.addEventListener('change', () => renderGlossary(categoryFilter.value, searchInput.value));
 
   // Smooth scroll to top on button click
   backToTopBtn.addEventListener('click', () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 
-  // Start things off by fetching and rendering glossary
+  // Kickoff: fetch glossary data and render
   fetchGlossary();
 
-  // Optional: global print function for selected shopping list or glossary (can be extended)
-  window.printShoppingList = function() {
-    window.print();
-  };
+  // Optional global print function stub
+  window.printShoppingList = () => window.print();
 });

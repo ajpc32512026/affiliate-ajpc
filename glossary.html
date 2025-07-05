@@ -41,25 +41,27 @@
 </head>
 
 <body>
-  <header class="hero-banner">
+  <header class="hero-banner" role="banner">
     <img src="img/header.png" alt="A&J Personal Collections Banner" class="banner-img" />
   </header>
 
-  <nav class="topnav">
+  <nav class="topnav" role="navigation" aria-label="Primary Navigation">
     <ul>
-      <li><a href="recipes.html">Back</a></li>
+      <li><a href="recipes.html" aria-label="Go back to recipes">← Back</a></li>
     </ul>
   </nav>
 
-  <section class="page-heading">
-    <h1>Glossary</h1>
+  <section class="page-heading" aria-labelledby="pageTitle">
+    <h1 id="pageTitle">Glossary</h1>
     <p class="tagline">Click to add ingredients to your shopping list. Print when ready.</p>
   </section>
 
-  <main class="main-container">
-    <div class="controls">
-      <input id="searchInput" type="text" placeholder="Search glossary..." class="search-input" />
-      <select id="categoryFilter" class="category-select">
+  <main class="main-container" role="main" id="mainContent">
+    <section class="controls-group" aria-label="Glossary controls">
+      <input id="searchInput" type="search" placeholder="Search glossary..." class="search-input" aria-label="Search glossary terms" />
+
+      <label for="categoryFilter" class="visually-hidden">Filter by category</label>
+      <select id="categoryFilter" class="category-select" aria-controls="glossary-entries">
         <option value="all">All Categories</option>
         <option value="Dairy">Dairy</option>
         <option value="Dry / Baking">Dry / Baking</option>
@@ -71,28 +73,26 @@
         <option value="Tinned / Preserved">Tinned / Preserved</option>
         <option value="Wet / Liquids">Wet / Liquids</option>
       </select>
-    </div>
+    </section>
 
-    <div class="controls">
-      <button onclick="printShoppingList()" class="print-button">🖨️ Print Shopping List</button>
-    </div>
+    <section class="controls-group" aria-label="Print and selection controls">
+      <button onclick="printShoppingList()" class="print-button" aria-label="Print your shopping list">🖨️ Print Shopping List</button>
 
-    <div class="controls check-toggle">
-      <label>
+      <label class="check-toggle" for="checkAllToggle">
         <input type="checkbox" id="checkAllToggle" />
         Check All / Uncheck All
       </label>
-    </div>
+    </section>
 
-    <div id="glossary-entries">
+    <section id="glossary-entries" aria-live="polite" aria-atomic="true" tabindex="0">
       <!-- JavaScript will dynamically populate glossary sections here -->
-    </div>
+    </section>
   </main>
 
-  <button id="backToTopBtn" title="Back to Top">↑ Top</button>
+  <button id="backToTopBtn" title="Back to Top" aria-label="Back to top of page">↑ Top</button>
 
-  <footer>
-    <div id="reviewFooter" class="review-footer">
+  <footer role="contentinfo">
+    <div id="reviewFooter" class="review-footer" aria-label="Customer reviews">
       <div id="reviewContainer" class="review-container"></div>
     </div>
 
@@ -101,10 +101,10 @@
       <a href="privacy.html">Privacy Policy</a> &middot;
       <a href="terms.html">T's &amp; C's</a><br />
 
-      <a href="https://au.pinterest.com/ajpersonalcollections" target="_blank" title="Follow us on Pinterest" rel="noopener noreferrer">
+      <a href="https://au.pinterest.com/ajpersonalcollections" target="_blank" rel="noopener noreferrer" title="Follow us on Pinterest">
         <img src="img/pinterest-gold.png" alt="Pinterest" class="footer-icon" />
       </a>
-      <a href="https://x.com/ajPCollections" target="_blank" title="Follow us on X (Twitter)" rel="noopener noreferrer">
+      <a href="https://x.com/ajPCollections" target="_blank" rel="noopener noreferrer" title="Follow us on X (Twitter)">
         <img src="img/x-gold.png" alt="X (Twitter)" class="footer-icon" />
       </a><br />
 
@@ -138,9 +138,10 @@
     </p>
   </footer>
 
+  <!-- Scripts loaded at end for faster page rendering -->
   <script src="js/global.js"></script>
   <script src="js/glossary.js"></script>
-  <script src="/js/glossary-public.js"></script>
+  <script src="js/glossary-public.js"></script>
 </body>
 
 </html>

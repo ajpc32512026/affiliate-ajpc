@@ -1,37 +1,44 @@
 document.addEventListener('DOMContentLoaded', () => {
   const glossaryList = document.getElementById('glossary-list');
+  if (!glossaryList) {
+    console.error('Glossary container #glossary-list not found.');
+    return;
+  }
+
+  // Show loading message while fetching data
   glossaryList.innerHTML = '<li>Loading glossary, please wait…</li>';
 
   fetch('/.netlify/functions/glossary-get')
-    .then(res => {
-      if (!res.ok) throw new Error('Failed to fetch glossary.');
-      return res.json();
+    .then(response => {
+      if (!response.ok) throw new Error('Failed to fetch glossary.');
+      return response.json();
     })
     .then(data => {
-      glossaryList.innerHTML = '';
+      glossaryList.innerHTML = ''; // Clear loading message
 
-      if (!data.length) {
+      if (!Array.isArray(data) || data.length === 0) {
         glossaryList.innerHTML = '<li>No glossary terms found.</li>';
         return;
       }
 
-      // Group by category
+      // Group glossary entries by category
       const grouped = data.reduce((acc, { category, term, definition }) => {
         if (!acc[category]) acc[category] = [];
         acc[category].push({ term, definition });
         return acc;
       }, {});
 
-      for (const category of Object.keys(grouped)) {
+      // Build and append sections for each category
+      Object.entries(grouped).forEach(([category, terms]) => {
         const section = document.createElement('section');
         section.style.marginBottom = '30px';
 
-        const h2 = document.createElement('h2');
-        h2.textContent = category;
-        section.appendChild(h2);
+        const header = document.createElement('h2');
+        header.textContent = category;
+        section.appendChild(header);
 
         const dl = document.createElement('dl');
-        grouped[category].forEach(({ term, definition }) => {
+        terms.forEach(({ term, definition }) => {
           const dt = document.createElement('dt');
           dt.textContent = term;
           dt.style.cursor = 'pointer';
@@ -50,19 +57,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
         section.appendChild(dl);
         glossaryList.appendChild(section);
-      }
+      });
     })
-    .catch(err => {
+    .catch(error => {
       glossaryList.innerHTML = `
-        <li>Error loading glossary: ${err.message}</li>
+        <li>Error loading glossary: ${error.message}</li>
         <li><button id="retryBtn">Retry</button></li>
       `;
-      document.getElementById('retryBtn').addEventListener('click', () => location.reload());
-      console.error('Glossary load error:', err);
+      const retryBtn = document.getElementById('retryBtn');
+      if (retryBtn) {
+        retryBtn.addEventListener('click', () => location.reload());
+      }
+      console.error('Glossary load error:', error);
     });
 });
 
+// Stub for adding terms to the shopping list — link this to your real logic
 function addToShoppingList(term) {
   console.log(`Added to shopping list: ${term}`);
-  // Hook into your actual shopping list logic here
+  // TODO: Integrate with your shopping list management system
 }
