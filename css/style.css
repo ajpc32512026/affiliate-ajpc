@@ -33,8 +33,14 @@ body {
     min-height: 100vh;
     overflow-x: hidden;
     width: 100%;
-    word-wrap: break-word;
+}
+
+/* Long-form text content is safe to break on very narrow screens;
+   short UI labels (nav pills, buttons) should never break mid-word -
+   they should shrink-wrap or wrap as a whole unit instead. */
+p, li, td, th, .tagline, .product-desc, .recipe-content p, .support-section p {
     overflow-wrap: break-word;
+    word-wrap: break-word;
 }
 
 /* === INTRO SECTION === */
@@ -144,6 +150,8 @@ nav.topnav a {
     color: #F5F4F2;
     font-size: 14px;
     transition: all 0.2s ease-in-out;
+    white-space: nowrap;
+    flex-shrink: 0;
 }
 
 nav.topnav a:hover,
