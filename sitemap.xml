@@ -3,27 +3,25 @@
 
   <!-- Core Content Pages -->
   <url>
-    <loc>https://ajpersonalcollections.com/index.html</loc>
+    <loc>https://affiliate-ajpc/index.html</loc>
   </url>
   <url>
-    <loc>https://ajpersonalcollections.com/health-beauty.html</loc>
+    <loc>https://affiliate-ajpc/health-beauty.html</loc>
   </url>
   <url>
-    <loc>https://ajpersonalcollections.com/about.html</loc>
+    <loc>https://affiliate-ajpc/about.html</loc>
   </url>
   <url>
-    <loc>https://ajpersonalcollections.com/contact.html</loc>
+    <loc>https://affiliate-ajpc/contact.html</loc>
   </url>
-  <url>
-    <loc>https://ajpersonalcollections.com/glossary.html</loc>
-  </url>
+
 
   <!-- Legal & Compliance Policies -->
   <url>
-    <loc>https://ajpersonalcollections.com/privacy.html</loc>
+    <loc>https://affiliate-ajpc/privacy.html</loc>
   </url>
   <url>
-    <loc>https://ajpersonalcollections.com/terms.html</loc>
+    <loc>https://affiliate-ajpc/terms.html</loc>
   </url>
 
 </urlset>

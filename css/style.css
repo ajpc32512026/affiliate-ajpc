@@ -1,11 +1,6 @@
 /* === A&J PERSONAL COLLECTIONS – UNIFIED CSS RESET & THEME === */
 
-/* === GLOBAL MOBILE-SAFE RESET ===
-   box-sizing:border-box stops padding/border from adding to an element's
-   declared width, which is what was pushing the page wider than the phone
-   screen and cutting text off on the right edge. overflow-x:hidden on
-   html/body is a safety net so a stray wide element can no longer force
-   the whole page to scroll sideways. */
+/* === GLOBAL MOBILE-SAFE RESET === */
 *,
 *::before,
 *::after {
@@ -35,10 +30,7 @@ body {
     width: 100%;
 }
 
-/* Long-form text content is safe to break on very narrow screens;
-   short UI labels (nav pills, buttons) should never break mid-word -
-   they should shrink-wrap or wrap as a whole unit instead. */
-p, li, td, th, .tagline, .product-desc, .recipe-content p, .support-section p {
+p, li, td, th, .tagline, .support-section p {
     overflow-wrap: break-word;
     word-wrap: break-word;
 }
@@ -72,7 +64,6 @@ p, li, td, th, .tagline, .product-desc, .recipe-content p, .support-section p {
     border: 2px solid #D2A85C;
 }
 
-
 /* === HEADER & HERO === */
 .hero-banner {
     width: 100%;
@@ -89,7 +80,6 @@ p, li, td, th, .tagline, .product-desc, .recipe-content p, .support-section p {
     padding: 0;
     object-fit: cover;
 }
-
 
 .logo {
     max-width: 180px;
@@ -115,14 +105,14 @@ p, li, td, th, .tagline, .product-desc, .recipe-content p, .support-section p {
     margin: 0;
 }
 
-/* === NAVIGATION BAR (Option A: Modern Row Layout with Mobile Unified Flow) === */
+/* === NAVIGATION BAR === */
 nav.topnav {
     background-color: #3F3A36;
     display: flex;
     flex-direction: row;
-    justify-content: space-between; /* Aligns pills on the left, button on the right */
+    justify-content: space-between;
     align-items: center;
-    padding: 12px 24px; /* Space inside the header bar */
+    padding: 12px 24px;
     gap: 20px;
 }
 
@@ -166,7 +156,6 @@ nav.topnav a.active {
     border-color: #D8A7B1;
 }
 
-/* Common style for nav links and buttons */
 .top-nav {
     display: inline-block;
     padding: 8px 16px;
@@ -194,11 +183,7 @@ nav.topnav a.active {
     border-color: #D8A7B1;
 }
 
-/* ==========================================================================
-   ✦ MODAL POP-OUT STYLES (Mobile-Optimized & Scroll-Protected) ✦
-   ========================================================================== */
-
-/* 1. Header Trigger Button (Pill shape matched) */
+/* === MODAL POP-OUT STYLES (Mobile-Optimized & Scroll-Protected) === */
 .guidelines-trigger-btn {
     background-color: #FDFBF7;
     color: #D2A85C;
@@ -216,36 +201,33 @@ nav.topnav a.active {
     background-color: #F3EAE1;
 }
 
-/* 2. Modal Darkened Backdrop Background */
 .guidelines-modal-backdrop {
-    display: none; /* Hidden by default */
+    display: none;
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(63, 58, 54, 0.5); /* Dimmed backdrop tinted in warm gray */
-    z-index: 9999; /* Guarantees it floats over everything else */
+    background-color: rgba(63, 58, 54, 0.5);
+    z-index: 9999;
     align-items: center;
     justify-content: center;
     opacity: 0;
     transition: opacity 0.2s ease-in-out;
 }
 
-/* Modal Active State */
 .guidelines-modal-backdrop.is-active {
     display: flex;
     opacity: 1;
 }
 
-/* 3. Modal Inner Content Box */
 .guidelines-modal-content {
     background-color: #FFFFFF;
     border: 2px solid #D2A85C;
     border-radius: 12px;
     width: 90%;
     max-width: 500px;
-    padding: 24px; /* Balanced, even padding */
+    padding: 24px;
     position: relative;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
     transform: translateY(-20px);
@@ -259,7 +241,6 @@ nav.topnav a.active {
     transform: translateY(0);
 }
 
-/* 4. Elegant Close Button (Optimized tap target for mobile thumbs) */
 .guidelines-modal-close {
     position: absolute;
     top: 8px;
@@ -270,7 +251,7 @@ nav.topnav a.active {
     color: #3F3A36;
     cursor: pointer;
     line-height: 1;
-    padding: 8px; /* Larger hit target for easier touch-screen tap */
+    padding: 8px;
     transition: color 0.2s ease;
 }
 
@@ -278,27 +259,24 @@ nav.topnav a.active {
     color: #D2A85C;
 }
 
-/* Header Text inside the Modal */
 .guidelines-modal-header {
     color: #D2A85C;
     font-size: 1.3rem;
     margin: 0 0 16px 0;
-    padding-right: 24px; /* Leaves safe room for the close button on tight mobile layouts */
+    padding-right: 24px;
     text-align: center;
     font-weight: bold;
 }
 
-/* 5. Scrollable Body Container (Optimized with dynamic calc instead of rigid vh) */
 .guidelines-modal-body {
-    max-height: calc(100vh - 160px); /* Dynamically maximizes vertical room on short screens */
-    overflow-y: auto; /* Adds clean, native scrolling if content overflows */
-    padding-right: 12px; /* Gutter prevents mobile scrollbars from overlapping text */
-    padding-bottom: 12px; /* Safe visual buffer at the very end of the scroll */
-    -webkit-overflow-scrolling: touch; /* Enables smooth inertial scroll on iOS */
+    max-height: calc(100vh - 160px);
+    overflow-y: auto;
+    padding-right: 12px;
+    padding-bottom: 12px;
+    -webkit-overflow-scrolling: touch;
     box-sizing: border-box;
 }
 
-/* Scrollbar Customization for the Modal Body */
 .guidelines-modal-body::-webkit-scrollbar {
     width: 6px;
 }
@@ -310,7 +288,6 @@ nav.topnav a.active {
     border-radius: 99px;
 }
 
-/* Body Text inside the Modal */
 .guidelines-modal-body p {
     font-size: 0.95rem;
     color: #3F3A36;
@@ -322,61 +299,10 @@ nav.topnav a.active {
     margin-bottom: 0;
 }
 
-/* SHEIN Code Highlight */
-.modal-code-highlight {
-    color: #D2A85C;
-    background-color: #FDFBF7;
-    padding: 2px 6px;
-    border-radius: 4px;
-    border: 1px solid #D2A85C;
-}
-
-/* Mobile-Specific Modal Enhancements */
-@media (max-width: 480px) {
-    .guidelines-modal-content {
-        padding: 20px 16px 16px 16px; /* Snug padding for narrow mobile views */
-        border-radius: 8px;
-    }
-    
-    .guidelines-modal-header {
-        font-size: 1.15rem;
-    }
-    
-    .guidelines-modal-body {
-        max-height: calc(100vh - 140px); /* Maximum vertical space efficiency on tiny screens */
-    }
-}
-
-/* Mobile Responsive Nav Layout (Pills and guidelines button flow together) */
-@media (max-width: 768px) {
-    nav.topnav {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: center; /* Centers the unified group of pills on mobile */
-        align-items: center;
-        gap: 10px; /* Snug, clean vertical and horizontal gaps on mobile */
-        padding: 14px 10px;
-    }
-
-    nav.topnav ul {
-        display: contents; /* Unwraps the list container so links and button wrap as direct siblings */
-    }
-
-    nav.topnav li {
-        display: block;
-    }
-
-    .guidelines-trigger-btn {
-        margin: 0;
-    }
-}
-
 /* === BACK TO TOP BUTTON === */
 #backToTopBtn {
     display: block;
     margin: 40px auto;
-    /* centers it horizontally */
     padding: 8px 16px;
     background-color: #3F3A36;
     border: 2px solid #D2A85C;
@@ -392,15 +318,12 @@ nav.topnav a.active {
     transition: all 0.2s ease-in-out;
 }
 
-/* Hover/focus styles */
 #backToTopBtn:hover,
 #backToTopBtn:focus {
     background-color: #D2A85C;
     color: #3F3A36;
     outline: none;
 }
-
-
 
 /* === HEALTH & BEAUTY HIGHLIGHT === */
 a.highlight-health {
@@ -414,7 +337,6 @@ a.highlight-health {
     font-weight: bold;
     color: #3F3A36;
 }
-
 
 /* === PAGE TITLES === */
 .page-title {
@@ -430,88 +352,11 @@ a.highlight-health {
     margin-bottom: 40px;
 }
 
-/* === PRODUCT GRID === */
-.products-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 30px;
-    padding: 40px;
-    max-width: 800px;
-    margin: 0 auto;
-    justify-items: center;
-}
-
-.product-card {
-    background-color: #fff;
-    border: 2px solid #D2A85C;
-    border-radius: 12px;
-    width: 200px;
-    text-align: center;
-    padding: 20px 10px;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.06);
-}
-
-/* === SOAP GRID === */
-.soap-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 12px;
-    margin: 10px 0;
-}
-
-.soap-grid img {
-    width: 100%;
-    height: auto;
-    border-radius: 10px;
-    border: 1px solid #D2A85C;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.05);
-    transition: transform 0.3s ease;
-}
-
-.soap-grid img:hover {
-    transform: scale(1.03);
-}
-
-/* === PRODUCT IMAGE WRAPPER === */
-.image-wrapper {
-    width: 180px;
-    height: 180px;
-    overflow: hidden;
-    border-radius: 10px;
-    border: 1px solid #D2A85C;
-    margin: 0 auto 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #fff;
-}
-
-.image-wrapper img {
-    max-width: 100%;
-    max-height: 100%;
-    object-fit: contain;
-    transition: transform 0.3s ease;
-}
-
-.image-wrapper:hover img {
-    transform: scale(1.1);
-}
-
-/* === PRODUCT TEXT === */
-.product-name {
-    font-weight: bold;
-    margin: 10px 0 5px;
-}
-
 .product-price {
     font-size: 14px;
     color: #A89F91;
     margin-bottom: 8px;
-}
-
-.product-desc {
-    font-size: 13px;
-    line-height: 1.4;
+    font-weight: 600;
 }
 
 /* === BUTTONS === */
@@ -580,7 +425,7 @@ footer a:hover {
     font-size: 0.9em;
 }
 
-/* === WRITER'S DESK / ADMIN PANEL === */
+/* === WRITER'S DESK / GENERAL CONTAINERS === */
 .main {
     display: flex;
     flex-wrap: wrap;
@@ -598,604 +443,8 @@ footer a:hover {
     border: 2px solid #A89F91;
     border-radius: 10px;
     padding: 20px;
-    min-width: 0;
-    width: 100%;
-    max-width: 600px;
+    min-width: 500px;
     box-sizing: border-box;
-}
-
-.editor-wrapper {
-    position: relative;
-}
-
-.editable {
-    width: 100%;
-    min-height: 200px;
-    padding: 20px;
-    border: 2px dashed #D2A85C;
-    border-radius: 8px;
-    background-color: #fffefc;
-    font-size: 16px;
-    line-height: 1.6;
-    color: #3F3A36;
-    box-sizing: border-box;
-}
-
-.placeholder {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    color: #A89F91;
-    pointer-events: none;
-    font-style: italic;
-}
-
-.save-info {
-    text-align: right;
-    margin-top: 10px;
-}
-
-.save-info button {
-    background-color: #D8A7B1;
-    border: none;
-    padding: 10px 20px;
-    color: white;
-    font-weight: bold;
-    cursor: pointer;
-    border-radius: 5px;
-}
-
-.save-info button:hover {
-    background-color: #A89F91;
-}
-
-.sidebar {
-    flex: 1 1 300px;
-    border: 2px solid #D2A85C;
-    background-color: #fff;
-    border-radius: 10px;
-    padding: 10px;
-    max-height: 600px;
-    overflow-y: auto;
-    min-width: 0;
-    width: 100%;
-    box-sizing: border-box;
-}
-
-.note-card {
-    border: 1px solid #A89F91;
-    border-radius: 8px;
-    padding: 10px;
-    margin-bottom: 10px;
-    background-color: #F5F4F2;
-    position: relative;
-}
-
-.note-card[contenteditable="true"] {
-    outline: 2px dashed #D8A7B1;
-}
-
-.card-buttons {
-    text-align: right;
-    margin-top: 5px;
-}
-
-.card-buttons button {
-    margin-left: 5px;
-    background-color: #A89F91;
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 12px;
-}
-
-.card-buttons button:hover {
-    background-color: #3F3A36;
-}
-
-/* === RESPONSIVE === */
-@media (max-width: 768px) {
-
-    .products-grid,
-    .soap-grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
-        padding: 20px;
-    }
-
-    .product-card {
-        width: 90%;
-    }
-
-    .image-wrapper {
-        width: 100%;
-        height: auto;
-    }
-
-    .intro {
-        flex-direction: column;
-        padding: 20px;
-    }
-
-    .intro-text,
-    .intro-image {
-        width: 100%;
-        text-align: center;
-    }
-
-    .review-card {
-        flex: 1 1 45%;
-        max-width: 200px;
-    }
-}
-
-@media (max-width: 480px) {
-    nav.topnav ul {
-        flex-direction: column;
-        align-items: center;
-        gap: 10px;
-    }
-
-    nav.topnav a {
-        font-size: 16px;
-        width: 80%;
-        text-align: center;
-    }
-
-    .soap-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .review-card {
-        flex: 1 1 100%;
-    }
-}
-
-
-/* === RECIPE GRID SECTION === */
-
-.recipe-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 30px;
-    padding: 40px 20px;
-    max-width: 1200px;
-    margin: auto;
-}
-
-.recipe-card {
-    background: #fff;
-    border: 1px solid #A89F91;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-    transition: transform 0.2s ease;
-}
-
-.recipe-card:hover {
-    transform: scale(1.02);
-}
-
-.recipe-card img {
-    width: 100%;
-    height: auto;
-    display: block;
-}
-
-.recipe-content {
-    padding: 20px;
-    color: #3F3A36;
-}
-
-.recipe-content h3 {
-    margin-top: 0;
-    font-size: 1.25rem;
-    color: #3F3A36;
-}
-
-.recipe-content p {
-    font-size: 0.95rem;
-    color: #5F5851;
-}
-
-.recipe-content .btn {
-    display: inline-block;
-    margin-top: 10px;
-    background-color: #D2A85C;
-    color: #fff;
-    padding: 8px 16px;
-    border-radius: 30px;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-.recipe-content .btn:hover {
-    background-color: #D8A7B1;
-}
-
-/* === SUPPORT SECTION STYLES === */
-.support-section {
-    background-color: #F5F4F2;
-    padding: 40px 20px;
-    max-width: 900px;
-    margin: 0 auto 60px auto;
-    border: 1px solid #A89F91;
-    border-radius: 8px;
-    text-align: center;
-}
-
-.support-section h3 {
-    font-family: 'Georgia', serif;
-    font-size: 26px;
-    margin-bottom: 15px;
-    color: #3F3A36;
-}
-
-.support-section p {
-    color: #3F3A36;
-    font-size: 16px;
-    margin-bottom: 20px;
-    line-height: 1.6;
-}
-
-.support-options {
-    display: flex;
-    justify-content: space-around;
-    gap: 40px;
-    flex-wrap: wrap;
-    margin-bottom: 20px;
-}
-
-.support-options div {
-    background-color: #fff;
-    border: 1px solid #D8A7B1;
-    padding: 20px;
-    border-radius: 6px;
-    width: 100%;
-    max-width: 400px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-}
-
-.support-options h4 {
-    font-size: 18px;
-    color: #3F3A36;
-    margin-bottom: 10px;
-}
-
-.support-options strong {
-    color: #3F3A36;
-}
-
-.button-link {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #D2A85C;
-    /* Gold-toned, to match your aesthetic */
-    color: #fff;
-    text-decoration: none;
-    font-weight: bold;
-    border-radius: 6px;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    font-size: 16px;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-.button-link:hover {
-    background-color: #b88f48;
-    /* Slightly darker on hover */
-    transform: translateY(-2px);
-    /* subtle lift */
-}
-
-/* Center main content with max width */
-.product-main {
-    max-width: 900px;
-    /* or whatever width fits your design */
-    margin: 2rem auto;
-    /* center horizontally with top/bottom margin */
-    padding: 0 1rem;
-    /* some breathing room on sides */
-    box-sizing: border-box;
-    /* important to include padding in width */
-}
-
-/* Buttons in 'Other Soaps' section aligned nicely */
-.related-products {
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-top: 30px;
-}
-
-/* Style for the soap buttons */
-.button-link {
-    background-color: #d1b480;
-    color: #3f362a;
-    padding: 0.5rem 1rem;
-    border-radius: 8px;
-    text-decoration: none;
-    font-weight: bold;
-    text-align: center;
-    flex: 1 1 200px;
-    /* flexible buttons */
-    max-width: 220px;
-    transition: background-color 0.3s ease;
-}
-
-.button-link:hover {
-    background-color: #b8964f;
-    color: white;
-    cursor: pointer;
-}
-
-.how-to-use-section {
-    margin-bottom: 40px;
-}
-
-.how-to-use-header {
-    cursor: pointer;
-    color: #D2A85C;
-    font-size: 24px;
-    box-shadow: 0 0 5px 2px rgba(210, 168, 92, 0.7);
-    transition: box-shadow 0.3s ease-in-out;
-}
-
-.how-to-use-header:hover {
-    box-shadow: 0 0 10px 4px rgba(210, 168, 92, 1);
-}
-
-.how-to-use-content {
-    display: none;
-    margin-top: 10px;
-    padding: 10px;
-    border-left: 4px solid #D2A85C;
-    background-color: #F5F4F2;
-    font-size: 16px;
-}
-
-.order-form-section {
-    background-color: #fdfaf4;
-    padding: 50px 20px;
-    border-top: 2px solid #d2a85c;
-    border-bottom: 2px solid #d2a85c;
-}
-
-.order-form-container {
-    max-width: 600px;
-    margin: 0 auto;
-    background: #fffdf9;
-    border: 1px solid #e0d4ba;
-    border-radius: 8px;
-    padding: 30px;
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
-}
-
-.order-form-container h2 {
-    margin-top: 0;
-    color: #3f3a36;
-}
-
-.order-form-container label {
-    display: block;
-    margin-top: 15px;
-    font-weight: bold;
-    color: #3f3a36;
-}
-
-.order-form-container input,
-.order-form-container textarea {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc7bb;
-    border-radius: 4px;
-    font-family: inherit;
-    margin-top: 5px;
-    box-sizing: border-box;
-}
-
-.order-form-container .note {
-    font-size: 0.9em;
-    color: #5e5548;
-    margin-top: 10px;
-}
-
-.order-form-container button {
-    margin-top: 20px;
-    background-color: #d2a85c;
-    color: #fff;
-    font-weight: bold;
-    padding: 12px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.order-form-container button:hover {
-    background-color: #c49545;
-}
-
-.product-selection-list {
-    border: 2px solid #c5c5c5;
-    background: #fff8f1;
-    padding: 1em;
-    border-radius: 8px;
-    margin-bottom: 1em;
-}
-
-.product-item {
-    display: flex;
-    align-items: center;
-    margin-bottom: 0.5em;
-    gap: 10px;
-}
-
-.product-item span.quantity {
-    width: 30px;
-    text-align: center;
-    font-weight: bold;
-}
-
-.product-item button {
-    background: #ffe5b4;
-    border: none;
-    padding: 0.3em 0.6em;
-    border-radius: 4px;
-    cursor: pointer;
-    font-weight: bold;
-}
-
-.product-item button:hover {
-    background: #ffcc80;
-}
-
-
-.highlight-admin {
-    background-color: #333;
-    color: #fff;
-    font-weight: bold;
-    padding: 0.2em 0.5em;
-    border-radius: 4px;
-}
-
-#productList {
-    border: 1px solid #ddd;
-    padding: 10px;
-    max-height: 250px;
-    overflow-y: auto;
-    background: #fff;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-.product-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 8px 0;
-    border-bottom: 1px solid #eee;
-}
-
-.product-name {
-    flex: 1;
-    font-weight: 600;
-}
-
-.qty-controls {
-    display: flex;
-    align-items: center;
-}
-
-.qty-controls button {
-    background-color: #007bff;
-    border: none;
-    color: white;
-    font-size: 1.2rem;
-    width: 32px;
-    height: 32px;
-    border-radius: 4px;
-    cursor: pointer;
-    user-select: none;
-    transition: background-color 0.2s ease;
-}
-
-.qty-controls button:disabled {
-    background-color: #999;
-    cursor: not-allowed;
-}
-
-.qty-display {
-    margin: 0 12px;
-    min-width: 24px;
-    text-align: center;
-    font-size: 1.1rem;
-    font-weight: bold;
-}
-
-.qty-controls button:hover:not(:disabled) {
-    background-color: #0056b3;
-}
-
-#selectedProducts div {
-    margin: 6px 0;
-    font-family: sans-serif;
-}
-
-#selectedProducts button {
-    margin: 0 5px;
-    padding: 2px 8px;
-    font-size: 1rem;
-}
-
-
-/* Put the form in a clean, padded box */
-#ingredient-form {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 1.2rem;
-    max-width: 600px;
-    margin: 2rem auto;
-    background: #fefefe;
-    padding: 2rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
-    font-family: 'Segoe UI', sans-serif;
-}
-
-/* Label formatting for better readability */
-#ingredient-form label {
-    display: flex;
-    flex-direction: column;
-    font-weight: 600;
-    font-size: 1rem;
-    color: #333;
-}
-
-/* Inputs and select box spacing */
-#ingredient-form input,
-#ingredient-form select {
-    margin-top: 0.4rem;
-    padding: 0.75rem;
-    font-size: 1rem;
-    border: 1px solid #bbb;
-    border-radius: 4px;
-    background: #fff;
-    box-sizing: border-box;
-    width: 100%;
-}
-
-/* Button style to stand out */
-#ingredient-form button {
-    padding: 0.75rem 1rem;
-    font-size: 1rem;
-    font-weight: bold;
-    color: #fff;
-    background-color: #2c3e50;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background 0.3s ease;
-}
-
-#ingredient-form button:hover {
-    background-color: #34495e;
-}
-
-@media (min-width: 700px) {
-    #ingredient-form {
-        grid-template-columns: 1fr 1fr;
-    }
-
-    #ingredient-form label:nth-child(3) {
-        grid-column: span 2;
-        /* Make the description full width */
-    }
-
-    #ingredient-form button {
-        grid-column: span 2;
-        justify-self: start;
-    }
 }
 
 .form-grid {
@@ -1228,109 +477,34 @@ textarea {
     line-height: 1.4;
 }
 
-.admin-box {
-    background: #f9f9f9;
-    padding: 1.5rem;
-    border: 1px solid #ddd;
-    border-radius: 6px;
-}
-
-.main-content {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 40px 20px;
-    font-family: Tahoma, sans-serif;
-    color: #3F3A36;
-}
-
-.main-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 40px 20px;
-    font-family: Tahoma, sans-serif;
-}
-
-.controls {
-    text-align: center;
-    margin-bottom: 30px;
-}
-
-.search-input,
-.category-select {
+.how-to-use-header {
+    cursor: pointer;
+    color: #D2A85C;
+    font-size: 24px;
+    box-shadow: 0 0 5px 2px rgba(210, 168, 92, 0.7);
+    transition: box-shadow 0.3s ease-in-out;
     padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-.search-input {
-    width: 260px;
-    margin-right: 10px;
-}
-
-.print-button {
-    padding: 10px 25px;
-    background-color: #3F3A36;
-    color: white;
-    font-weight: bold;
-    border: none;
-    border-radius: 30px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.print-button:hover {
-    background-color: #5a554f;
-}
-
-.glossary-table {
-    table-layout: fixed;
-    width: 100%;
-    border-collapse: collapse;
-    font-family: Tahoma, sans-serif;
-}
-
-.glossary-table th,
-.glossary-table td {
-    padding: 12px;
-    border: 1px solid #ccc;
-    text-align: left;
-    vertical-align: top;
-}
-
-.glossary-table th.select-col,
-.glossary-table td.select-col {
-    width: 80px;
     text-align: center;
 }
 
-.glossary-table td.select-col input[type="checkbox"] {
-    transform: scale(1.2);
-    cursor: pointer;
+.how-to-use-header:hover {
+    box-shadow: 0 0 10px 4px rgba(210, 168, 92, 1);
 }
 
-/* Force consistent column widths */
-.glossary-table th:not(.select-col),
-.glossary-table td:not(.select-col) {
-    width: calc((100% - 80px) / 2);
+.how-to-use-content {
+    display: none;
+    margin-top: 10px;
+    padding: 15px;
+    border-left: 4px solid #D2A85C;
+    background-color: #F5F4F2;
+    font-size: 16px;
+    line-height: 1.6;
 }
 
-/* Header styling */
-.glossary-table thead th {
-    background-color: #D2A85C;
-    color: #fff;
-    font-weight: bold;
-}
-
-/* Row hover */
-.glossary-table tbody tr:hover {
-    background-color: #f8f0e3;
-}
-
-/* AJ Story Content */
+/* === ABOUT & STORY SECTIONS === */
 .aj-story {
     max-width: 650px;
     margin: 0 auto 40px auto;
-    /* centers horizontally and adds bottom margin */
 }
 
 .aj-story-content h3 {
@@ -1350,15 +524,12 @@ textarea {
     flex-wrap: wrap;
     justify-content: center;
     max-width: 900px;
-    /* Keeps it contained and neat */
     margin: 0 auto 40px auto;
-    /* Center horizontally with bottom margin */
 }
 
 .about-box {
     flex: 1 1 300px;
     min-width: 280px;
-    /* avoids too small on tiny screens */
 }
 
 .about-box h3 {
@@ -1409,13 +580,12 @@ textarea {
     position: absolute;
     left: 0;
     color: #b97a56;
-    /* A warm, earthy tone for that handmade vibe */
     font-size: 20px;
     line-height: 1;
     top: 2px;
 }
 
-/* CONTACT FORM */
+/* === CONTACT FORM === */
 section.contact-form {
     max-width: 700px;
     margin: 40px auto;
@@ -1423,124 +593,7 @@ section.contact-form {
     font-family: Tahoma, sans-serif;
 }
 
-/* ==========================
-   Glossary Page Styles
-   ========================== */
-
-.page-heading {
-  text-align: center;
-  margin-top: 40px;
-  margin-bottom: 30px;
-}
-
-.page-heading h1 {
-  font-size: 36px;
-  color: #523d2c;
-  margin-bottom: 10px;
-}
-
-.page-heading .tagline {
-  font-size: 18px;
-  color: #7a6452;
-}
-
-.main-container {
-  max-width: 850px;
-  margin: 0 auto;
-  padding: 0 20px;
-}
-
-/* Controls and Inputs */
-.controls {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  margin-bottom: 15px;
-}
-
-.controls input[type="text"],
-.controls select {
-  flex: 1 1 48%;
-  padding: 8px 12px;
-  font-size: 16px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  margin-bottom: 10px;
-}
-
-.print-button {
-  padding: 10px 20px;
-  background-color: #795548;
-  color: white;
-  font-weight: bold;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.print-button:hover {
-  background-color: #5d4037;
-}
-
-.check-toggle {
-  font-size: 15px;
-  color: #444;
-}
-
-/* Glossary Entries */
-#glossary-entries section {
-  margin-bottom: 40px;
-  padding-bottom: 10px;
-  border-bottom: 1px dashed #ccc;
-}
-
-#glossary-entries h3 {
-  font-size: 24px;
-  color: #4e342e;
-  margin-bottom: 10px;
-  border-left: 6px solid #a1887f;
-  padding-left: 10px;
-}
-
-#glossary-entries p {
-  font-size: 16px;
-  line-height: 1.6;
-  color: #3e2723;
-  padding-left: 10px;
-  margin: 0;
-}
-
-/* Back to Top Button */
-#backToTopBtn {
-  background-color: #8d6e63;
-  color: #fff;
-  border: none;
-  padding: 10px 16px;
-  font-size: 16px;
-  cursor: pointer;
-  border-radius: 50px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.3);
-  transition: background-color 0.3s;
-}
-
-#backToTopBtn:hover {
-  background-color: #6d4c41;
-}
-
-@media (max-width: 600px) {
-  .controls {
-    flex-direction: column;
-  }
-
-  .controls input[type="text"],
-  .controls select {
-    flex: 1 1 100%;
-  }
-}
-
 /* === AFFILIATE CATALOG GRID & CARD SYSTEM === */
-
-/* Grid container for cards */
 .affiliate-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
@@ -1551,13 +604,12 @@ section.contact-form {
     justify-items: center;
 }
 
-/* Default card state (Optimized dimensions) */
 .grid-card {
     background-color: #FFFFFF;
     border: 2px solid #D2A85C;
     border-radius: 12px;
     width: 150px;
-    height: 230px; /* Increased from 200px to balance the larger image */
+    height: 230px;
     box-sizing: border-box;
     padding: 8px;
     text-align: center;
@@ -1574,7 +626,6 @@ section.contact-form {
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
 }
 
-/* Card Inner Container (Changed from space-between to flex-start) */
 .card-inner {
     border: 1px solid #F5F4F2;
     border-radius: 8px;
@@ -1582,27 +633,26 @@ section.contact-form {
     height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start; /* Groups elements from the top instead of pushing them apart */
+    justify-content: flex-start;
     box-sizing: border-box;
 }
 
 .card-image-box {
-    height: 130px; /* Increased from 100px to maximize vertical space */
+    height: 130px;
     display: flex;
     align-items: center;
     justify-content: center;
     overflow: hidden;
     background: #FFFFFF;
-    border-radius: 6px; /* Smooth rounded corners for the image container */
+    border-radius: 6px;
 }
 
 .card-image-box img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Fills the entire box space, making the product look much larger */
+    object-fit: cover;
 }
 
-/* Card Title (Optimized for multi-line descriptive text) */
 .card-title {
     font-size: 13px;
     font-weight: bold;
@@ -1611,15 +661,12 @@ section.contact-form {
     line-height: 1.3;
     overflow: hidden;
     text-overflow: ellipsis;
-    
-    /* Elegant Line-Clamping (Allows up to 3 lines of text) */
     display: -webkit-box;
-    -webkit-line-clamp: 3; /* Change this number to 2 or 4 if you want different limits */
+    -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
 }
 
-
-/* Expanded Card Modal Overlay */
+/* === DYNAMIC MODAL DETAIL OVERLAY === */
 .modal-overlay {
     display: none;
     position: fixed;
@@ -1640,7 +687,7 @@ section.contact-form {
     border-radius: 12px;
     width: 300px;
     min-height: 400px;
-    height: auto; /* Card stretches to fit text naturally */
+    height: auto;
     box-sizing: border-box;
     padding: 15px;
     position: relative;
@@ -1655,6 +702,7 @@ section.contact-form {
     border: 2px solid #F5F4F2;
     border-radius: 8px;
     padding: 12px;
+    flex: 1;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -1663,7 +711,7 @@ section.contact-form {
 }
 
 .expanded-image-box {
-    height: 140px; /* Keeps the image nice and large */
+    height: 140px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1679,23 +727,12 @@ section.contact-form {
     object-fit: cover;
 }
 
-.expanded-desc {
-    font-size: 12px;
-    line-height: 1.4;
-    color: #6A645F;
-    margin-bottom: 12px;
-    text-align: justify;
-    /* No scrollbar or height limit needed because card will grow */
-}
-
 .expanded-title {
     font-size: 16px;
     font-weight: bold;
     color: #3F3A36;
     margin: 10px 0 5px;
-    
-    /* === THE FIX === */
-    overflow-wrap: break-word; /* Prevents long titles or links from overflowing */
+    overflow-wrap: break-word;
     word-break: break-word;
 }
 
@@ -1706,12 +743,11 @@ section.contact-form {
     height: 90px;
     overflow-y: auto;
     margin: 0 0 10px 0;
-    
-    /* === THE FIX === */
-    overflow-wrap: break-word; /* Prevents long URLs from spilling out of the card */
+    text-align: justify;
+    overflow-wrap: break-word;
     word-break: break-word;
 }
-/* Close Button */
+
 .close-btn {
     position: absolute;
     top: 10px;
@@ -1731,16 +767,15 @@ section.contact-form {
 
 .modal-link-button {
     display: block;
-    width: 100%;            /* Shrinks the width so it doesn't hit the left/right borders */
-    max-width: 200px;      /* Keeps the pill-shape looking neat and standard */
-    margin: 12px auto 4px auto; /* Centers it and lifts it safely above the bottom border */
+    width: 80%;
+    max-width: 200px;
+    margin: 12px auto 4px auto;
     box-sizing: border-box;
     text-align: center;
 }
 
-/* Promo Code Box inside Details Modal */
 .modal-code-box {
-    display: none; /* Hidden by default; displayed via JS if a code exists */
+    display: none;
     background-color: #F5F4F2;
     border: 1px dashed #D2A85C;
     border-radius: 6px;
@@ -1758,47 +793,7 @@ section.contact-form {
     letter-spacing: 1px;
 }
 
-/* Promo Code Box inside Details Modal */
-.modal-code-box {
-    display: none; /* Hidden by default; displayed via JS if a code exists */
-    background-color: #F5F4F2;
-    border: 1px dashed #D2A85C;
-    border-radius: 6px;
-    padding: 10px;
-    margin: 10px 0;
-    font-size: 14px;
-    font-weight: bold;
-    color: #3F3A36;
-}
-
-.modal-code-highlight {
-    color: #D2A85C;
-    text-transform: uppercase;
-    font-size: 15px;
-    letter-spacing: 1px;
-}
-
-/* Dynamic Category Sections */
-.category-section {
-    margin-bottom: 50px;
-    max-width: 1100px;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 0 20px;
-}
-
-.category-heading {
-    font-size: 1.8em;
-    color: #3F3A36;
-    border-bottom: 2px solid #D2A85C;
-    padding-bottom: 8px;
-    margin-bottom: 20px;
-    margin-top: 40px;
-    text-transform: capitalize;
-    font-family: inherit;
-}
-
-/* Dynamic Catalog Sidebar & Grid Layout */
+/* === DYNAMIC CATALOG SIDEBAR & GRID LAYOUT === */
 .catalog-layout {
     display: flex;
     gap: 30px;
@@ -1807,35 +802,27 @@ section.contact-form {
     padding: 0 20px;
 }
 
-/* Sidebar Styling (Desktop - Sticky with Independent Scrolling) */
 .catalog-sidebar {
     flex: 0 0 220px;
     display: flex;
     flex-direction: column;
     gap: 10px;
-    
-    /* Sticky Positioning Context */
-    position: -webkit-sticky; /* Safari support */
-    position: sticky;         /* Locks the sidebar in place as you scroll the page */
-    top: 40px;                /* Keeps a comfortable 40px margin from the top of the window */
-    align-self: flex-start;   /* Crucial: prevents flexbox from stretching the sidebar to full height */
-    
-    /* Independent Scroll Context */
-    max-height: calc(100vh - 80px); /* Restricts sidebar height to viewport height minus top/bottom margins */
-    overflow-y: auto;         /* Displays scrollbar and scrolls independently if categories exceed screen height */
-    
-    /* Clean, thin scrollbar for Firefox */
+    position: -webkit-sticky;
+    position: sticky;
+    top: 40px;
+    align-self: flex-start;
+    max-height: calc(100vh - 80px);
+    overflow-y: auto;
     scrollbar-width: thin;
     scrollbar-color: #D2A85C transparent;
 }
 
-/* Custom Scrollbar for Chrome, Safari, and Edge (No inline styles) */
 .catalog-sidebar::-webkit-scrollbar {
-    width: 4px; /* Very thin, subtle scrollbar */
+    width: 4px;
 }
 
 .catalog-sidebar::-webkit-scrollbar-thumb {
-    background-color: #D2A85C; /* Matches your brand gold */
+    background-color: #D2A85C;
     border-radius: 4px;
 }
 
@@ -1843,7 +830,6 @@ section.contact-form {
     background: transparent;
 }
 
-/* Category Buttons */
 .category-nav-btn {
     background: none;
     border: none;
@@ -1870,62 +856,22 @@ section.contact-form {
     font-weight: bold;
 }
 
-/* Main Catalog Content Container */
 .catalog-content {
     flex: 1;
 }
 
-/* Responsive Mobile Layout (Sidebar becomes horizontal sliding category bar) */
-@media (max-width: 768px) {
-    .catalog-layout {
-        flex-direction: column;
-        gap: 20px;
-    }
-
-    .catalog-sidebar {
-        flex: auto;
-        flex-direction: row;
-        flex-wrap: nowrap;
-        overflow-x: auto;
-        overflow-y: hidden;
-        -webkit-overflow-scrolling: touch; /* Smooth momentum scroll on iOS */
-        scroll-behavior: smooth;
-        white-space: nowrap;
-        padding-bottom: 12px;
-        border-bottom: 1px solid #EACFCF;
-        scrollbar-width: none; /* Hide scrollbar on Firefox */
-        max-height: none; /* The desktop sticky/scroll-height rule doesn't apply here */
-    }
-
-    .catalog-sidebar::-webkit-scrollbar {
-        display: none; /* Hide scrollbar on Chrome/Safari */
-    }
-
-    .sidebar-title {
-        display: none; /* Hide vertical title on mobile view */
-    }
-
-    .category-nav-btn {
-        display: inline-block;
-        flex-shrink: 0; /* Key fix: stops buttons squeezing to fit instead of overflowing/scrolling */
-        width: auto;
-        padding: 8px 16px;
-    }
-}
-
-/* Container for the 3-column collage */
+/* === HERO BANNER: 3-COLUMN COLLAGE === */
 .hero-collage {
   position: relative;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 8px; /* Clean, modern gap between images */
-  height: 480px; /* Fixed height for the hero banner */
+  gap: 8px;
+  height: 480px;
   width: 100%;
   overflow: hidden;
-  border-radius: 12px; /* Smooth rounded corners */
+  border-radius: 12px;
 }
 
-/* Wrapper to maintain height and handle hover scaling */
 .hero-image-wrapper {
   width: 100%;
   height: 100%;
@@ -1935,18 +881,16 @@ section.contact-form {
 .hero-image-wrapper img {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Auto-crops images safely without squishing */
-  filter: brightness(0.85); /* Dims the background slightly so overlay text stands out */
+  object-fit: cover;
+  filter: brightness(0.85);
   transition: transform 0.4s ease, filter 0.4s ease;
 }
 
-/* Elegant, subtle zoom interactive hover effect */
 .hero-image-wrapper img:hover {
   transform: scale(1.04);
   filter: brightness(0.95);
 }
 
-/* Centered content overlaying the images */
 .hero-overlay-text {
   position: absolute;
   top: 50%;
@@ -1954,8 +898,8 @@ section.contact-form {
   transform: translate(-50%, -50%);
   text-align: center;
   color: #FFFFFF;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4); /* Guarantees readability */
-  pointer-events: none; /* Let hover events pass through to the images beneath */
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+  pointer-events: none;
   width: 90%;
   max-width: 600px;
 }
@@ -1974,55 +918,18 @@ section.contact-form {
   opacity: 0.95;
 }
 
-/* Responsive Mobile Layout: Collapse into a stacked or single view */
-@media (max-width: 768px) {
-  .hero-collage {
-    grid-template-columns: 1fr; /* Stacks image layers vertically on mobile */
-    height: 520px;
-  }
-  
-  /* Hide the 3rd image on mobile to keep the stacked card height clean */
-  .hero-collage .hero-image-wrapper:nth-child(3) {
-    display: none;
-  }
-  
-  .hero-collage {
-    grid-template-columns: repeat(2, 1fr); /* 2 side-by-side columns on tablets */
-  }
-  
-  .hero-overlay-text h1 {
-    font-size: 2rem;
-  }
-  
-  .hero-overlay-text p {
-    font-size: 1rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .hero-collage {
-    grid-template-columns: 1fr; /* Complete single column stack on small phones */
-  }
-  
-  /* Hide 2nd image on very small mobile to prioritize text space */
-  .hero-collage .hero-image-wrapper:nth-child(2) {
-    display: none;
-  }
-}
-
-/* Split-Screen Hero Container */
+/* === HERO BANNER: SPLIT-SCREEN === */
 .hero-split {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 40px;
-  background-color: #F3EAE1; /* Warm, cozy neutral background matching your branding */
+  background-color: #F3EAE1;
   padding: 50px;
   border-radius: 12px;
   margin-bottom: 40px;
 }
 
-/* Text Container */
 .hero-split-text {
   flex: 1;
   max-width: 500px;
@@ -2043,10 +950,9 @@ section.contact-form {
   margin: 0;
 }
 
-/* Image Container (Restricts width to maintain perfect crispness) */
 .hero-split-image {
   flex-shrink: 0;
-  width: 380px; /* Capped just below the photo's native width to ensure it is sharp */
+  width: 380px;
   height: 380px;
   border-radius: 8px;
   overflow: hidden;
@@ -2056,31 +962,131 @@ section.contact-form {
 .hero-split-image img {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Automatically crops the photo beautifully without distortion */
+  object-fit: cover;
 }
 
-/* Responsive Stacking for Tablets and Mobile */
+/* === RESPONSIVE LAYOUTS === */
 @media (max-width: 768px) {
-  .hero-split {
-    flex-direction: column-reverse; /* Places the image on top and text below on mobile */
-    text-align: center;
-    gap: 25px;
-    padding: 30px 20px;
-  }
-  
-  .hero-split-text {
-    max-width: 100%;
-  }
-  
-  .hero-split-image {
-    width: 100%;
-    max-width: 320px;
-    height: 320px;
-  }
+    .catalog-layout {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .catalog-sidebar {
+        flex: auto;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        overflow-y: hidden;
+        -webkit-overflow-scrolling: touch;
+        scroll-behavior: smooth;
+        white-space: nowrap;
+        padding-bottom: 12px;
+        border-bottom: 1px solid #EACFCF;
+        scrollbar-width: none;
+        max-height: none;
+    }
+
+    .catalog-sidebar::-webkit-scrollbar {
+        display: none;
+    }
+
+    .sidebar-title {
+        display: none;
+    }
+
+    .category-nav-btn {
+        display: inline-block;
+        flex-shrink: 0;
+        width: auto;
+        padding: 8px 16px;
+    }
+
+    nav.topnav {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+        padding: 14px 10px;
+    }
+
+    nav.topnav ul {
+        display: contents;
+    }
+
+    nav.topnav li {
+        display: block;
+    }
+
+    .guidelines-trigger-btn {
+        margin: 0;
+    }
+
+    .intro {
+        flex-direction: column;
+        padding: 20px;
+    }
+
+    .intro-text,
+    .intro-image {
+        width: 100%;
+        text-align: center;
+    }
+
+    .hero-collage {
+        grid-template-columns: repeat(2, 1fr);
+        height: 520px;
+    }
+    
+    .hero-collage .hero-image-wrapper:nth-child(3) {
+        display: none;
+    }
+    
+    .hero-overlay-text h1 {
+        font-size: 2rem;
+    }
+    
+    .hero-overlay-text p {
+        font-size: 1rem;
+    }
+
+    .hero-split {
+        flex-direction: column-reverse;
+        text-align: center;
+        gap: 25px;
+        padding: 30px 20px;
+    }
+    
+    .hero-split-text {
+        max-width: 100%;
+    }
+    
+    .hero-split-image {
+        width: 100%;
+        max-width: 320px;
+        height: 320px;
+    }
 }
 
-/* Duplicate guidelines-trigger-btn / guidelines-modal-* block removed here.
-   It was defined a second time and, because it appeared later in the file,
-   silently overrode the mobile-optimized versions near the top (smaller
-   close-button tap target, mismatched border-radius, no box-sizing). The
-   original mobile-optimized rules near line 168 remain in effect. */
+@media (max-width: 480px) {
+    nav.topnav ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    nav.topnav a {
+        font-size: 16px;
+        width: 80%;
+        text-align: center;
+    }
+
+    .hero-collage {
+        grid-template-columns: 1fr;
+    }
+    
+    .hero-collage .hero-image-wrapper:nth-child(2) {
+        display: none;
+    }
+}
