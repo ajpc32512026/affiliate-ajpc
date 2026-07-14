@@ -3,54 +3,21 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Health & Beauty – A&J Personal Collections</title>
-    <meta name="description" content="Explore our Health & Beauty – part of A&J’s handcrafted Filipino skincare and recipes.">
-    <meta name="keywords" content="Handmade Soaps, Natural Skincare, Filipino Recipes, A&J Personal Collections, Beauty Care, Artisan Soaps">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products – A&J Personal Collections</title>
+    <meta name="description" content="Explore our curated skincare, fashion, and homeware recommendations, selected by Anna.">
+    <meta name="keywords" content="Skincare, Natural Soaps, Fashion, Homewares, Amazon Selections, A&J Personal Collections">
     <meta name="author" content="A&J Personal Collections">
     <meta name="robots" content="index, follow">
 
-    <!-- Preload -->
-    <link rel="preload" href="img/logo.png" as="image">
-    <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
-
-    <!-- Favicons -->
-    <link rel="icon" href="/img/favicon/favicon.ico" type="image/x-icon">
-    <link rel="icon" type="image/png" sizes="96x96" href="/img/favicon/favicon-96x96.png">
-    <link rel="icon" type="image/png" sizes="192x192" href="/img/favicon/web-app-manifest-192x192.png">
-    <link rel="icon" type="image/png" sizes="512x512" href="/img/favicon/web-app-manifest-512x512.png">
-    <link rel="icon" type="image/svg+xml" href="/img/favicon/favicon.svg">
-    <link rel="apple-touch-icon" href="/img/favicon/apple-touch-icon.png">
-    <link rel="manifest" href="/img/favicon/site.webmanifest">
-
-    <!-- Open Graph -->
-    <meta property="og:title" content="Health & Beauty – A&J Personal Collections">
-    <meta property="og:description" content="Explore our Health & Beauty – part of A&J’s handcrafted Filipino skincare and recipes.">
-    <meta property="og:image" content="https://ajpersonalcollections.com/img/og-glowing-essentials.jpg">
-    <meta property="og:url" content="https://ajpersonalcollections.com/health-beauty.html">
-    <meta property="og:type" content="website">
-
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Health & Beauty – A&J Personal Collections">
-    <meta name="twitter:description" content="Explore our Health & Beauty – part of A&J’s handcrafted Filipino skincare and recipes.">
-    <meta name="twitter:image" content="https://ajpersonalcollections.com/img/og-glowing-essentials.jpg">
-
-    <!-- Stylesheet -->
+    <!-- Styles (Global Firm Stylesheet) -->
     <link rel="stylesheet" href="css/style.css">
 
-    <!-- Structured Data -->
-    <script type="application/ld+json">
-{
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "A&J Personal Collections",
-    "url": "https://ajpersonalcollections.com",
-    "logo": "https://ajpersonalcollections.com/img/logo.png",
-    "sameAs": ["https://pinterest.com/ajpersonalcollections"]
-}
-
-    </script>
+    <!-- Favicons -->
+    <link class="favicon" rel="icon" href="img/favicon/favicon.ico" sizes="32x32">
+    <link class="favicon" rel="icon" href="img/favicon/favicon.svg" type="image/svg+xml">
+    <link class="apple-touch-icon" href="img/favicon/apple-touch-icon.png">
+    <link rel="manifest" href="img/favicon/site.webmanifest">
 </head>
 
 <body>
@@ -64,100 +31,342 @@
         <ul>
             <li><a href="index.html">Home</a></li>
             <li><a href="health-beauty.html" class="active">Products</a></li>
-            <li><a href="recipes.html">Recipes</a></li>
             <li><a href="about.html">About</a></li>
             <li><a href="contact.html">Contact</a></li>
         </ul>
+        
+        <!-- Guidelines Trigger Button (Kept high in the navigation header) -->
+        <button id="open-guidelines-btn" class="guidelines-trigger-btn" onclick="toggleGuidelinesModal(true)">
+            ✦ Purchase Guidelines ✦
+        </button>
     </nav>
 
+    <!-- INTRO -->
     <section class="page-heading">
-        <h1>Health & Beauty</h1>
-        <p class="tagline">Thoughtfully chosen, locally made, and naturally yours.</p>
+        <h1>Curated Recommendations</h1>
+        <p class="tagline">Explore our curated collections by category. Tap any product card to see full details.</p>
     </section>
 
-    <main class="products-grid">
-        <!-- Glowing Skin Essentials -->
-        <article class="product-card">
-            <a href="glowing-essentials.html" aria-label="Glowing Skin Essentials Set">
-                <div class="image-wrapper">
-                    <img src="img/toner.png" alt="Glowing Skin Essentials Set">
-                </div>
-                <h3>Glowing Skin Essentials</h3>
-            </a>
-            <p class="price">₱285.00 – ₱329.00</p>
-            <p>Hydrate, brighten, and firm your skin with our must-have toner and serum duo.</p>
-        </article>
+    <!-- TWO-COLUMN LAYOUT WRAPPER (No inline styles) -->
+    <main class="catalog-layout">
+        
+        <!-- Dynamic left sidebar (scrolls horizontally on mobile) -->
+        <aside class="catalog-sidebar" id="catalog-sidebar-container" role="navigation" aria-label="Category Navigation">
+            <div class="sidebar-title">Categories</div>
+            <!-- Dynamic Category buttons load here -->
+        </aside>
 
-        <!-- Soap Collection -->
-        <article class="product-card">
-            <a href="soap-collection.html" aria-label="A&J Beauty Soap Series">
-                <div class="soap-grid" aria-hidden="true">
-                    <img src="img/aloe-vera.jpeg" alt="Aloe Vera Soap">
-                    <img src="img/barbie.jpeg" alt="Barbie Whitening Soap">
-                    <img src="img/charcoal.jpeg" alt="Charcoal Niacinamide Soap">
-                    <img src="img/cocoberry.jpeg" alt="Cocoberry Soap">
-                    <img src="img/guava.jpeg" alt="Guava Acne Soap">
-                    <img src="img/kili-powder.jpeg" alt="Kili Power Whitening Soap">
-                    <img src="img/kojic.jpeg" alt="Kojic Bleaching Soap">
-                    <img src="img/scar.jpeg" alt="Scar Remover Soap">
-                    <img src="img/sunflower.jpeg" alt="Sunflower Collagen Soap">
-                </div>
-                <h3>A&J Beauty Soap Series</h3>
-            </a>
-            <p class="price">From ₱49.00</p>
-            <p>9 handmade soaps. 1 page to explore them all. Whitening, acne-fighting, brightening &amp; more.</p>
-        </article>
+        <!-- Right-side product display column -->
+        <section class="catalog-content">
+            <div class="affiliate-grid" id="product-grid-container">
+                <!-- Dynamic cards load here -->
+            </div>
+        </section>
+
     </main>
+
+
+    <!-- MODAL DETAIL OVERLAY (300px x 400px Expanded View) -->
+    <div id="detail-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <div class="expanded-card">
+            <button class="close-btn" id="close-modal-btn" aria-label="Close details">&times;</button>
+            <div class="expanded-inner">
+                <div class="expanded-image-box">
+                    <img id="modal-img" src="" alt="">
+                </div>
+                <div>
+                    <h3 id="modal-title" class="expanded-title"></h3>
+                    
+                    <!-- Dynamic Promo Code Display Container -->
+                    <div id="modal-code-box" class="modal-code-box">
+                        Use Code: <span id="modal-code" class="modal-code-highlight"></span>
+                    </div>
+
+                    <p id="modal-desc" class="expanded-desc"></p>
+                </div>
+                <a id="modal-link" href="" target="_blank" rel="noopener noreferrer" class="button modal-link-button">
+                    Shop Selection
+                </a>
+            </div>
+        </div>
+    </div>
 
     <!-- FOOTER -->
     <footer>
-        <!-- Footer -->
-        <div id="reviewFooter" class="review-footer">
-            <div id="reviewContainer" class="review-container"></div>
-        </div>
-
         <p class="footer-main">
-            &copy; 2025 A&amp;J Personal Collections &middot; Handcrafted in the Philippines &middot;
-            <a href="privacy.html">Privacy Policy</a> &middot;
-            <a href="terms.html">T's &amp; C's</a><br>
+            <!-- Cleaned disclosure text aligning with your preferred branding -->
+            <span class="footer-disclosure">
+                Disclaimer: This website is a curated product discovery platform designed to share recommendations and shopping finds. We do not sell any items directly; all links redirect to third-party merchant websites where purchases are processed. While we strive to show accurate details, please verify final prices, shipping terms, and product availability directly on the merchant's site before completing your purchase.
+            </span>
 
-            <a href="https://au.pinterest.com/ajpersonalcollections" target="_blank" title="Follow us on Pinterest" rel="noopener noreferrer">
-                <img src="img/pinterest-gold.png" alt="Pinterest" class="footer-icon">
+            &copy; 2026 A&amp;J Personal Collections &middot; Handcrafted curation &middot;
+            <a href="privacy.html">Privacy Policy</a> &middot;
+            <a href="terms.html">T's &amp; C's</a><br><br>
+
+            <!-- Your Clean SVG Social Links (Bypasses Adblock Filter) -->
+            <a href="https://www.facebook.com/profile.php?id=61591475499934" target="_blank" title="Follow us on Facebook" rel="noopener noreferrer">
+                <img src="img/fb-icon.svg" alt="Facebook" class="footer-icon">
             </a>
-            <a href="https://x.com/ajPCollections" target="_blank" title="Follow us on X (Twitter)" rel="noopener noreferrer">
-                <img src="img/x-gold.png" alt="X (Twitter)" class="footer-icon">
-            </a><br>
+            <a href="https://au.pinterest.com/salesaud26/" target="_blank" title="Follow us on Pinterest" rel="noopener noreferrer">
+                <img src="img/pin-icon.svg" alt="Pinterest" class="footer-icon">
+            </a>
+            <a href="https://www.instagram.com/sales.aud26/" target="_blank" title="Follow us on Instagram" rel="noopener noreferrer">
+                <img src="img/ig-icon.svg" alt="Instagram" class="footer-icon">
+            </a><br><br>
 
             <span class="footer-hosting">
                 This site runs on the magic of
                 <a href="https://www.netlify.com" target="_blank" rel="noopener noreferrer" title="Netlify Hosting">
                     Netlify
                     <img src="img/netlify-logo.png" alt="Netlify" class="footer-icon-small">
-                </a>,
-                hosting with speed and grace.<br>
-
-                The reliable domains come from
+                </a>, domain services by
                 <a href="https://www.porkbun.com" target="_blank" rel="noopener noreferrer" title="Porkbun Domains">
                     Porkbun
                     <img src="img/porkbun-logo.png" alt="Porkbun" class="footer-icon-small">
-                </a>,
-                keeping your web address safe and simple.<br>
-
-                And your messages soar through
+                </a>, and messaging securely powered by
                 <a href="https://www.brevo.com" target="_blank" rel="noopener noreferrer" title="Brevo Email Service">
                     Brevo
                     <img src="img/brevo.png" alt="Brevo" class="footer-icon-small" style="vertical-align: middle;">
-                </a>,
-                delivering emails securely and on time.
-            </span><br><br>
-
-            <em>
-                Tradition. Love. Patience. Memory. Nourishment.<br>
-                The heart behind every touch and taste.
-            </em>
+                </a>.
+            </span>
         </p>
     </footer>
 
+    <!-- GUIDELINES MODAL POP-OUT (Now safely placed at the root level before Scripts) -->
+    <div id="guidelines-modal" class="guidelines-modal-backdrop" aria-hidden="true" onclick="handleBackdropClick(event)">
+        <div class="guidelines-modal-content">
+            <button class="guidelines-modal-close" onclick="toggleGuidelinesModal(false)" aria-label="Close guidelines">&times;</button>
+            <h3 class="guidelines-modal-header">✦ Purchase Guidelines ✦</h3>
+            <div class="guidelines-modal-body">
+                <p>Our catalog contains hand-selected recommendations. When you click <strong>Check Price</strong>, a new secure window opens directly to the product store.</p>
+                
+                <p><strong>🔍 Shopping on the SHEIN App?</strong> You can search our personal code <strong class="modal-code-highlight">ZVE2Y</strong> directly in the SHEIN search bar to instantly load our entire curated boards and picks!</p>
+                
+                <p>This website is a curated product discovery platform designed to share recommendations and shopping finds. We do not sell any items directly; all links redirect to third-party merchant websites where purchases are processed. While we strive to show accurate details, please verify final prices, shipping terms, and product availability directly on the merchant's site before completing your purchase.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/global.js"></script>
+    <script>
+        let affiliateProducts = []; // Loaded dynamically from products.json
+        let activeCategory = 'All';   // Currently active filter
+
+        // Helper function to extract price and description on the fly
+        function extractPriceAndDesc(description) {
+            const result = {
+                price: '',
+                cleanDesc: description || ''
+            };
+            
+            if (description && description.startsWith('Price:')) {
+                const parts = description.split('|');
+                if (parts.length > 1) {
+                    result.price = parts[0].replace('Price:', '').trim(); // Extracts "AU$1.95"
+                    result.cleanDesc = parts.slice(1).join('|').trim();    // Extracts description body
+                }
+            }
+            return result;
+        }
+
+        // Guidelines Modal Toggle Logic
+        function toggleGuidelinesModal(isOpen) {
+            const modal = document.getElementById('guidelines-modal');
+            if (!modal) return;
+            
+            if (isOpen) {
+                modal.classList.add('is-active');
+                modal.setAttribute('aria-hidden', 'false');
+                document.body.style.overflow = 'hidden'; // Prevents background body scrolling
+            } else {
+                modal.classList.remove('is-active');
+                modal.setAttribute('aria-hidden', 'true');
+                document.body.style.overflow = ''; // Restores scrolling
+            }
+        }
+
+        // Close guidelines modal when clicking background backdrop
+        function handleBackdropClick(event) {
+            const modalContent = document.querySelector('.guidelines-modal-content');
+            if (modalContent && !modalContent.contains(event.target)) {
+                toggleGuidelinesModal(false);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', async () => {
+            const gridContainer = document.getElementById('product-grid-container');
+            const sidebarContainer = document.getElementById('catalog-sidebar-container');
+            const modal = document.getElementById('detail-modal');
+            const closeModalBtn = document.getElementById('close-modal-btn');
+
+            try {
+                // Fetch your clean JSON database
+                const response = await fetch('json/products.json');
+                affiliateProducts = await response.json();
+
+                if (gridContainer && Array.isArray(affiliateProducts)) {
+                    if (affiliateProducts.length === 0) {
+                        gridContainer.innerHTML = '<p style="color: #3F3A36; text-align: center; grid-column: 1/-1;">Our new collections are currently compiling. Check back shortly!</p>';
+                        return;
+                    }
+
+                    // 1. Find all unique categories present in the file
+                    const uniqueCategories = [...new Set(affiliateProducts.map(p => p.category))].filter(Boolean).sort();
+
+                    // 2. Build the sidebar navigation buttons
+                    renderSidebar(uniqueCategories);
+
+                    // 3. Render all products initially
+                    renderGrid('All');
+                }
+            } catch (err) {
+                console.error("⚠️ Failed to load products.json:", err);
+                if (gridContainer) {
+                    gridContainer.innerHTML = '<p style="color: #D8A7B1; text-align: center; grid-column: 1/-1;">Error loading products. Please refresh.</p>';
+                }
+            }
+
+            // Close Modal Listeners
+            if (closeModalBtn) {
+                closeModalBtn.addEventListener('click', closeProductDetail);
+            }
+            if (modal) {
+                modal.addEventListener('click', (e) => {
+                    if (e.target === modal) closeProductDetail();
+                });
+            }
+            
+            // Unified keydown listener to dismiss active modals
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    closeProductDetail();
+                    toggleGuidelinesModal(false);
+                }
+            });
+        });
+
+        // Render the navigation buttons inside the left sidebar (Horizontal swipe-bar on mobile)
+        function renderSidebar(categories) {
+            const sidebar = document.getElementById('catalog-sidebar-container');
+            if (!sidebar) return;
+            
+            // Rebuild with static vertical header
+            sidebar.innerHTML = '<div class="sidebar-title">Categories</div>';
+
+            // Add the default "All Items" button first
+            const allBtn = document.createElement('button');
+            allBtn.className = 'category-nav-btn active';
+            allBtn.textContent = 'All Selections';
+            allBtn.onclick = () => filterCategory('All', allBtn);
+            sidebar.appendChild(allBtn);
+
+            // Dynamically add a button for each unique category detected
+            categories.forEach(cat => {
+                const btn = document.createElement('button');
+                btn.className = 'category-nav-btn';
+                btn.textContent = cat;
+                btn.onclick = () => filterCategory(cat, btn);
+                sidebar.appendChild(btn);
+            });
+        }
+
+        // Handle category selection
+        function filterCategory(categoryName, clickedBtn) {
+            // Update active state classes across buttons
+            document.querySelectorAll('.category-nav-btn').forEach(btn => btn.classList.remove('active'));
+            clickedBtn.classList.add('active');
+
+            // Render matching products
+            renderGrid(categoryName);
+
+            // Smoothly scroll down to the top of the category grid layout
+            const catalogContainer = document.querySelector('.catalog-layout');
+            if (catalogContainer) {
+                catalogContainer.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        // Render product cards belonging ONLY to selected category
+        function renderGrid(categoryFilter) {
+            const gridContainer = document.getElementById('product-grid-container');
+            if (!gridContainer) return;
+            
+            // Filter array
+            const filteredProducts = (categoryFilter === 'All') 
+                ? affiliateProducts 
+                : affiliateProducts.filter(p => p.category === categoryFilter);
+
+            if (filteredProducts.length === 0) {
+                gridContainer.innerHTML = '<p style="color: #3F3A36; text-align: center; grid-column: 1/-1;">No products found in this category.</p>';
+                return;
+            }
+
+            // Render filtered cards
+            gridContainer.innerHTML = filteredProducts.map(product => {
+                // Find true global index so details open correctly
+                const globalIndex = affiliateProducts.findIndex(p => p.id === product.id);
+                const parsed = extractPriceAndDesc(product.description);
+                const priceHtml = parsed.price ? `<span class="product-price">${parsed.price}</span>` : '';
+
+                return `
+                    <div class="grid-card" onclick="openProductDetail(${globalIndex})" role="button" tabindex="0" aria-label="View details for ${product.title}">
+                        <div class="card-inner">
+                            <div class="card-image-box">
+                                <img src="${product.imageUrl}" alt="${product.title}">
+                            </div>
+                            <h4 class="card-title">${product.title}</h4>
+                            ${priceHtml}
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Open 300px x 400px Detail Modal
+        function openProductDetail(index) {
+            const product = affiliateProducts[index];
+            if (!product) return;
+
+            const parsed = extractPriceAndDesc(product.description);
+
+            document.getElementById('modal-img').src = product.imageUrl;
+            document.getElementById('modal-img').alt = product.title;
+            
+            const modalTitleText = parsed.price ? `${product.title} (${parsed.price})` : product.title;
+            document.getElementById('modal-title').textContent = modalTitleText;
+            
+            document.getElementById('modal-desc').textContent = parsed.cleanDesc;
+            document.getElementById('modal-link').href = product.affiliateLink;
+
+            const sourcePlatform = product.source || 'Shein';
+            document.getElementById('modal-link').textContent = `Shop on ${sourcePlatform}`;
+
+            const codeBox = document.getElementById('modal-code-box');
+            const codeSpan = document.getElementById('modal-code');
+
+            if (product.affiliateCode && product.affiliateCode.trim() !== '') {
+                codeSpan.textContent = product.affiliateCode;
+                codeBox.style.display = 'block';
+            } else {
+                codeSpan.textContent = '';
+                codeBox.style.display = 'none';
+            }
+
+            const modal = document.getElementById('detail-modal');
+            modal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Close Detail Modal
+        function closeProductDetail() {
+            const modal = document.getElementById('detail-modal');
+            if (modal) {
+                modal.style.display = 'none';
+            }
+            document.body.style.overflow = '';
+        }
+    </script>
 </body>
 
 </html>

@@ -1,12 +1,16 @@
-// global.js - Core site-wide scripts for A&J Personal Collections
+// global.js - Consolidated core site-wide scripts
 
 document.addEventListener('DOMContentLoaded', () => {
-  // Accordion toggle handler (supports multiple accordions by class)
+  
+  // 1. Accordion Toggle Handler (With strict safety checks to prevent crashes)
   const accordionHeaders = document.querySelectorAll('.how-to-use-header');
 
   accordionHeaders.forEach(header => {
     const contentId = header.getAttribute('aria-controls');
+    if (!contentId) return; // Safely skip if no control ID is specified
+
     const content = document.getElementById(contentId);
+    if (!content) return; // Safely skip if target element is missing on this page
 
     // Ensure content starts hidden if aria-expanded is false or missing
     if (header.getAttribute('aria-expanded') !== 'true') {
@@ -14,14 +18,12 @@ document.addEventListener('DOMContentLoaded', () => {
       content.style.display = 'none';
     }
 
-    function toggleAccordion() {
+    const toggleAccordion = () => {
       const isExpanded = header.getAttribute('aria-expanded') === 'true';
-
       header.setAttribute('aria-expanded', String(!isExpanded));
       content.setAttribute('aria-hidden', String(isExpanded));
-
       content.style.display = isExpanded ? 'none' : 'block';
-    }
+    };
 
     header.addEventListener('click', toggleAccordion);
 
@@ -33,10 +35,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Back to Top button logic
+  // 2. Back to Top Button Logic
   const backToTopBtn = document.getElementById("backToTopBtn");
   if (backToTopBtn) {
-    // Show/hide button on scroll
     window.addEventListener('scroll', () => {
       if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
         backToTopBtn.style.display = "block";
@@ -45,16 +46,8 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
-    // Smooth scroll to top on click
     backToTopBtn.addEventListener("click", () => {
       window.scrollTo({ top: 0, behavior: "smooth" });
     });
   }
 });
-
-// Make addProductAndRedirect globally available
-function addProductAndRedirect(productName) {
-  sessionStorage.setItem('preselectedProduct', productName);
-  window.location.href = 'health-beauty.html#orderForm';
-}
-window.addProductAndRedirect = addProductAndRedirect;

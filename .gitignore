@@ -1,3 +1,7 @@
+# =========================================================================
+# A&J Personal Collections - Complete .gitignore Configuration
+# =========================================================================
+
 # Logs
 logs
 *.log
@@ -72,7 +76,7 @@ web_modules/
 # Yarn Integrity file
 .yarn-integrity
 
-# dotenv environment variable files
+# dotenv environment variable files (DO NOT COMMIT SENSITIVE KEYS)
 .env
 .env.development.local
 .env.test.local
@@ -93,7 +97,6 @@ dist
 
 # Gatsby files
 .cache/
-# public
 
 # vuepress build output
 .vuepress/dist
@@ -133,5 +136,11 @@ dist
 .yarn/install-state.gz
 .pnp.*
 
-# Local Netlify folder
+# Local Netlify folder and dev state
 .netlify
+
+# =========================================================================
+# A&J Local Private Tools (Do not upload to Netlify/GitHub)
+# =========================================================================
+product-manager.html
+instagram-converter.html

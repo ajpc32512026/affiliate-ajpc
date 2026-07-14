@@ -2,160 +2,156 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Glossary – A&J Personal Collections</title>
-  <meta name="description" content="Explore our Glossary – part of A&J’s handcrafted Filipino collection of skincare and recipes." />
-  <meta name="keywords" content="Handmade Soaps, Natural Skincare, Filipino Recipes, A&J Personal Collections, Beauty Care, Artisan Soaps" />
-  <meta name="author" content="A&J Personal Collections" />
-  <meta name="robots" content="index, follow" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Skincare Glossary – A&J Personal Collections</title>
+    <meta name="description" content="An interactive dictionary of natural skincare and active ingredients curated by A&J Personal Collections." />
+    <meta name="keywords" content="Skincare Glossary, Natural Ingredients, Niacinamide, Vitamin C, Kojic Acid, A&J Personal Collections" />
+    <meta name="author" content="A&J Personal Collections" />
+    <meta name="robots" content="index, follow" />
 
-  <!-- Preload -->
-  <link rel="preload" href="img/logo.png" as="image" />
-  <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml" />
+    <!-- Preload -->
+    <link rel="preload" href="img/header.png" as="image" />
+    <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml" />
 
-  <!-- Favicons -->
-  <link rel="icon" href="/img/favicon/favicon.ico" type="image/x-icon" />
-  <link rel="icon" type="image/png" sizes="96x96" href="/img/favicon/favicon-96x96.png" />
-  <link rel="icon" type="image/png" sizes="192x192" href="/img/favicon/web-app-manifest-192x192.png" />
-  <link rel="icon" type="image/png" sizes="512x512" href="/img/favicon/web-app-manifest-512x512.png" />
-  <link rel="icon" type="image/svg+xml" href="/img/favicon/favicon.svg" />
-  <link rel="apple-touch-icon" href="/img/favicon/apple-touch-icon.png" />
-  <link rel="manifest" href="/img/favicon/site.webmanifest" />
+    <!-- Favicons -->
+    <link rel="icon" href="img/favicon/favicon.ico" sizes="32x32">
+    <link rel="icon" href="img/favicon/favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="img/favicon/apple-touch-icon.png" />
+    <link rel="manifest" href="img/favicon/site.webmanifest" />
 
-  <!-- Open Graph -->
-  <meta property="og:title" content="Glossary – A&J Personal Collections" />
-  <meta property="og:description" content="Explore our Glossary – part of A&J’s handcrafted Filipino collection of skincare and recipes." />
-  <meta property="og:image" content="https://ajpersonalcollections.com/img/og-glowing-essentials.jpg" />
-  <meta property="og:url" content="https://ajpersonalcollections.com/glossary.html" />
-  <meta property="og:type" content="website" />
+    <!-- Open Graph -->
+    <meta property="og:title" content="Skincare Glossary – A&J Personal Collections" />
+    <meta property="og:description" content="An interactive dictionary of natural skincare and active ingredients curated by A&J Personal Collections." />
+    <meta property="og:image" content="https://ajpersonalcollections.com/img/og-glowing-essentials.jpg" />
+    <meta property="og:url" content="https://ajpersonalcollections.com/glossary.html" />
+    <meta property="og:type" content="website" />
 
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Glossary – A&J Personal Collections" />
-  <meta name="twitter:description" content="Explore our Glossary – part of A&J’s handcrafted Filipino collection of skincare and recipes." />
-  <meta name="twitter:image" content="https://ajpersonalcollections.com/img/og-glowing-essentials.jpg" />
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Skincare Glossary – A&J Personal Collections" />
+    <meta name="twitter:description" content="An interactive dictionary of natural skincare and active ingredients curated by A&J Personal Collections." />
+    <meta name="twitter:image" content="https://ajpersonalcollections.com/img/og-glowing-essentials.jpg" />
 
-  <!-- Styles -->
-  <link rel="stylesheet" href="css/style.css" />
+    <!-- Styles (Global Firm Stylesheet) -->
+    <link rel="stylesheet" href="css/style.css" />
 </head>
 
 <body>
-  <header class="hero-banner" role="banner">
-    <img src="img/header.png" alt="A&J Personal Collections Banner" class="banner-img" />
-  </header>
+    <!-- HEADER -->
+    <header class="hero-banner" role="banner">
+        <img src="img/header.png" alt="A&J Personal Collections Banner" class="banner-img" />
+    </header>
 
-  <nav class="topnav" role="navigation" aria-label="Primary Navigation">
-    <ul>
-      <li><a href="recipes.html" aria-label="Go back to recipes">← Back</a></li>
-    </ul>
-  </nav>
+    <!-- NAVIGATION -->
+    <nav class="topnav" role="navigation" aria-label="Primary Navigation">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="health-beauty.html">Products</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
 
-  <section class="page-heading" aria-labelledby="pageTitle">
-    <h1 id="pageTitle">Glossary</h1>
-    <p class="tagline">Click to add ingredients to your shopping list. Print when ready.</p>
-  </section>
-
-  <main class="main-container" role="main" id="mainContent">
-
-    <section class="controls-group" aria-label="Glossary controls">
-      <input id="searchInput" type="search" placeholder="Search glossary..." class="search-input" aria-label="Search glossary terms" />
-
-      <label for="categoryFilter" class="visually-hidden">Filter by category</label>
-      <select id="categoryFilter" class="category-select" aria-controls="glossary-table">
-        <option value="all">All Categories</option>
-        <option value="Dairy">Dairy</option>
-        <option value="Dry / Baking">Dry / Baking</option>
-        <option value="Fresh Produce">Fresh Produce</option>
-        <option value="Liquor / Alcohol">Liquor / Alcohol</option>
-        <option value="Miscellaneous">Miscellaneous</option>
-        <option value="Pantry / Sweets">Pantry / Sweets</option>
-        <option value="Spices / Flavourings">Spices / Flavourings</option>
-        <option value="Tinned / Preserved">Tinned / Preserved</option>
-        <option value="Wet / Liquids">Wet / Liquids</option>
-      </select>
+    <!-- HERO TEXT -->
+    <section class="page-heading" aria-labelledby="pageTitle">
+        <h1 id="pageTitle">Skincare Glossary</h1>
+        <p class="tagline">Explore the natural active ingredients powering our curated beauty selections.</p>
     </section>
 
-    <section class="controls-group" aria-label="Print and selection controls">
-      <button onclick="printShoppingList()" class="print-button" aria-label="Print your shopping list">🖨️ Print Shopping List</button>
+    <!-- MAIN INGREDIENT GLOSSARY (Leverages your exact firm CSS styling) -->
+    <main class="main-container" id="glossary-entries" role="main">
 
-      <label class="check-toggle" for="checkAllToggle">
-        <input type="checkbox" id="checkAllToggle" />
-        Check All / Uncheck All
-      </label>
-    </section>
+        <section>
+            <h3>Vitamin C (Ascorbic Acid)</h3>
+            <p>A powerful antioxidant that brightens dull skin tones, fades hyperpigmentation, and promotes collagen synthesis for a firmer, more radiant complexion.</p>
+        </section>
 
-    <!-- Here's your actual glossary table to be populated by JS -->
-    <section id="glossary-list" aria-live="polite" aria-atomic="true" tabindex="0">
-      <table id="glossary-table" role="grid" aria-describedby="pageTitle" summary="Glossary terms and definitions. Click terms to add to shopping list.">
-        <thead>
-          <tr>
-            <th scope="col">Term</th>
-            <th scope="col">Definition</th>
-          </tr>
-        </thead>
-        <tbody>
-          <!-- JavaScript fills glossary terms here -->
-          <tr><td colspan="2">Loading glossary, please wait…</td></tr>
-        </tbody>
-      </table>
-    </section>
+        <section>
+            <h3>Niacinamide (Vitamin B3)</h3>
+            <p>An exceptionally versatile active ingredient that strengthens the skin barrier, regulates excess oil production, minimizes pore appearance, and soothes redness.</p>
+        </section>
 
-  </main>
+        <section>
+            <h3>Hyaluronic Acid</h3>
+            <p>A naturally occurring humectant capable of holding up to 1,000 times its weight in water, drawing deep moisture into the skin to plump, smooth, and hydrate.</p>
+        </section>
 
-  <button id="backToTopBtn" title="Back to Top" aria-label="Back to top of page">↑ Top</button>
+        <section>
+            <h3>Kojic Acid</h3>
+            <p>A natural byproduct of fermented rice, renowned in traditional skincare for its gentle exfoliating properties and its ability to visibly lighten sun spots and age spots.</p>
+        </section>
 
-  <footer role="contentinfo">
-    <div id="reviewFooter" class="review-footer" aria-label="Customer reviews">
-      <div id="reviewContainer" class="review-container"></div>
-    </div>
+        <section>
+            <h3>Aloe Vera</h3>
+            <p>A soothing, moisture-rich plant botanical loaded with vitamins and minerals that rapidly cools irritated skin, accelerates healing, and softens rough dry patches.</p>
+        </section>
 
-    <p class="footer-main">
-      &copy; 2025 A&amp;J Personal Collections &middot; Handcrafted in the Philippines &middot;
-      <a href="privacy.html">Privacy Policy</a> &middot;
-      <a href="terms.html">T's &amp; C's</a><br />
+        <section>
+            <h3>Collagen</h3>
+            <p>An essential structural protein that provides the building blocks for skin firmness and elasticity, helping to visibly minimize fine lines and maintain suppleness.</p>
+        </section>
 
-      <a href="https://au.pinterest.com/ajpersonalcollections" target="_blank" rel="noopener noreferrer" title="Follow us on Pinterest">
-        <img src="img/pinterest-gold.png" alt="Pinterest" class="footer-icon" />
-      </a>
-      <a href="https://x.com/ajPCollections" target="_blank" rel="noopener noreferrer" title="Follow us on X (Twitter)">
-        <img src="img/x-gold.png" alt="X (Twitter)" class="footer-icon" />
-      </a><br />
+        <section>
+            <h3>Activated Charcoal</h3>
+            <p>A natural purifying agent that acts like a magnet to extract deep-seated dirt, excess sebum, and environmental impurities from pores for a balanced, clear skin feel.</p>
+        </section>
 
-      <span class="footer-hosting">
-        This site runs on the magic of
-        <a href="https://www.netlify.com" target="_blank" rel="noopener noreferrer" title="Netlify Hosting">
-          Netlify
-          <img src="img/netlify-logo.png" alt="Netlify" class="footer-icon-small" />
-        </a>,
-        hosting with speed and grace.<br />
+        <section>
+            <h3>Guava Extract</h3>
+            <p>Packed with antibacterial and anti-inflammatory properties, this natural extract is highly effective in clearing blemish-prone skin and soothing acne-related irritation.</p>
+        </section>
 
-        The reliable domains come from
-        <a href="https://www.porkbun.com" target="_blank" rel="noopener noreferrer" title="Porkbun Domains">
-          Porkbun
-          <img src="img/porkbun-logo.png" alt="Porkbun" class="footer-icon-small" />
-        </a>,
-        keeping your web address safe and simple.<br />
+        <section>
+            <h3>Sunflower Oil</h3>
+            <p>A lightweight, non-comedogenic botanical oil packed with Vitamin E that deeply nourishes dry tissue, locks in natural moisture, and shields skin from environmental stressors.</p>
+        </section>
 
-        And your messages soar through
-        <a href="https://www.brevo.com" target="_blank" rel="noopener noreferrer" title="Brevo Email Service">
-          Brevo
-          <img src="img/brevo.png" alt="Brevo" class="footer-icon-small" />
-        </a>,
-        delivering emails securely and on time.
-      </span><br /><br />
+    </main>
 
-      <em>
-        Tradition. Love. Patience. Memory. Nourishment.<br />
-        The heart behind every touch and taste.
-      </em>
-    </p>
-  </footer>
+    <!-- FOOTER -->
+    <footer>
+        <p class="footer-main">
+            <!-- Mandatory Amazon Affiliate Disclosure -->
+            <span class="footer-disclosure" style="display: block; font-size: 0.85em; opacity: 0.8; margin-bottom: 20px; line-height: 1.4; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 20px;">
+                Disclaimer: Some of the links on this website are affiliate links, which means that if you choose to make a purchase, we may earn a small commission at no extra cost to you. As an Amazon Associate, we earn from qualifying purchases.
+            </span>
 
-  <!-- Scripts loaded at end for faster page rendering -->
-  <script src="js/global.js" defer></script>
-  <script src="js/glossary.js" defer></script>
-  <script src="js/glossary-public.js" defer></script>
+            &copy; 2026 A&amp;J Personal Collections &middot; Handcrafted curation &middot;
+            <a href="privacy.html">Privacy Policy</a> &middot;
+            <a href="terms.html">T's &amp; C's</a><br><br>
+
+            <!-- Your Clean SVG Social Links (Infinitely crisp on mobile!) -->
+            <a href="https://www.facebook.com/profile.php?id=61591475499934" target="_blank" title="Follow us on Facebook" rel="noopener noreferrer">
+                <img src="img/fb-icon.svg" alt="Facebook" class="footer-icon">
+            </a>
+            <a href="https://au.pinterest.com/salesaud26/" target="_blank" title="Follow us on Pinterest" rel="noopener noreferrer">
+                <img src="img/pin-icon.svg" alt="Pinterest" class="footer-icon">
+            </a>
+            <a href="https://www.instagram.com/sales.aud26/" target="_blank" title="Follow us on Instagram" rel="noopener noreferrer">
+                <img src="img/ig-icon.svg" alt="Instagram" class="footer-icon">
+            </a><br><br>
+
+            <span class="footer-hosting">
+                This site runs on the magic of
+                <a href="https://www.netlify.com" target="_blank" rel="noopener noreferrer" title="Netlify Hosting">
+                    Netlify
+                    <img src="img/netlify-logo.png" alt="Netlify" class="footer-icon-small">
+                </a>, domain services by
+                <a href="https://www.porkbun.com" target="_blank" rel="noopener noreferrer" title="Porkbun Domains">
+                    Porkbun
+                    <img src="img/porkbun-logo.png" alt="Porkbun" class="footer-icon-small">
+                </a>, and messaging securely powered by
+                <a href="https://www.brevo.com" target="_blank" rel="noopener noreferrer" title="Brevo Email Service">
+                    Brevo
+                    <img src="img/brevo.png" alt="Brevo" class="footer-icon-small" style="vertical-align: middle;">
+                </a>.
+            </span>
+        </p>
+    </footer>
+
+    <!-- Consolidated global script -->
+    <script src="js/global.js"></script>
 </body>
 
 </html>

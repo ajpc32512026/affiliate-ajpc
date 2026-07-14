@@ -83,11 +83,15 @@ body {
     margin: 0;
 }
 
-/* === NAVIGATION BAR === */
+/* === NAVIGATION BAR (Option A: Modern Row Layout with Mobile Unified Flow) === */
 nav.topnav {
     background-color: #3F3A36;
-    text-align: center;
-    padding: 10px 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between; /* Aligns pills on the left, button on the right */
+    align-items: center;
+    padding: 12px 24px; /* Space inside the header bar */
+    gap: 20px;
 }
 
 nav.topnav ul {
@@ -96,7 +100,7 @@ nav.topnav ul {
     padding: 0;
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    align-items: center;
     gap: 8px;
 }
 
@@ -154,6 +158,184 @@ nav.topnav a.active {
     background-color: #D8A7B1;
     color: #3F3A36;
     border-color: #D8A7B1;
+}
+
+/* ==========================================================================
+   ✦ MODAL POP-OUT STYLES (Mobile-Optimized & Scroll-Protected) ✦
+   ========================================================================== */
+
+/* 1. Header Trigger Button (Pill shape matched) */
+.guidelines-trigger-btn {
+    background-color: #FDFBF7;
+    color: #D2A85C;
+    border: 2px solid #D2A85C;
+    padding: 8px 16px;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    white-space: nowrap;
+}
+
+.guidelines-trigger-btn:hover {
+    background-color: #F3EAE1;
+}
+
+/* 2. Modal Darkened Backdrop Background */
+.guidelines-modal-backdrop {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(63, 58, 54, 0.5); /* Dimmed backdrop tinted in warm gray */
+    z-index: 9999; /* Guarantees it floats over everything else */
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
+}
+
+/* Modal Active State */
+.guidelines-modal-backdrop.is-active {
+    display: flex;
+    opacity: 1;
+}
+
+/* 3. Modal Inner Content Box */
+.guidelines-modal-content {
+    background-color: #FFFFFF;
+    border: 2px solid #D2A85C;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 500px;
+    padding: 24px; /* Balanced, even padding */
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    transform: translateY(-20px);
+    transition: transform 0.3s ease-out;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+}
+
+.guidelines-modal-backdrop.is-active .guidelines-modal-content {
+    transform: translateY(0);
+}
+
+/* 4. Elegant Close Button (Optimized tap target for mobile thumbs) */
+.guidelines-modal-close {
+    position: absolute;
+    top: 8px;
+    right: 12px;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: #3F3A36;
+    cursor: pointer;
+    line-height: 1;
+    padding: 8px; /* Larger hit target for easier touch-screen tap */
+    transition: color 0.2s ease;
+}
+
+.guidelines-modal-close:hover {
+    color: #D2A85C;
+}
+
+/* Header Text inside the Modal */
+.guidelines-modal-header {
+    color: #D2A85C;
+    font-size: 1.3rem;
+    margin: 0 0 16px 0;
+    padding-right: 24px; /* Leaves safe room for the close button on tight mobile layouts */
+    text-align: center;
+    font-weight: bold;
+}
+
+/* 5. Scrollable Body Container (Optimized with dynamic calc instead of rigid vh) */
+.guidelines-modal-body {
+    max-height: calc(100vh - 160px); /* Dynamically maximizes vertical room on short screens */
+    overflow-y: auto; /* Adds clean, native scrolling if content overflows */
+    padding-right: 12px; /* Gutter prevents mobile scrollbars from overlapping text */
+    padding-bottom: 12px; /* Safe visual buffer at the very end of the scroll */
+    -webkit-overflow-scrolling: touch; /* Enables smooth inertial scroll on iOS */
+    box-sizing: border-box;
+}
+
+/* Scrollbar Customization for the Modal Body */
+.guidelines-modal-body::-webkit-scrollbar {
+    width: 6px;
+}
+.guidelines-modal-body::-webkit-scrollbar-track {
+    background: #FDFBF7;
+}
+.guidelines-modal-body::-webkit-scrollbar-thumb {
+    background: #D2A85C;
+    border-radius: 99px;
+}
+
+/* Body Text inside the Modal */
+.guidelines-modal-body p {
+    font-size: 0.95rem;
+    color: #3F3A36;
+    line-height: 1.6;
+    margin: 0 0 16px 0;
+}
+
+.guidelines-modal-body p:last-child {
+    margin-bottom: 0;
+}
+
+/* SHEIN Code Highlight */
+.modal-code-highlight {
+    color: #D2A85C;
+    background-color: #FDFBF7;
+    padding: 2px 6px;
+    border-radius: 4px;
+    border: 1px solid #D2A85C;
+}
+
+/* Mobile-Specific Modal Enhancements */
+@media (max-width: 480px) {
+    .guidelines-modal-content {
+        padding: 20px 16px 16px 16px; /* Snug padding for narrow mobile views */
+        border-radius: 8px;
+    }
+    
+    .guidelines-modal-header {
+        font-size: 1.15rem;
+    }
+    
+    .guidelines-modal-body {
+        max-height: calc(100vh - 140px); /* Maximum vertical space efficiency on tiny screens */
+    }
+}
+
+/* Mobile Responsive Nav Layout (Pills and guidelines button flow together) */
+@media (max-width: 768px) {
+    nav.topnav {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center; /* Centers the unified group of pills on mobile */
+        align-items: center;
+        gap: 10px; /* Snug, clean vertical and horizontal gaps on mobile */
+        padding: 14px 10px;
+    }
+
+    nav.topnav ul {
+        display: contents; /* Unwraps the list container so links and button wrap as direct siblings */
+    }
+
+    nav.topnav li {
+        display: block;
+    }
+
+    .guidelines-trigger-btn {
+        margin: 0;
+    }
 }
 
 /* === BACK TO TOP BUTTON === */
@@ -1319,118 +1501,644 @@ section.contact-form {
   }
 }
 
-/* Glossary Section container */
-#glossary-list {
-  max-width: 800px;
-  margin: 2rem auto;
-  padding: 1rem 1.5rem;
-  background: #fdfcf7; /* warm off-white */
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  box-shadow: 0 3px 8px rgba(0,0,0,0.1);
-  font-family: Georgia, serif; /* classic serif font for tradition */
-  color: #333;
-  outline-offset: 4px; /* better focus outline */
+/* === AFFILIATE CATALOG GRID & CARD SYSTEM === */
+
+/* Grid container for cards */
+.affiliate-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 20px;
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 0 20px;
+    justify-items: center;
 }
 
-/* The Table itself */
-#glossary-table {
-  width: 100%;
-  border-collapse: collapse;
-  table-layout: fixed; /* keeps columns balanced */
+/* Default card state (Optimized dimensions) */
+.grid-card {
+    background-color: #FFFFFF;
+    border: 2px solid #D2A85C;
+    border-radius: 12px;
+    width: 150px;
+    height: 230px; /* Increased from 200px to balance the larger image */
+    box-sizing: border-box;
+    padding: 8px;
+    text-align: center;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-/* Table header */
-#glossary-table thead th {
-  background-color: #e3d8b0; /* soft antique parchment color */
-  color: #4a3f35;
-  padding: 12px 15px;
-  text-align: left;
-  font-weight: 700;
-  border-bottom: 2px solid #bfae6a;
-  font-size: 1.1rem;
-  user-select: none;
+.grid-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
 }
 
-/* Table body rows */
-#glossary-table tbody tr {
-  background: #fff;
-  border-bottom: 1px solid #ddd;
-  transition: background-color 0.3s ease;
+/* Card Inner Container (Changed from space-between to flex-start) */
+.card-inner {
+    border: 1px solid #F5F4F2;
+    border-radius: 8px;
+    padding: 6px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Groups elements from the top instead of pushing them apart */
+    box-sizing: border-box;
 }
 
-/* Zebra striping for readability */
-#glossary-table tbody tr:nth-child(odd) {
-  background-color: #f7f5ec;
+.card-image-box {
+    height: 130px; /* Increased from 100px to maximize vertical space */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: #FFFFFF;
+    border-radius: 6px; /* Smooth rounded corners for the image container */
 }
 
-/* Hover highlight to aid scanning */
-#glossary-table tbody tr:hover {
-  background-color: #e9e5d8;
-  cursor: default;
-}
-
-/* Table cells */
-#glossary-table td {
-  padding: 10px 15px;
-  font-size: 1rem;
-  vertical-align: top;
-  word-wrap: break-word;
-}
-
-/* Focus styles for accessibility */
-#glossary-list:focus {
-  outline: 3px solid #bfae6a;
-  outline-offset: 4px;
-}
-
-/* Responsive tweaks: on narrow screens, stack definitions */
-@media (max-width: 600px) {
-  #glossary-table, 
-  #glossary-table thead, 
-  #glossary-table tbody, 
-  #glossary-table th, 
-  #glossary-table td, 
-  #glossary-table tr {
-    display: block;
+.card-image-box img {
     width: 100%;
-  }
-  
-  #glossary-table thead tr {
-    display: none; /* hide headers on mobile */
-  }
-  
-  #glossary-table tbody tr {
-    margin-bottom: 1.5rem;
-    border-bottom: 2px solid #bfae6a;
-    background: #fdfcf7;
-    padding: 1rem;
-    border-radius: 6px;
-  }
-  
-  #glossary-table tbody td {
-    padding: 0.5rem 1rem;
+    height: 100%;
+    object-fit: cover; /* Fills the entire box space, making the product look much larger */
+}
+
+/* Card Title (Optimized for multi-line descriptive text) */
+.card-title {
+    font-size: 13px;
+    font-weight: bold;
+    color: #3F3A36;
+    margin: 10px 0 0 0;
+    line-height: 1.3;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    
+    /* Elegant Line-Clamping (Allows up to 3 lines of text) */
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* Change this number to 2 or 4 if you want different limits */
+    -webkit-box-orient: vertical;
+}
+
+
+/* Expanded Card Modal Overlay */
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(63, 58, 54, 0.6);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(2px);
+}
+
+.expanded-card {
+    background-color: #FFFFFF;
+    border: 2px solid #D2A85C;
+    border-radius: 12px;
+    width: 300px;
+    min-height: 400px;
+    height: auto; /* Card stretches to fit text naturally */
+    box-sizing: border-box;
+    padding: 15px;
     position: relative;
-    padding-left: 50%;
-    text-align: left;
-  }
-  
-  #glossary-table tbody td::before {
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+}
+
+.expanded-inner {
+    border: 2px solid #F5F4F2;
+    border-radius: 8px;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 10px;
+    box-sizing: border-box;
+}
+
+.expanded-image-box {
+    height: 140px; /* Keeps the image nice and large */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    flex-shrink: 0;
+    border-radius: 6px;
+    background-color: #F5F4F2;
+}
+
+.expanded-image-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.expanded-desc {
+    font-size: 12px;
+    line-height: 1.4;
+    color: #6A645F;
+    margin-bottom: 12px;
+    text-align: justify;
+    /* No scrollbar or height limit needed because card will grow */
+}
+
+.expanded-title {
+    font-size: 16px;
+    font-weight: bold;
+    color: #3F3A36;
+    margin: 10px 0 5px;
+    
+    /* === THE FIX === */
+    overflow-wrap: break-word; /* Prevents long titles or links from overflowing */
+    word-break: break-word;
+}
+
+.expanded-desc {
+    font-size: 12px;
+    line-height: 1.4;
+    color: #6A645F;
+    height: 90px;
+    overflow-y: auto;
+    margin: 0 0 10px 0;
+    
+    /* === THE FIX === */
+    overflow-wrap: break-word; /* Prevents long URLs from spilling out of the card */
+    word-break: break-word;
+}
+/* Close Button */
+.close-btn {
     position: absolute;
-    left: 15px;
-    top: 50%;
-    transform: translateY(-50%);
-    font-weight: 700;
+    top: 10px;
+    right: 12px;
+    font-size: 20px;
+    color: #3F3A36;
+    cursor: pointer;
+    background: none;
+    border: none;
+    font-weight: bold;
+    z-index: 10;
+}
+
+.close-btn:hover {
+    color: #D8A7B1;
+}
+
+.modal-link-button {
+    display: block;
+    width: 100%;            /* Shrinks the width so it doesn't hit the left/right borders */
+    max-width: 200px;      /* Keeps the pill-shape looking neat and standard */
+    margin: 12px auto 4px auto; /* Centers it and lifts it safely above the bottom border */
+    box-sizing: border-box;
+    text-align: center;
+}
+
+/* Promo Code Box inside Details Modal */
+.modal-code-box {
+    display: none; /* Hidden by default; displayed via JS if a code exists */
+    background-color: #F5F4F2;
+    border: 1px dashed #D2A85C;
+    border-radius: 6px;
+    padding: 10px;
+    margin: 10px 0;
+    font-size: 14px;
+    font-weight: bold;
+    color: #3F3A36;
+}
+
+.modal-code-highlight {
+    color: #D2A85C;
+    text-transform: uppercase;
+    font-size: 15px;
+    letter-spacing: 1px;
+}
+
+/* Promo Code Box inside Details Modal */
+.modal-code-box {
+    display: none; /* Hidden by default; displayed via JS if a code exists */
+    background-color: #F5F4F2;
+    border: 1px dashed #D2A85C;
+    border-radius: 6px;
+    padding: 10px;
+    margin: 10px 0;
+    font-size: 14px;
+    font-weight: bold;
+    color: #3F3A36;
+}
+
+.modal-code-highlight {
+    color: #D2A85C;
+    text-transform: uppercase;
+    font-size: 15px;
+    letter-spacing: 1px;
+}
+
+/* Dynamic Category Sections */
+.category-section {
+    margin-bottom: 50px;
+    max-width: 1100px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 20px;
+}
+
+.category-heading {
+    font-size: 1.8em;
+    color: #3F3A36;
+    border-bottom: 2px solid #D2A85C;
+    padding-bottom: 8px;
+    margin-bottom: 20px;
+    margin-top: 40px;
+    text-transform: capitalize;
+    font-family: inherit;
+}
+
+/* Dynamic Catalog Sidebar & Grid Layout */
+.catalog-layout {
+    display: flex;
+    gap: 30px;
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+/* Sidebar Styling (Desktop - Sticky with Independent Scrolling) */
+.catalog-sidebar {
+    flex: 0 0 220px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    
+    /* Sticky Positioning Context */
+    position: -webkit-sticky; /* Safari support */
+    position: sticky;         /* Locks the sidebar in place as you scroll the page */
+    top: 40px;                /* Keeps a comfortable 40px margin from the top of the window */
+    align-self: flex-start;   /* Crucial: prevents flexbox from stretching the sidebar to full height */
+    
+    /* Independent Scroll Context */
+    max-height: calc(100vh - 80px); /* Restricts sidebar height to viewport height minus top/bottom margins */
+    overflow-y: auto;         /* Displays scrollbar and scrolls independently if categories exceed screen height */
+    
+    /* Clean, thin scrollbar for Firefox */
+    scrollbar-width: thin;
+    scrollbar-color: #D2A85C transparent;
+}
+
+/* Custom Scrollbar for Chrome, Safari, and Edge (No inline styles) */
+.catalog-sidebar::-webkit-scrollbar {
+    width: 4px; /* Very thin, subtle scrollbar */
+}
+
+.catalog-sidebar::-webkit-scrollbar-thumb {
+    background-color: #D2A85C; /* Matches your brand gold */
+    border-radius: 4px;
+}
+
+.catalog-sidebar::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+/* Category Buttons */
+.category-nav-btn {
+    background: none;
+    border: none;
+    text-align: left;
+    padding: 12px 15px;
+    font-size: 14px;
+    font-family: inherit;
+    color: #3F3A36;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: all 0.2s ease-in-out;
+    width: 100%;
+    text-transform: capitalize;
+}
+
+.category-nav-btn:hover {
+    background-color: #F3EAE1;
+    color: #D2A85C;
+}
+
+.category-nav-btn.active {
+    background-color: #D8A7B1;
+    color: #3F3A36;
+    font-weight: bold;
+}
+
+/* Main Catalog Content Container */
+.catalog-content {
+    flex: 1;
+}
+
+/* Responsive Mobile Layout (Sidebar becomes horizontal sliding category bar) */
+@media (max-width: 768px) {
+    .catalog-layout {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .catalog-sidebar {
+        flex: auto;
+        flex-direction: row;
+        overflow-x: auto;
+        white-space: nowrap;
+        padding-bottom: 12px;
+        border-bottom: 1px solid #EACFCF;
+        scrollbar-width: none; /* Hide scrollbar on Firefox */
+    }
+
+    .catalog-sidebar::-webkit-scrollbar {
+        display: none; /* Hide scrollbar on Chrome/Safari */
+    }
+
+    .sidebar-title {
+        display: none; /* Hide vertical title on mobile view */
+    }
+
+    .category-nav-btn {
+        display: inline-block;
+        width: auto;
+        padding: 8px 16px;
+    }
+}
+
+/* Container for the 3-column collage */
+.hero-collage {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px; /* Clean, modern gap between images */
+  height: 480px; /* Fixed height for the hero banner */
+  width: 100%;
+  overflow: hidden;
+  border-radius: 12px; /* Smooth rounded corners */
+}
+
+/* Wrapper to maintain height and handle hover scaling */
+.hero-image-wrapper {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.hero-image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Auto-crops images safely without squishing */
+  filter: brightness(0.85); /* Dims the background slightly so overlay text stands out */
+  transition: transform 0.4s ease, filter 0.4s ease;
+}
+
+/* Elegant, subtle zoom interactive hover effect */
+.hero-image-wrapper img:hover {
+  transform: scale(1.04);
+  filter: brightness(0.95);
+}
+
+/* Centered content overlaying the images */
+.hero-overlay-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: #FFFFFF;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4); /* Guarantees readability */
+  pointer-events: none; /* Let hover events pass through to the images beneath */
+  width: 90%;
+  max-width: 600px;
+}
+
+.hero-overlay-text h1 {
+  font-size: 2.8rem;
+  margin: 0 0 12px 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 700;
+}
+
+.hero-overlay-text p {
+  font-size: 1.2rem;
+  margin: 0;
+  font-weight: 400;
+  opacity: 0.95;
+}
+
+/* Responsive Mobile Layout: Collapse into a stacked or single view */
+@media (max-width: 768px) {
+  .hero-collage {
+    grid-template-columns: 1fr; /* Stacks image layers vertically on mobile */
+    height: 520px;
+  }
+  
+  /* Hide the 3rd image on mobile to keep the stacked card height clean */
+  .hero-collage .hero-image-wrapper:nth-child(3) {
+    display: none;
+  }
+  
+  .hero-collage {
+    grid-template-columns: repeat(2, 1fr); /* 2 side-by-side columns on tablets */
+  }
+  
+  .hero-overlay-text h1 {
+    font-size: 2rem;
+  }
+  
+  .hero-overlay-text p {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-collage {
+    grid-template-columns: 1fr; /* Complete single column stack on small phones */
+  }
+  
+  /* Hide 2nd image on very small mobile to prioritize text space */
+  .hero-collage .hero-image-wrapper:nth-child(2) {
+    display: none;
+  }
+}
+
+/* Split-Screen Hero Container */
+.hero-split {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  background-color: #F3EAE1; /* Warm, cozy neutral background matching your branding */
+  padding: 50px;
+  border-radius: 12px;
+  margin-bottom: 40px;
+}
+
+/* Text Container */
+.hero-split-text {
+  flex: 1;
+  max-width: 500px;
+}
+
+.hero-split-text h1 {
+  font-size: 2.8rem;
+  color: #3F3A36;
+  margin: 0 0 15px 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 700;
+}
+
+.hero-split-text p {
+  font-size: 1.2rem;
+  color: #555555;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Image Container (Restricts width to maintain perfect crispness) */
+.hero-split-image {
+  flex-shrink: 0;
+  width: 380px; /* Capped just below the photo's native width to ensure it is sharp */
+  height: 380px;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.hero-split-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Automatically crops the photo beautifully without distortion */
+}
+
+/* Responsive Stacking for Tablets and Mobile */
+@media (max-width: 768px) {
+  .hero-split {
+    flex-direction: column-reverse; /* Places the image on top and text below on mobile */
+    text-align: center;
+    gap: 25px;
+    padding: 30px 20px;
+  }
+  
+  .hero-split-text {
+    max-width: 100%;
+  }
+  
+  .hero-split-image {
+    width: 100%;
+    max-width: 320px;
+    height: 320px;
+  }
+}
+
+/* 1. Header Trigger Button (Matches your gold border styling) */
+.guidelines-trigger-btn {
+    background-color: #FDFBF7;
+    color: #D2A85C;
+    border: 2px solid #D2A85C;
+    padding: 8px 16px;
     font-size: 0.95rem;
-    color: #4a3f35;
-    white-space: nowrap;
-  }
-  
-  #glossary-table tbody td:nth-of-type(1)::before {
-    content: "Term";
-  }
-  
-  #glossary-table tbody td:nth-of-type(2)::before {
-    content: "Definition";
-  }
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(210, 168, 92, 0.05);
+    transition: all 0.2s ease-in-out;
+}
+
+.guidelines-trigger-btn:hover {
+    background-color: #F3EAE1;
+    box-shadow: 0 0 12px rgba(210, 168, 92, 0.15);
+}
+
+/* 2. Modal Darkened Backdrop Background */
+.guidelines-modal-backdrop {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(63, 58, 54, 0.5); /* Dimmed backdrop tinted in warm gray */
+    z-index: 9999; /* Guarantees it floats over everything else */
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
+}
+
+/* Modal Active State */
+.guidelines-modal-backdrop.is-active {
+    display: flex;
+    opacity: 1;
+}
+
+/* 3. Modal Inner Content Box */
+.guidelines-modal-content {
+    background-color: #FFFFFF;
+    border: 2px solid #D2A85C;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 500px;
+    padding: 24px;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transform: translateY(-20px);
+    transition: transform 0.3s ease-out;
+}
+
+.guidelines-modal-backdrop.is-active .guidelines-modal-content {
+    transform: translateY(0);
+}
+
+/* 4. Elegant Close Button (&times;) */
+.guidelines-modal-close {
+    position: absolute;
+    top: 10px;
+    right: 16px;
+    background: none;
+    border: none;
+    font-size: 1.8rem;
+    color: #3F3A36;
+    cursor: pointer;
+    line-height: 1;
+    transition: color 0.2s ease;
+}
+
+.guidelines-modal-close:hover {
+    color: #D2A85C;
+}
+
+/* Header Text inside the Modal */
+.guidelines-modal-header {
+    color: #D2A85C;
+    font-size: 1.3rem;
+    margin: 0 0 18px 0;
+    text-align: center;
+    font-weight: bold;
+}
+
+/* Body Text inside the Modal */
+.guidelines-modal-body p {
+    font-size: 0.95rem;
+    color: #3F3A36;
+    line-height: 1.6;
+    margin: 0 0 16px 0;
+}
+
+.guidelines-modal-body p:last-child {
+    margin-bottom: 0;
+}
+
+/* SHEIN Code Highlight */
+.modal-code-highlight {
+    color: #D2A85C;
+    background-color: #FDFBF7;
+    padding: 2px 6px;
+    border-radius: 4px;
+    border: 1px solid #D2A85C;
 }

@@ -1,8 +1,0 @@
-{
-  "version": 3,
-  "sources": ["file:///D:/site-ajpc/netlify/functions/glossary-get.js"],
-  "sourceRoot": "C:/Users/johnl/AppData/Local/Temp/tmp-9364-h1usuIKkHT4u",
-  "sourcesContent": ["const fs = require('fs');\r\nconst path = require('path');\r\n\r\nexports.handler = async () => {\r\n  try {\r\n    // This will resolve correctly after being bundled by Netlify\r\n    const filePath = path.resolve(__dirname, 'data', 'glossary-data.json');\r\n    const content = fs.readFileSync(filePath, 'utf8');\r\n    const json = JSON.parse(content);\r\n\r\n    return {\r\n      statusCode: 200,\r\n      body: JSON.stringify(json),\r\n    };\r\n  } catch (error) {\r\n    console.error('\u274C Error loading glossary:', error);\r\n    return {\r\n      statusCode: 500,\r\n      body: JSON.stringify({ error: 'Glossary load failed: ' + error.message }),\r\n    };\r\n  }\r\n};\r\n"],
-  "mappings": ";AAAA,IAAM,KAAK,QAAQ,IAAI;AACvB,IAAM,OAAO,QAAQ,MAAM;AAE3B,QAAQ,UAAU,YAAY;AAC5B,MAAI;AAEF,UAAM,WAAW,KAAK,QAAQ,WAAW,QAAQ,oBAAoB;AACrE,UAAM,UAAU,GAAG,aAAa,UAAU,MAAM;AAChD,UAAM,OAAO,KAAK,MAAM,OAAO;AAE/B,WAAO;AAAA,MACL,YAAY;AAAA,MACZ,MAAM,KAAK,UAAU,IAAI;AAAA,IAC3B;AAAA,EACF,SAAS,OAAO;AACd,YAAQ,MAAM,kCAA6B,KAAK;AAChD,WAAO;AAAA,MACL,YAAY;AAAA,MACZ,MAAM,KAAK,UAAU,EAAE,OAAO,2BAA2B,MAAM,QAAQ,CAAC;AAAA,IAC1E;AAAA,EACF;AACF;",
-  "names": []
-}
