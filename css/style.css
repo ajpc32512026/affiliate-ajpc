@@ -1,5 +1,27 @@
 /* === A&J PERSONAL COLLECTIONS – UNIFIED CSS RESET & THEME === */
 
+/* === GLOBAL MOBILE-SAFE RESET ===
+   box-sizing:border-box stops padding/border from adding to an element's
+   declared width, which is what was pushing the page wider than the phone
+   screen and cutting text off on the right edge. overflow-x:hidden on
+   html/body is a safety net so a stray wide element can no longer force
+   the whole page to scroll sideways. */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    overflow-x: hidden;
+    width: 100%;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
 /* === BASE STYLING === */
 body {
     margin: 0;
@@ -9,6 +31,10 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    overflow-x: hidden;
+    width: 100%;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
 }
 
 /* === INTRO SECTION === */
@@ -564,7 +590,9 @@ footer a:hover {
     border: 2px solid #A89F91;
     border-radius: 10px;
     padding: 20px;
-    min-width: 500px;
+    min-width: 0;
+    width: 100%;
+    max-width: 600px;
     box-sizing: border-box;
 }
 
@@ -621,7 +649,8 @@ footer a:hover {
     padding: 10px;
     max-height: 600px;
     overflow-y: auto;
-    min-width: 300px;
+    min-width: 0;
+    width: 100%;
     box-sizing: border-box;
 }
 
@@ -1848,11 +1877,16 @@ section.contact-form {
     .catalog-sidebar {
         flex: auto;
         flex-direction: row;
+        flex-wrap: nowrap;
         overflow-x: auto;
+        overflow-y: hidden;
+        -webkit-overflow-scrolling: touch; /* Smooth momentum scroll on iOS */
+        scroll-behavior: smooth;
         white-space: nowrap;
         padding-bottom: 12px;
         border-bottom: 1px solid #EACFCF;
         scrollbar-width: none; /* Hide scrollbar on Firefox */
+        max-height: none; /* The desktop sticky/scroll-height rule doesn't apply here */
     }
 
     .catalog-sidebar::-webkit-scrollbar {
@@ -1865,6 +1899,7 @@ section.contact-form {
 
     .category-nav-btn {
         display: inline-block;
+        flex-shrink: 0; /* Key fix: stops buttons squeezing to fit instead of overflowing/scrolling */
         width: auto;
         padding: 8px 16px;
     }
@@ -2036,109 +2071,8 @@ section.contact-form {
   }
 }
 
-/* 1. Header Trigger Button (Matches your gold border styling) */
-.guidelines-trigger-btn {
-    background-color: #FDFBF7;
-    color: #D2A85C;
-    border: 2px solid #D2A85C;
-    padding: 8px 16px;
-    font-size: 0.95rem;
-    font-weight: bold;
-    border-radius: 4px;
-    cursor: pointer;
-    box-shadow: 0 0 10px rgba(210, 168, 92, 0.05);
-    transition: all 0.2s ease-in-out;
-}
-
-.guidelines-trigger-btn:hover {
-    background-color: #F3EAE1;
-    box-shadow: 0 0 12px rgba(210, 168, 92, 0.15);
-}
-
-/* 2. Modal Darkened Backdrop Background */
-.guidelines-modal-backdrop {
-    display: none; /* Hidden by default */
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(63, 58, 54, 0.5); /* Dimmed backdrop tinted in warm gray */
-    z-index: 9999; /* Guarantees it floats over everything else */
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
-    transition: opacity 0.2s ease-in-out;
-}
-
-/* Modal Active State */
-.guidelines-modal-backdrop.is-active {
-    display: flex;
-    opacity: 1;
-}
-
-/* 3. Modal Inner Content Box */
-.guidelines-modal-content {
-    background-color: #FFFFFF;
-    border: 2px solid #D2A85C;
-    border-radius: 12px;
-    width: 90%;
-    max-width: 500px;
-    padding: 24px;
-    position: relative;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    transform: translateY(-20px);
-    transition: transform 0.3s ease-out;
-}
-
-.guidelines-modal-backdrop.is-active .guidelines-modal-content {
-    transform: translateY(0);
-}
-
-/* 4. Elegant Close Button (&times;) */
-.guidelines-modal-close {
-    position: absolute;
-    top: 10px;
-    right: 16px;
-    background: none;
-    border: none;
-    font-size: 1.8rem;
-    color: #3F3A36;
-    cursor: pointer;
-    line-height: 1;
-    transition: color 0.2s ease;
-}
-
-.guidelines-modal-close:hover {
-    color: #D2A85C;
-}
-
-/* Header Text inside the Modal */
-.guidelines-modal-header {
-    color: #D2A85C;
-    font-size: 1.3rem;
-    margin: 0 0 18px 0;
-    text-align: center;
-    font-weight: bold;
-}
-
-/* Body Text inside the Modal */
-.guidelines-modal-body p {
-    font-size: 0.95rem;
-    color: #3F3A36;
-    line-height: 1.6;
-    margin: 0 0 16px 0;
-}
-
-.guidelines-modal-body p:last-child {
-    margin-bottom: 0;
-}
-
-/* SHEIN Code Highlight */
-.modal-code-highlight {
-    color: #D2A85C;
-    background-color: #FDFBF7;
-    padding: 2px 6px;
-    border-radius: 4px;
-    border: 1px solid #D2A85C;
-}
+/* Duplicate guidelines-trigger-btn / guidelines-modal-* block removed here.
+   It was defined a second time and, because it appeared later in the file,
+   silently overrode the mobile-optimized versions near the top (smaller
+   close-button tap target, mismatched border-radius, no box-sizing). The
+   original mobile-optimized rules near line 168 remain in effect. */
