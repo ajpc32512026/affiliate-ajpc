@@ -11,7 +11,7 @@
     <meta name="robots" content="index, follow">
 
     <!-- Preload -->
-    <link rel="preload" href="img/header.png" as="image">
+    <link rel="preload" href="img/header.svg" as="image">
     <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
 
     <!-- Favicons -->
@@ -56,7 +56,7 @@
 <body>
     <!-- HEADER -->
     <header class="hero-banner">
-        <img src="img/header.png" alt="A&J Personal Collections Banner" class="banner-img">
+        <img src="img/header.svg" alt="Cozzy Collections Banner" class="banner-img">
     </header>
 
     <!-- NAVIGATION (Streamlined for Affiliate Niche) -->
@@ -78,7 +78,7 @@
     <!-- MAIN WELCOME CONTENT -->
     <section class="intro">
         <div class="intro-text">
-            <h2>Welcome to A&J</h2>
+            <h2>Welcome to Cozzy Collections</h2>
 <p>
     What began as a simple, long-distance exchange of care packages between Australia and the Philippines has grown into a shared home and this personal directory of daily essentials. We are glad you're here.
 </p>
@@ -113,7 +113,19 @@
   </div>
 </div>
     </section>
-
+	
+<!-- NEWSLETTER SIGNUP -->
+    <section class="newsletter-signup">
+        <h2>Join the Cozzy Club</h2>
+        <p>Sign up to receive updates on new arrivals, curated recommendations, and exclusive guides.</p>
+        
+        <!-- Netlify Forms Option (Temporarily uses Netlify until you connect Brevo next week) -->
+        <form name="newsletter" method="POST" data-netlify="true" class="newsletter-form">
+            <input type="email" name="email" placeholder="Your email address" required aria-label="Email Address">
+            <button type="submit" class="button">Subscribe</button>
+        </form>
+    </section>
+	
     <!-- CONSOLIDATED SINGLE FOOTER BLOCK (Fixes VS Code Parser Error) -->
     <footer>
         <div id="reviewFooter" class="review-footer">

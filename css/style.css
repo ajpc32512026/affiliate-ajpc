@@ -29,7 +29,7 @@ body {
     width: 100%;
 }
 
-p, li, td, th, .tagline, .support-section p {
+p, li, td, th, .tagline {
     overflow-wrap: break-word;
     word-wrap: break-word;
 }
@@ -49,18 +49,6 @@ p, li, td, th, .tagline, .support-section p {
 .intro-text {
     flex: 1;
     min-width: 280px;
-}
-
-.intro-image {
-    flex: 1;
-    min-width: 280px;
-}
-
-.intro-image img {
-    width: 100%;
-    max-width: 500px;
-    border-radius: 12px;
-    border: 2px solid #D2A85C;
 }
 
 /* === HEADER & HERO === */
@@ -150,33 +138,6 @@ nav.topnav a:focus {
 }
 
 nav.topnav a.active {
-    background-color: #D8A7B1;
-    color: #3F3A36;
-    border-color: #D8A7B1;
-}
-
-.top-nav {
-    display: inline-block;
-    padding: 8px 16px;
-    background-color: #3F3A36;
-    border: 2px solid #D2A85C;
-    border-radius: 999px;
-    text-decoration: none;
-    color: #F5F4F2;
-    font-size: 14px;
-    transition: all 0.2s ease-in-out;
-    cursor: pointer;
-    text-align: center;
-    user-select: none;
-}
-
-.top-nav:hover,
-.top-nav:focus {
-    background-color: #D2A85C;
-    color: #3F3A36;
-}
-
-.top-nav.active {
     background-color: #D8A7B1;
     color: #3F3A36;
     border-color: #D8A7B1;
@@ -298,59 +259,6 @@ nav.topnav a.active {
     margin-bottom: 0;
 }
 
-/* === BACK TO TOP BUTTON === */
-#backToTopBtn {
-    display: block;
-    margin: 40px auto;
-    padding: 8px 16px;
-    background-color: #3F3A36;
-    border: 2px solid #D2A85C;
-    border-radius: 999px;
-    text-decoration: none;
-    color: #F5F4F2;
-    font-size: 14px;
-    font-family: inherit;
-    font-weight: normal;
-    cursor: pointer;
-    text-align: center;
-    user-select: none;
-    transition: all 0.2s ease-in-out;
-}
-
-#backToTopBtn:hover,
-#backToTopBtn:focus {
-    background-color: #D2A85C;
-    color: #3F3A36;
-    outline: none;
-}
-
-/* === HEALTH & BEAUTY HIGHLIGHT === */
-a.highlight-health {
-    animation: glowWobble 2s ease-in-out infinite;
-    position: relative;
-    z-index: 1;
-    border-radius: 30px;
-    padding: 5px 15px;
-    background: #fdf5e6;
-    box-shadow: 0 0 8px 2px #d89ea3;
-    font-weight: bold;
-    color: #3F3A36;
-}
-
-/* === PAGE TITLES === */
-.page-title {
-    text-align: center;
-    font-size: 2.2em;
-    margin-top: 40px;
-}
-
-.page-subtitle {
-    text-align: center;
-    font-size: 1.1em;
-    color: #6A645F;
-    margin-bottom: 40px;
-}
-
 .product-price {
     font-size: 14px;
     color: #A89F91;
@@ -413,39 +321,33 @@ footer a:hover {
     opacity: 0.9;
 }
 
-.footer-icon-small {
-    height: 16px;
-    vertical-align: middle;
-    margin-left: 5px;
-    opacity: 0.8;
+/* === BACK TO TOP BUTTON === */
+#backToTopBtn {
+    display: none; /* JS shows this once you've scrolled past 100px */
+    margin: 40px auto;
+    padding: 8px 16px;
+    background-color: #3F3A36;
+    border: 2px solid #D2A85C;
+    border-radius: 999px;
+    text-decoration: none;
+    color: #F5F4F2;
+    font-size: 14px;
+    font-family: inherit;
+    font-weight: normal;
+    cursor: pointer;
+    text-align: center;
+    user-select: none;
+    transition: all 0.2s ease-in-out;
 }
 
-.footer-hosting {
-    font-size: 0.9em;
+#backToTopBtn:hover,
+#backToTopBtn:focus {
+    background-color: #D2A85C;
+    color: #3F3A36;
+    outline: none;
 }
 
-/* === WRITER'S DESK / GENERAL CONTAINERS === */
-.main {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 30px;
-    max-width: 1200px;
-    margin: 0 auto 40px auto;
-    padding: 0 20px;
-    width: 100%;
-}
-
-.container {
-    flex: 2 1 600px;
-    background-color: white;
-    border: 2px solid #A89F91;
-    border-radius: 10px;
-    padding: 20px;
-    min-width: 500px;
-    box-sizing: border-box;
-}
-
+/* === CONTACT FORM GRID === */
 .form-grid {
     display: grid;
     gap: 1.2rem;
@@ -474,114 +376,6 @@ textarea {
     resize: vertical;
     min-height: 80px;
     line-height: 1.4;
-}
-
-.how-to-use-header {
-    cursor: pointer;
-    color: #D2A85C;
-    font-size: 24px;
-    box-shadow: 0 0 5px 2px rgba(210, 168, 92, 0.7);
-    transition: box-shadow 0.3s ease-in-out;
-    padding: 10px;
-    text-align: center;
-}
-
-.how-to-use-header:hover {
-    box-shadow: 0 0 10px 4px rgba(210, 168, 92, 1);
-}
-
-.how-to-use-content {
-    display: none;
-    margin-top: 10px;
-    padding: 15px;
-    border-left: 4px solid #D2A85C;
-    background-color: #F5F4F2;
-    font-size: 16px;
-    line-height: 1.6;
-}
-
-/* === ABOUT & STORY SECTIONS === */
-.aj-story {
-    max-width: 650px;
-    margin: 0 auto 40px auto;
-}
-
-.aj-story-content h3 {
-    font-size: 24px;
-    margin-bottom: 16px;
-}
-
-.aj-story-content p {
-    font-size: 16px;
-    text-align: justify;
-    line-height: 1.6;
-}
-
-.about-section {
-    display: flex;
-    gap: 40px;
-    flex-wrap: wrap;
-    justify-content: center;
-    max-width: 900px;
-    margin: 0 auto 40px auto;
-}
-
-.about-box {
-    flex: 1 1 300px;
-    min-width: 280px;
-}
-
-.about-box h3 {
-    font-size: 24px;
-    margin-bottom: 16px;
-}
-
-.about-box p {
-    font-size: 16px;
-    text-align: justify;
-    line-height: 1.5;
-}
-
-.beliefs-section {
-    margin-bottom: 40px;
-    max-width: 700px;
-    margin-left: auto;
-    margin-right: auto;
-    font-family: 'Georgia', serif;
-    color: #333;
-}
-
-.beliefs-section h3 {
-    font-size: 24px;
-    margin-bottom: 20px;
-    text-align: center;
-}
-
-.beliefs-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    font-size: 16px;
-    text-align: justify;
-    line-height: 1.6;
-}
-
-.beliefs-list li {
-    position: relative;
-    padding-left: 25px;
-    margin-bottom: 12px;
-    font-style: italic;
-    color: #555;
-}
-
-.beliefs-list li::before {
-    content: "•";
-    position: absolute;
-    left: 0;
-    color: #b97a56;
-    font-size: 20px;
-    line-height: 1;
-    top: 2px;
 }
 
 /* === CONTACT FORM === */
@@ -976,6 +770,26 @@ section.contact-form {
         gap: 20px;
     }
 
+    .affiliate-grid {
+        grid-template-columns: repeat(2, 1fr); /* Exactly 2 cards across, not auto-calculated */
+        gap: 12px;
+        max-width: 100%;
+        margin: 20px auto;
+        padding: 0 15px;
+    }
+
+    .grid-card {
+        width: 100%;
+        max-width: 170px;
+        height: auto;
+        min-height: 210px;
+    }
+
+    .grid-card img {
+        width: 100%;
+        height: auto;
+    }
+
     .catalog-sidebar {
         flex: auto;
         flex-direction: column; /* same vertical list as desktop, not a new mobile layout */
@@ -1053,8 +867,7 @@ section.contact-form {
         padding: 20px;
     }
 
-    .intro-text,
-    .intro-image {
+    .intro-text {
         width: 100%;
         text-align: center;
     }
@@ -1147,4 +960,55 @@ section.contact-form {
         padding: 20px;
         margin: 20px auto;
     }
+}
+
+/* === NEWSLETTER SIGNUP SECTION === */
+.newsletter-signup {
+    text-align: center;
+    background-color: #EACFCF; /* Soft pink background matching your page headers */
+    padding: 40px 20px;
+    margin: 40px 0 0 0; /* Sits nicely right above the footer */
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.newsletter-signup h2 {
+    font-size: 1.8em;
+    margin: 0 0 10px 0;
+    color: #3F3A36;
+    font-weight: bold;
+}
+
+.newsletter-signup p {
+    font-size: 1em;
+    color: #6A645F;
+    margin: 0 0 20px 0;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.newsletter-form {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    max-width: 500px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+}
+
+.newsletter-form input[type="email"] {
+    flex: 1;
+    min-width: 250px;
+    padding: 10px 20px;
+    border: 2px solid #D2A85C;
+    border-radius: 999px;
+    font-size: 14px;
+    outline: none;
+    box-sizing: border-box;
+}
+
+.newsletter-form button.button {
+    cursor: pointer;
+    white-space: nowrap;
 }

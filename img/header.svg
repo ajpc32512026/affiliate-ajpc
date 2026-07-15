@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 400" width="100%" height="100%">
+    <!-- Background (Soft Rose-Pink) -->
+    <rect width="100%" height="100%" fill="#EACFCF"/>
+
+    <!-- Left Section: Branding Text -->
+    <g transform="translate(40, 0)">
+        <!-- "Cozzy" - Classic, elegant, high-end serif styling -->
+        <text x="400" y="195" 
+              font-family="'Georgia', 'Times New Roman', serif" 
+              font-size="120" 
+              fill="#3F3A36" 
+              text-anchor="middle" 
+              font-weight="normal" 
+              letter-spacing="2">Cozzy</text>
+              
+        <!-- "COLLECTIONS" - Crisp, tracked-out sans-serif -->
+        <text x="400" y="260" 
+              font-family="'Montserrat', 'Tahoma', 'Segoe UI', sans-serif" 
+              font-size="32" 
+              font-weight="bold" 
+              fill="#3F3A36" 
+              text-anchor="middle" 
+              letter-spacing="14">COLLECTIONS</text>
+    </g>
+
+    <!-- Elegant Minimal Vertical Divider -->
+    <line x1="680" y1="100" x2="680" y2="300" stroke="#3F3A36" stroke-width="1.5" opacity="0.3" />
+
+    <!-- Right Section: Curated Line Art Icons -->
+    <g stroke="#3F3A36" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" fill="none">
+        
+        <!-- 1. THE DRESS ON MINIMALIST HANGER -->
+        <g id="icon-dress-premium" transform="translate(760, 0)">
+            <!-- Hanger Hook & Body -->
+            <path d="M 50 100 C 50 85, 65 85, 65 95 C 65 105, 50 110, 50 115" />
+            <path d="M 50 115 L 10 135 L 90 135 Z" />
+            <!-- Dress Top -->
+            <path d="M 28 142 C 24 165, 28 180, 36 195" />
+            <path d="M 72 142 C 76 165, 72 180, 64 195" />
+            <path d="M 38 142 L 50 170 L 62 142" /> <!-- V-Neck line -->
+            <!-- Waist Band -->
+            <path d="M 36 195 L 64 195" />
+            <!-- Flowing Skirt -->
+            <path d="M 36 195 L 5 305 C 5 305, 30 318, 50 318 C 70 318, 95 305, 95 305 L 64 195" />
+            <!-- Soft Pleat Folds -->
+            <path d="M 43 195 L 28 308" />
+            <path d="M 50 195 L 50 318" />
+            <path d="M 57 195 L 72 308" />
+        </g>
+
+        <!-- 2. LUXURY SKINCARE DROPPER BOTTLE -->
+        <g id="icon-dropper-bottle" transform="translate(930, 0)">
+            <!-- Dropper Squeeze Bulb -->
+            <path d="M 50 85 C 38 85, 38 105, 50 105 C 62 105, 62 85, 50 85 Z" />
+            <!-- Dropper Screw Cap -->
+            <rect x="32" y="105" width="36" height="15" rx="3" />
+            <line x1="38" y1="105" x2="38" y2="120" stroke-width="1.5" />
+            <line x1="44" y1="105" x2="44" y2="120" stroke-width="1.5" />
+            <line x1="50" y1="105" x2="50" y2="120" stroke-width="1.5" />
+            <line x1="56" y1="105" x2="56" y2="120" stroke-width="1.5" />
+            <line x1="62" y1="105" x2="62" y2="120" stroke-width="1.5" />
+            <!-- Dropper Neck Ring -->
+            <path d="M 40 120 L 60 120 L 60 128 L 40 128 Z" />
+            <!-- Sleek Glass Bottle Body -->
+            <path d="M 42 128 C 22 128, 18 140, 18 155 L 18 285 C 18 298, 30 305, 50 305 C 70 305, 82 298, 82 285 L 82 155 C 82 140, 78 128, 50 128" />
+            <!-- Inner Glass Pipette & Droplet -->
+            <path d="M 47 128 L 47 210 L 53 210 L 53 128" />
+            <!-- Droplet hanging under pipette -->
+            <path d="M 50 220 C 47 220, 45 224, 45 228 C 45 232, 50 236, 50 236 C 50 236, 55 232, 55 228 C 55 224, 53 220, 50 220 Z" />
+        </g>
+
+        <!-- 3. APOTHECARY COSMETIC JAR WITH BOTANICAL LABEL -->
+        <g id="icon-cosmetic-jar" transform="translate(1100, 0)">
+            <!-- Flat Modern Lid -->
+            <rect x="15" y="112" width="70" height="18" rx="4" />
+            <!-- Jar Shoulder Curve & Base -->
+            <path d="M 20 130 C 10 134, 8 145, 8 152 L 8 280 C 8 293, 18 298, 18 298 L 82 298 C 82 298, 92 293, 92 280 L 92 152 C 92 145, 90 134, 80 130 Z" />
+            <!-- Label Frame -->
+            <rect x="22" y="160" width="56" height="95" rx="5" />
+            <!-- Botanical Sprig Art Inside the Label -->
+            <g transform="translate(50, 208) scale(0.85)">
+                <!-- Main stem -->
+                <path d="M 0 35 Q -4 10, -5 -25" stroke-width="2" />
+                <!-- Leaves -->
+                <path d="M -5 -15 C -15 -18, -18 -8, -5 0 C -15 8, -12 18, -5 10" stroke-width="1.8" />
+                <path d="M -5 -2 C 5 -10, 15 -8, 0 5 C 10 12, 12 2, 0 12" stroke-width="1.8" />
+                <path d="M -5 -25 C -5 -35, 5 -35, 0 -20" stroke-width="1.8" />
+            </g>
+        </g>
+
+        <!-- 4. ORGANIC EUCALYPTUS / BOTANICAL BRANCH -->
+        <g id="icon-cozy-botanicals" transform="translate(1270, 0)">
+            <!-- Main Flowing Stem -->
+            <path d="M 15 315 C 20 280, 45 180, 30 85" />
+            <!-- Top Leaf pair -->
+            <path d="M 30 85 C 20 70, 32 50, 42 65 C 52 50, 50 75, 30 85 Z" />
+            <!-- Left Leaf 1 -->
+            <path d="M 28 120 C -2 110, 0 140, 28 145 C 5 155, 12 180, 28 145 Z" />
+            <!-- Right Leaf 1 -->
+            <path d="M 31 155 C 61 145, 60 175, 33 182 C 56 192, 45 215, 33 182 Z" />
+            <!-- Left Leaf 2 -->
+            <path d="M 26 210 C -4 200, -2 230, 25 235 C 2 245, 9 270, 26 235 Z" />
+            <!-- Right Leaf 2 -->
+            <path d="M 24 250 C 54 240, 53 270, 23 277 C 46 287, 35 310, 23 277 Z" />
+        </g>
+
+    </g>
+</svg>
