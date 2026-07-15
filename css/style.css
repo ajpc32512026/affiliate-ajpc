@@ -861,6 +861,7 @@ section.contact-form {
 
 .catalog-content {
     flex: 1;
+    min-width: 0; /* Without this, flexbox lets the grid inside overflow past the container instead of shrinking to fit */
 }
 
 /* === HERO BANNER: 3-COLUMN COLLAGE === */
