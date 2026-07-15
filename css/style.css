@@ -1103,3 +1103,48 @@ section.contact-form {
         display: none;
     }
 }
+/* === MAIN CONTENT (Legal & Standard Pages) === */
+.main-content {
+    max-width: 800px;
+    width: 90%;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: #FFFFFF;
+    border: 2px solid #D2A85C;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    box-sizing: border-box;
+}
+
+.main-content section {
+    margin-bottom: 30px;
+}
+
+.main-content h2, 
+.main-content h3 {
+    color: #3F3A36;
+    border-bottom: 1px solid #EACFCF;
+    padding-bottom: 8px;
+    margin-top: 0;
+    font-size: 1.4rem;
+}
+
+.main-content p, 
+.main-content li {
+    line-height: 1.7;
+    color: #555555;
+    font-size: 15px;
+}
+
+.main-content ul {
+    padding-left: 20px;
+    margin-bottom: 20px;
+}
+
+/* Adjust layout behavior for mobile viewports */
+@media (max-width: 768px) {
+    .main-content {
+        padding: 20px;
+        margin: 20px auto;
+    }
+}
