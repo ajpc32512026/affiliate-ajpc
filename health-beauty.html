@@ -92,7 +92,7 @@
 
         <!-- Dynamic left sidebar -->
         <aside class="catalog-sidebar" id="catalog-sidebar-container" role="navigation" aria-label="Category Navigation">
-            <div class="sidebar-title">Categories</div>
+            <div class="sidebar-title"><strong>Categories</strong></div>
             <!-- Dynamic Category buttons load here -->
         </aside>
 
@@ -263,6 +263,18 @@
                     filterToggleBtn.classList.toggle('is-open', isOpen);
                     filterToggleBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
                 });
+
+                // Since the panel now floats over the page, close it if you tap
+                // anywhere outside it instead of leaving it open over the content.
+                document.addEventListener('click', (e) => {
+                    const clickedInsidePanel = sidebarContainer.contains(e.target);
+                    const clickedToggle = filterToggleBtn.contains(e.target);
+                    if (!clickedInsidePanel && !clickedToggle && sidebarContainer.classList.contains('is-open')) {
+                        sidebarContainer.classList.remove('is-open');
+                        filterToggleBtn.classList.remove('is-open');
+                        filterToggleBtn.setAttribute('aria-expanded', 'false');
+                    }
+                });
             }
 
             // Close Modal Listeners
@@ -290,7 +302,7 @@
             if (!sidebar) return;
             
             // Rebuild with static vertical header
-            sidebar.innerHTML = '<div class="sidebar-title">Categories</div>';
+            sidebar.innerHTML = '<div class="sidebar-title"><strong>Categories</strong></div>';
 
             // Add the default "All Items" button first
             const allBtn = document.createElement('button');
