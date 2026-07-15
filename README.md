@@ -7,7 +7,7 @@ Welcome to the home of A&J Personal Collections — a curated product discovery 
 ---
 
 ## 🌐 Live Site
-**[ajpersonalcollections.com](https://ajpersonalcollections.com)**
+
 
 - **Hosting:** [Netlify](https://www.netlify.com) (connected via continuous deployment)
 - **Domain:** [Porkbun](https://www.porkbun.com)
