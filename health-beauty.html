@@ -232,12 +232,38 @@
             }, { passive: false });
         }
 
+        // Fallback so the category bar can be scrolled by mouse drag or a plain
+        // scroll wheel too, not just touch swipe.
+        function enableDragScroll(el) {
+            if (!el) return;
+            let isDown = false, startX = 0, startScrollLeft = 0;
+
+            el.addEventListener('mousedown', (e) => {
+                isDown = true;
+                startX = e.pageX;
+                startScrollLeft = el.scrollLeft;
+            });
+            window.addEventListener('mouseup', () => { isDown = false; });
+            window.addEventListener('mousemove', (e) => {
+                if (!isDown) return;
+                e.preventDefault();
+                el.scrollLeft = startScrollLeft - (e.pageX - startX);
+            });
+            el.addEventListener('wheel', (e) => {
+                if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
+                    e.preventDefault();
+                    el.scrollLeft += e.deltaY;
+                }
+            }, { passive: false });
+        }
+
         document.addEventListener('DOMContentLoaded', async () => {
             const gridContainer = document.getElementById('product-grid-container');
             const sidebarContainer = document.getElementById('catalog-sidebar-container');
             const modal = document.getElementById('detail-modal');
             const closeModalBtn = document.getElementById('close-modal-btn');
 
+            enableDragScroll(sidebarContainer);
             enableDragScroll(sidebarContainer);
 
             try {
