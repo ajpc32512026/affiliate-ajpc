@@ -855,6 +855,10 @@ section.contact-form {
     font-weight: bold;
 }
 
+.category-filter-toggle {
+    display: none; /* Only shown on mobile - see the 768px media query */
+}
+
 .catalog-content {
     flex: 1;
 }
@@ -973,15 +977,20 @@ section.contact-form {
 
     .catalog-sidebar {
         flex: auto;
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: center;
+        flex-direction: column; /* same vertical list as desktop, not a new mobile layout */
         position: static;
         top: auto;
-        gap: 10px;
-        padding: 16px 12px;
-        border-bottom: 1px solid #EACFCF;
         max-height: none;
+        border: 1px solid #EACFCF;
+        border-radius: 10px;
+        overflow: hidden;
+
+        /* Collapsed by default - JS toggles .is-open to expand it */
+        display: none;
+    }
+
+    .catalog-sidebar.is-open {
+        display: flex;
     }
 
     .sidebar-title {
@@ -989,25 +998,32 @@ section.contact-form {
     }
 
     .category-nav-btn {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        width: auto;
-        min-height: 40px; /* real touch target, not just text with padding */
-        padding: 8px 16px;
-        text-align: center;
-        font-size: 14px;
-        border: 1.5px solid #D2A85C; /* every chip is visibly a button now, not just the active one */
-        border-radius: 999px; /* matches the pill shape used by the top nav */
-        background-color: #FDFBF7;
-        color: #3F3A36;
+        width: 100%;
+        border-bottom: 1px solid #F3EAE1;
     }
 
-    .category-nav-btn.active {
-        background-color: #D8A7B1;
-        border-color: #D8A7B1;
+    .category-filter-toggle {
+        display: flex; /* hidden on desktop, see base rule */
+        width: 100%;
+        align-items: center;
+        justify-content: space-between;
+        padding: 12px 18px;
+        margin-bottom: 10px;
+        background-color: #FDFBF7;
+        border: 1.5px solid #D2A85C;
+        border-radius: 10px;
         color: #3F3A36;
+        font-size: 15px;
         font-weight: bold;
+        cursor: pointer;
+    }
+
+    .category-filter-toggle .chevron {
+        transition: transform 0.2s ease-in-out;
+    }
+
+    .category-filter-toggle.is-open .chevron {
+        transform: rotate(180deg);
     }
 
     nav.topnav {

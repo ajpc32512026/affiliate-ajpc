@@ -49,8 +49,15 @@
 
     <!-- TWO-COLUMN LAYOUT WRAPPER (No inline styles) -->
     <main class="catalog-layout">
-        
-        <!-- Dynamic left sidebar (scrolls horizontally on mobile) -->
+
+        <!-- Mobile-only: expands/collapses the category list below.
+             Hidden on desktop, where the sidebar is always visible. -->
+        <button type="button" class="category-filter-toggle" id="category-filter-toggle" aria-expanded="false" aria-controls="catalog-sidebar-container">
+            <span id="category-filter-label">Filter by Category</span>
+            <span class="chevron">&#9662;</span>
+        </button>
+
+        <!-- Dynamic left sidebar -->
         <aside class="catalog-sidebar" id="catalog-sidebar-container" role="navigation" aria-label="Category Navigation">
             <div class="sidebar-title">Categories</div>
             <!-- Dynamic Category buttons load here -->
@@ -227,6 +234,16 @@
                 }
             }
 
+            // Mobile category filter toggle (collapsed panel, expands on tap)
+            const filterToggleBtn = document.getElementById('category-filter-toggle');
+            if (filterToggleBtn && sidebarContainer) {
+                filterToggleBtn.addEventListener('click', () => {
+                    const isOpen = sidebarContainer.classList.toggle('is-open');
+                    filterToggleBtn.classList.toggle('is-open', isOpen);
+                    filterToggleBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+                });
+            }
+
             // Close Modal Listeners
             if (closeModalBtn) {
                 closeModalBtn.addEventListener('click', closeProductDetail);
@@ -279,6 +296,19 @@
 
             // Render matching products
             renderGrid(categoryName);
+
+            // On mobile: collapse the filter panel and show the selection on the toggle button
+            const sidebarContainer = document.getElementById('catalog-sidebar-container');
+            const filterToggleBtn = document.getElementById('category-filter-toggle');
+            const filterLabel = document.getElementById('category-filter-label');
+            if (sidebarContainer) sidebarContainer.classList.remove('is-open');
+            if (filterToggleBtn) {
+                filterToggleBtn.classList.remove('is-open');
+                filterToggleBtn.setAttribute('aria-expanded', 'false');
+            }
+            if (filterLabel) {
+                filterLabel.textContent = categoryName === 'All' ? 'Filter by Category' : categoryName;
+            }
 
             // Smoothly scroll down to the top of the category grid layout
             const catalogContainer = document.querySelector('.catalog-layout');
