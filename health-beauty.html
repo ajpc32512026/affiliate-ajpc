@@ -107,8 +107,8 @@
             <a href="https://www.facebook.com/profile.php?id=61591475499934" target="_blank" title="Follow us on Facebook" rel="noopener noreferrer">
                 <img src="img/fb-icon.svg" alt="Facebook" class="footer-icon">
             </a>
-            <a href="https://www.threads.com/@sales.aud26" target="_blank" title="Follow us on Threads" rel="noopener noreferrer">
-                <img src="img/th-icon.svg" alt="Threads" class="footer-icon">
+            <a href="https://au.pinterest.com/salesaud26/" target="_blank" title="Follow us on Pinterest" rel="noopener noreferrer">
+                <img src="img/pin-icon.svg" alt="Pinterest" class="footer-icon">
             </a>
             <a href="https://www.instagram.com/sales.aud26/" target="_blank" title="Follow us on Instagram" rel="noopener noreferrer">
                 <img src="img/ig-icon.svg" alt="Instagram" class="footer-icon">
@@ -194,11 +194,51 @@
             }
         }
 
+        // Lets mouse/trackpad users click-and-drag the category bar to scroll it
+        // sideways, and lets a plain vertical scroll wheel move it horizontally too.
+        // Touchscreens already scroll it natively via swipe - this just covers
+        // everyone else (desktop browsers, DevTools device emulation, etc).
+        function enableDragScroll(el) {
+            if (!el) return;
+
+            let isDown = false;
+            let startX = 0;
+            let startScrollLeft = 0;
+
+            el.addEventListener('mousedown', (e) => {
+                isDown = true;
+                startX = e.pageX;
+                startScrollLeft = el.scrollLeft;
+            });
+
+            window.addEventListener('mouseup', () => {
+                isDown = false;
+            });
+
+            window.addEventListener('mousemove', (e) => {
+                if (!isDown) return;
+                e.preventDefault();
+                const dx = e.pageX - startX;
+                el.scrollLeft = startScrollLeft - dx;
+            });
+
+            // Convert a plain vertical scroll-wheel/trackpad gesture into
+            // horizontal movement while hovering this bar.
+            el.addEventListener('wheel', (e) => {
+                if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
+                    e.preventDefault();
+                    el.scrollLeft += e.deltaY;
+                }
+            }, { passive: false });
+        }
+
         document.addEventListener('DOMContentLoaded', async () => {
             const gridContainer = document.getElementById('product-grid-container');
             const sidebarContainer = document.getElementById('catalog-sidebar-container');
             const modal = document.getElementById('detail-modal');
             const closeModalBtn = document.getElementById('close-modal-btn');
+
+            enableDragScroll(sidebarContainer);
 
             try {
                 // Fetch your clean JSON database
