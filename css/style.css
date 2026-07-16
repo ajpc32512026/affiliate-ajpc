@@ -462,6 +462,47 @@ section.contact-form {
     -webkit-box-orient: vertical;
 }
 
+/* === SKELETON LOADING STATE (shown briefly while products.json fetches) === */
+.skeleton-card {
+    cursor: default;
+    pointer-events: none;
+}
+
+.skeleton-box {
+    background: linear-gradient(90deg, #F0EEEA 25%, #F7F5F2 37%, #F0EEEA 63%);
+    background-size: 400% 100%;
+    animation: skeleton-shimmer 1.4s ease infinite;
+    border-radius: 6px;
+}
+
+.skeleton-image {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+}
+
+.skeleton-line {
+    height: 13px;
+    margin-top: 10px;
+    width: 100%;
+}
+
+.skeleton-line.short {
+    width: 60%;
+    margin-top: 8px;
+}
+
+@keyframes skeleton-shimmer {
+    0% { background-position: 100% 50%; }
+    100% { background-position: 0 50%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .skeleton-box {
+        animation: none;
+        background: #F0EEEA;
+    }
+}
+
 /* === DYNAMIC MODAL DETAIL OVERLAY === */
 .modal-overlay {
     display: none;

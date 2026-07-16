@@ -23,7 +23,7 @@
     <!-- Open Graph -->
     <meta property="og:title" content="Products – Cozzy Collections">
     <meta property="og:description" content="Explore our curated skincare, fashion, and homeware recommendations, selected by Anna.">
-    <meta property="og:image" content="https://cozzycollections.com.au/img/og-glowing-essentials.jpg">
+    <meta property="og:image" content="https://cozzycollections.com.au/img/og-cozzy-collections.jpg">
     <meta property="og:url" content="https://cozzycollections.com.au/products.html">
     <meta property="og:type" content="website">
 
@@ -31,7 +31,7 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Products – Cozzy Collections">
     <meta name="twitter:description" content="Explore our curated skincare, fashion, and homeware recommendations, selected by Anna.">
-    <meta name="twitter:image" content="https://cozzycollections.com.au/img/og-glowing-essentials.jpg">
+    <meta name="twitter:image" content="https://cozzycollections.com.au/img/og-cozzy-collections.jpg">
 
     <!-- Styles (Global Firm Stylesheet) -->
     <link rel="stylesheet" href="css/style.css">
@@ -99,7 +99,12 @@
         <!-- Right-side product display column -->
         <section class="catalog-content">
             <div class="affiliate-grid" id="product-grid-container">
-                <!-- Dynamic cards load here -->
+                <!-- Skeleton placeholders shown while products.json loads, replaced automatically by renderGrid() -->
+                <div class="grid-card skeleton-card"><div class="card-inner"><div class="skeleton-box skeleton-image"></div><div class="skeleton-box skeleton-line"></div><div class="skeleton-box skeleton-line short"></div></div></div>
+                <div class="grid-card skeleton-card"><div class="card-inner"><div class="skeleton-box skeleton-image"></div><div class="skeleton-box skeleton-line"></div><div class="skeleton-box skeleton-line short"></div></div></div>
+                <div class="grid-card skeleton-card"><div class="card-inner"><div class="skeleton-box skeleton-image"></div><div class="skeleton-box skeleton-line"></div><div class="skeleton-box skeleton-line short"></div></div></div>
+                <div class="grid-card skeleton-card"><div class="card-inner"><div class="skeleton-box skeleton-image"></div><div class="skeleton-box skeleton-line"></div><div class="skeleton-box skeleton-line short"></div></div></div>
+                <div class="grid-card skeleton-card"><div class="card-inner"><div class="skeleton-box skeleton-image"></div><div class="skeleton-box skeleton-line"></div><div class="skeleton-box skeleton-line short"></div></div></div>
             </div>
         </section>
 
@@ -376,7 +381,7 @@
                     <div class="grid-card" onclick="openProductDetail(${globalIndex})" role="button" tabindex="0" aria-label="View details for ${product.title}">
                         <div class="card-inner">
                             <div class="card-image-box">
-                                <img src="${product.imageUrl}" alt="${product.title}">
+                                <img src="${product.imageUrl}" alt="${product.title}" loading="lazy">
                             </div>
                             <h4 class="card-title">${product.title}</h4>
                             ${priceHtml}
