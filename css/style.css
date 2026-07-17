@@ -92,6 +92,49 @@ p, li, td, th, .tagline {
     margin: 0;
 }
 
+/* === SUBSCRIBE BANNER === */
+.subscribe-banner {
+    background-color: #3F3A36;
+    color: #F5F4F2;
+    text-align: center;
+    padding: 10px 44px;
+    font-size: 14px;
+    position: relative;
+    line-height: 1.4;
+}
+
+.subscribe-banner p {
+    margin: 0;
+}
+
+.subscribe-banner a {
+    color: #D2A85C;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.subscribe-banner a:hover {
+    color: #D8A7B1;
+}
+
+#dismiss-banner-btn {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: #F5F4F2;
+    font-size: 20px;
+    cursor: pointer;
+    line-height: 1;
+    padding: 4px 10px;
+}
+
+#dismiss-banner-btn:hover {
+    color: #D2A85C;
+}
+
 /* === NAVIGATION BAR === */
 nav.topnav {
     background-color: #3F3A36;
@@ -809,6 +852,16 @@ section.contact-form {
 
 /* === RESPONSIVE LAYOUTS === */
 @media (max-width: 768px) {
+    .subscribe-banner {
+        font-size: 12px;
+        padding: 8px 36px;
+    }
+
+    #dismiss-banner-btn {
+        font-size: 18px;
+        right: 4px;
+    }
+
     .catalog-layout {
         flex-direction: column;
         gap: 20px;

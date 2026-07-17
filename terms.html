@@ -74,6 +74,14 @@
         <p>&#10022; Don't miss our latest curated finds &mdash; <a href="index.html#newsletter">Subscribe for updates</a> &#10022;</p>
         <button id="dismiss-banner-btn" aria-label="Dismiss this banner">&times;</button>
     </div>
+    <script>
+        // Runs immediately (not waiting for global.js at the bottom of the page)
+        // so a returning visitor who already dismissed this never sees it flash
+        // into view before it gets hidden again.
+        if (localStorage.getItem('subscribeBannerDismissed') === 'true') {
+            document.getElementById('subscribe-banner').style.display = 'none';
+        }
+    </script>
     <nav class="topnav">
         <ul>
             <li><a href="index.html">Home</a></li>
