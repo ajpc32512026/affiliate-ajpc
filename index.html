@@ -141,9 +141,14 @@
     <h2>Join the Cozzy Club</h2>
     <p>Sign up to receive updates on new arrivals, curated recommendations, and exclusive guides.</p>
     
-    <!-- Netlify Forms Option -->
-    <form name="newsletter" method="POST" data-netlify="true" class="newsletter-form">
-        
+    <!-- Submits via Netlify Function to Brevo, not Netlify's built-in form handler -->
+    <form id="newsletter-form" name="newsletter" class="newsletter-form">
+
+        <!-- Honeypot for bots (mirrors contact.html's pattern) -->
+        <p style="position: absolute; left: -9999px;" aria-hidden="true">
+            <label>Don't fill this out if you're human: <input name="bot-field" tabindex="-1" autocomplete="off"></label>
+        </p>
+
         <!-- Grouping inputs and button to stay on 1 line -->
         <div class="form-fields">
             <input type="text" name="name" placeholder="First Name" required aria-label="First Name">
@@ -229,6 +234,45 @@ document.addEventListener("DOMContentLoaded", function() {
     document.getElementById("hero-img-3").src = shuffled[2];
 });
 </script>
+    <!-- Newsletter signup submit handler -->
+    <script>
+        const newsletterForm = document.getElementById('newsletter-form');
+        if (newsletterForm) {
+            newsletterForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const formData = new FormData(newsletterForm);
+                const data = Object.fromEntries(formData.entries());
+
+                const button = newsletterForm.querySelector('button[type="submit"]');
+                const originalButtonText = button.textContent;
+                button.disabled = true;
+                button.textContent = 'Subscribing...';
+
+                try {
+                    const response = await fetch('/.netlify/functions/subscribe', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(data),
+                    });
+
+                    const result = await response.json();
+
+                    if (response.ok) {
+                        alert('✅ You\'re subscribed! Welcome to the Cozzy Club.');
+                        newsletterForm.reset();
+                    } else {
+                        alert(`❌ ${result.error || 'Something went wrong. Please try again.'}`);
+                    }
+                } catch (err) {
+                    console.error(err);
+                    alert('❌ Network error. Please try again later.');
+                } finally {
+                    button.disabled = false;
+                    button.textContent = originalButtonText;
+                }
+            });
+        }
+    </script>
 </body>
 
 </html>
