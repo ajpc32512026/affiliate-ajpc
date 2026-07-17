@@ -113,40 +113,53 @@
             <a href="about.html" class="button secondary">Our Story</a>
         </div>
 <div class="hero-collage">
-  <!-- First Image (Cozy lifestyle texture) -->
+  <!-- First Image -->
   <div class="hero-image-wrapper">
-    <img src="media/posts/18196114711371847.webp" alt="Cozy Knitwear Discovery">
+    <img id="hero-img-1" src="media/posts/18479976988102638.webp" alt="Cozy Knitwear Discovery">
   </div>
   
-  <!-- Second Image (Neutral streetwear tone) -->
+  <!-- Second Image -->
   <div class="hero-image-wrapper">
-    <img src="media/posts/202607/18174939343425855.webp" alt="Elegant Outerwear Curation">
+    <img id="hero-img-2" src="media/posts/17905721610452627.webp" alt="Elegant Outerwear Curation">
   </div>
   
-  <!-- Third Image (Breezy summer style) -->
+  <!-- Third Image -->
   <div class="hero-image-wrapper">
-    <img src="media/posts/202607/17871646383652861.webp" alt="Relaxed Vacation Set">
+    <img id="hero-img-3" src="media/posts/17965284141133005.webp" alt="Relaxed Vacation Set">
   </div>
   
-  <!-- Overlaid Text (Aesthetic center container) -->
+  <!-- Overlaid Text -->
   <div class="hero-overlay-text">
-    <h1>A&J Curated Discoveries</h1>
+    <h1>Cozzy Curated Discoveries</h1>
     <p>A thoughtful selection of style, home, and daily essentials.</p>
   </div>
 </div>
     </section>
 	
 <!-- NEWSLETTER SIGNUP -->
-    <section class="newsletter-signup" id="newsletter">
-        <h2>Join the Cozzy Club</h2>
-        <p>Sign up to receive updates on new arrivals, curated recommendations, and exclusive guides.</p>
+<section class="newsletter-signup" id="newsletter">
+    <h2>Join the Cozzy Club</h2>
+    <p>Sign up to receive updates on new arrivals, curated recommendations, and exclusive guides.</p>
+    
+    <!-- Netlify Forms Option -->
+    <form name="newsletter" method="POST" data-netlify="true" class="newsletter-form">
         
-        <!-- Netlify Forms Option (Temporarily uses Netlify until you connect Brevo next week) -->
-        <form name="newsletter" method="POST" data-netlify="true" class="newsletter-form">
+        <!-- Grouping inputs and button to stay on 1 line -->
+        <div class="form-fields">
+            <input type="text" name="name" placeholder="First Name" required aria-label="First Name">
             <input type="email" name="email" placeholder="Your email address" required aria-label="Email Address">
             <button type="submit" class="button">Subscribe</button>
-        </form>
-    </section>
+        </div>
+
+        <!-- Privacy & Terms Consent (rendered on a new line below) -->
+        <div class="newsletter-consent">
+            <input type="checkbox" id="privacy-consent" name="privacy-consent" required>
+            <label for="privacy-consent">
+                I agree to the <a href="privacy.html">Privacy Policy</a> and <a href="terms.html">Terms & Conditions</a>.
+            </label>
+        </div>
+    </form>
+</section>
 	
     <!-- CONSOLIDATED SINGLE FOOTER BLOCK (Fixes VS Code Parser Error) -->
     <footer>
@@ -189,6 +202,33 @@
 
     <!-- Consolidated global script -->
     <script src="js/global.js"></script>
+	<script>
+document.addEventListener("DOMContentLoaded", function() {
+    // Your curated list of 12 images
+    const imagePool = [
+        "media/posts/18479976988102638.webp",
+        "media/posts/17905721610452627.webp",
+        "media/posts/17965284141133005.webp",
+        "media/posts/17987348270991810.webp",
+        "media/posts/18011986028731428.webp",
+        "media/posts/18065818478706295.webp",
+        "media/posts/18093358691370672.webp",
+        "media/posts/18094631219215243.webp",
+        "media/posts/18095637905258037.webp",
+        "media/posts/18104642801030224.webp",
+        "media/posts/18109619461786976.webp",
+        "media/posts/18148982854471289.webp"
+    ];
+
+    // Helper function to shuffle the array
+    const shuffled = imagePool.sort(() => 0.5 - Math.random());
+
+    // Assign the first 3 unique random images to the HTML elements
+    document.getElementById("hero-img-1").src = shuffled[0];
+    document.getElementById("hero-img-2").src = shuffled[1];
+    document.getElementById("hero-img-3").src = shuffled[2];
+});
+</script>
 </body>
 
 </html>

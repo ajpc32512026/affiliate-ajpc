@@ -46,7 +46,7 @@ exports.handler = async (event) => {
       port: 587,
       secure: false,
       auth: {
-        user: '90eca9001@smtp-brevo.com',
+        user: 'b20b03001@smtp-brevo.com',
         pass: process.env.BREVO_SMTP_KEY,
       },
       tls: {

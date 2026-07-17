@@ -1088,18 +1088,30 @@ section.contact-form {
     margin-right: auto;
 }
 
+/* Updated container to stack the form fields row and the consent checkbox vertically */
 .newsletter-form {
     display: flex;
-    justify-content: center;
-    gap: 10px;
-    max-width: 500px;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    max-width: 650px; /* Increased from 500px to allow enough room on a single line */
     margin: 0 auto;
-    flex-wrap: wrap;
 }
 
+/* This container keeps the inputs and button on one line */
+.newsletter-form .form-fields {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    gap: 10px;
+    justify-content: center;
+}
+
+/* Target both text and email inputs */
+.newsletter-form input[type="text"],
 .newsletter-form input[type="email"] {
     flex: 1;
-    min-width: 250px;
+    min-width: 120px; /* Allows inputs to shrink slightly on smaller desktop screens */
     padding: 10px 20px;
     border: 2px solid #D2A85C;
     border-radius: 999px;
@@ -1111,4 +1123,65 @@ section.contact-form {
 .newsletter-form button.button {
     cursor: pointer;
     white-space: nowrap;
+    padding: 10px 20px; /* Ensure padding matches the input height */
+}
+
+/* Consent Checkbox Styling */
+.newsletter-form .newsletter-consent {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-size: 13px;
+    color: #6A645F;
+}
+
+.newsletter-form .newsletter-consent input[type="checkbox"] {
+    cursor: pointer;
+    margin: 0;
+}
+
+.newsletter-form .newsletter-consent label {
+    cursor: pointer;
+}
+
+.newsletter-form .newsletter-consent a {
+    color: #3F3A36;
+    text-decoration: underline;
+}
+
+/* Mobile Responsiveness: Stacks inputs vertically on narrow screens */
+@media (max-width: 580px) {
+    .newsletter-form .form-fields {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .newsletter-form input[type="text"],
+    .newsletter-form input[type="email"] {
+        width: 100%;
+    }
+}
+/* Smooth transition for the button */
+.newsletter-form button.button {
+    cursor: pointer;
+    white-space: nowrap;
+    padding: 10px 20px;
+    border-radius: 999px;
+    background-color: #3F3A36; /* Your dark brown color */
+    color: #FFFFFF;
+    border: none;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Hover state */
+.newsletter-form button.button:hover {
+    transform: translateY(-1px); /* Gently lifts the button */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Adds a soft shadow */
+}
+
+/* Active (click) state */
+.newsletter-form button.button:active {
+    transform: translateY(1px); /* Presses the button down slightly */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
