@@ -68,6 +68,12 @@
         <img src="img/header.svg" alt="Cozzy Collections Banner" class="banner-img">
     </header>
 
+    <!-- SUBSCRIBE BANNER -->
+    <div id="subscribe-banner" class="subscribe-banner">
+        <p>&#10022; Don't miss our latest curated finds &mdash; <a href="index.html#newsletter">Subscribe for updates</a> &#10022;</p>
+        <button id="dismiss-banner-btn" aria-label="Dismiss this banner">&times;</button>
+    </div>
+
     <!-- NAVIGATION -->
     <nav class="topnav">
         <ul>
@@ -108,12 +114,14 @@
         <!-- Right-side product display column -->
         <section class="catalog-content">
             <div class="affiliate-grid" id="product-grid-container">
-                <!-- Skeleton placeholders shown while products.json loads, replaced automatically by renderGrid() -->
+                <!-- SSR_PRODUCTS_START -->
+                <!-- Skeleton placeholders shown here in local dev; Netlify's build step (build-products.js) replaces this whole block with real product HTML on deploy, so search engines see actual content immediately -->
                 <div class="grid-card skeleton-card"><div class="card-inner"><div class="skeleton-box skeleton-image"></div><div class="skeleton-box skeleton-line"></div><div class="skeleton-box skeleton-line short"></div></div></div>
                 <div class="grid-card skeleton-card"><div class="card-inner"><div class="skeleton-box skeleton-image"></div><div class="skeleton-box skeleton-line"></div><div class="skeleton-box skeleton-line short"></div></div></div>
                 <div class="grid-card skeleton-card"><div class="card-inner"><div class="skeleton-box skeleton-image"></div><div class="skeleton-box skeleton-line"></div><div class="skeleton-box skeleton-line short"></div></div></div>
                 <div class="grid-card skeleton-card"><div class="card-inner"><div class="skeleton-box skeleton-image"></div><div class="skeleton-box skeleton-line"></div><div class="skeleton-box skeleton-line short"></div></div></div>
                 <div class="grid-card skeleton-card"><div class="card-inner"><div class="skeleton-box skeleton-image"></div><div class="skeleton-box skeleton-line"></div><div class="skeleton-box skeleton-line short"></div></div></div>
+                <!-- SSR_PRODUCTS_END -->
             </div>
         </section>
 
