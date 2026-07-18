@@ -26,8 +26,9 @@
     <!-- Favicons -->
     <link rel="icon" href="img/favicon/favicon.ico" sizes="32x32">
     <link rel="icon" href="img/favicon/favicon.svg" type="image/svg+xml">
-    <link rel="apple-touch-icon" href="img/favicon/apple-touch-icon.png">
+    <link rel="apple-touch-icon" href="img/favicon/favicon.svg">
     <link rel="manifest" href="img/favicon/site.webmanifest">
+    <meta name="theme-color" content="#e2c7c5">
 
     <!-- Open Graph -->
     <meta property="og:title" content="Cozzy Collections - Curated Skincare & Lifestyle">
@@ -68,16 +69,12 @@
         <img src="img/header.svg" alt="Cozzy Collections Banner" class="banner-img">
     </header>
 
-    <!-- NAVIGATION (Streamlined for Affiliate Niche) -->
     <!-- SUBSCRIBE BANNER -->
     <div id="subscribe-banner" class="subscribe-banner">
         <p>&#10022; Don't miss our latest curated finds &mdash; <a href="index.html#newsletter">Subscribe for updates</a> &#10022;</p>
         <button id="dismiss-banner-btn" aria-label="Dismiss this banner">&times;</button>
     </div>
     <script>
-        // Runs immediately (not waiting for global.js at the bottom of the page)
-        // so a returning visitor who already dismissed this never sees it flash
-        // into view before it gets hidden again.
         if (localStorage.getItem('subscribeBannerDismissed') === 'true') {
             document.getElementById('subscribe-banner').style.display = 'none';
         }
@@ -101,96 +98,91 @@
     <section class="intro">
         <div class="intro-text">
             <h2>Welcome to Cozzy Collections</h2>
-<p>
-    What began as a simple, long-distance exchange of care packages between Australia and the Philippines has grown into a shared home and this personal directory of daily essentials. We are glad you're here.
-</p>
-<p>
-    Together, we hand-select and recommend practical items across fashion, homewares, and beauty. Every product featured on this site is something we have personally reviewed, tested, or integrated into our own household. If we wouldn't use an item ourselves, we don't feature it here.
-</p>
-<p>
-    We hope you find these recommendations helpful as you build your own comfortable daily routines. Feel free to explore our latest discoveries.
-</p>
+            <p>
+                What began as a simple, long-distance exchange of care packages between Australia and the Philippines has grown into a shared home and this personal directory of daily essentials. We are glad you're here.
+            </p>
+            <p>
+                Together, we hand-select and recommend practical items across fashion, homewares, and beauty. Every product featured on this site is something we have personally reviewed, tested, or integrated into our own household. If we wouldn't use an item ourselves, we don't feature it here.
+            </p>
+            <p>
+                We hope you find these recommendations helpful as you build your own comfortable daily routines. Feel free to explore our latest discoveries.
+            </p>
             <a href="about.html" class="button secondary">Our Story</a>
         </div>
-<div class="hero-collage">
-  <!-- First Image -->
-  <div class="hero-image-wrapper">
-    <img id="hero-img-1" src="media/posts/18479976988102638.webp" alt="Cozy Knitwear Discovery">
-  </div>
-  
-  <!-- Second Image -->
-  <div class="hero-image-wrapper">
-    <img id="hero-img-2" src="media/posts/17905721610452627.webp" alt="Elegant Outerwear Curation">
-  </div>
-  
-  <!-- Third Image -->
-  <div class="hero-image-wrapper">
-    <img id="hero-img-3" src="media/posts/17965284141133005.webp" alt="Relaxed Vacation Set">
-  </div>
-  
-  <!-- Overlaid Text -->
-  <div class="hero-overlay-text">
-    <h1>Cozzy Curated Discoveries</h1>
-    <p>A thoughtful selection of style, home, and daily essentials.</p>
-  </div>
-</div>
+        <div class="hero-collage">
+            <!-- First Image -->
+            <div class="hero-image-wrapper">
+                <img id="hero-img-1" src="media/hero-image-wrapper/18102284951145707.webp" alt="Cozy Knitwear Discovery">
+            </div>
+            
+            <!-- Second Image -->
+            <div class="hero-image-wrapper">
+                <img id="hero-img-2" src="media/hero-image-wrapper/17905721610452627.webp" alt="Elegant Outerwear Curation">
+            </div>
+            
+            <!-- Third Image -->
+            <div class="hero-image-wrapper">
+                <img id="hero-img-3" src="media/hero-image-wrapper/17965284141133005.webp" alt="Relaxed Vacation Set">
+            </div>
+            
+            <!-- Overlaid Text -->
+            <div class="hero-overlay-text">
+                <h1>Cozzy Curated Discoveries</h1>
+                <p>A thoughtful selection of style, home, and daily essentials.</p>
+            </div>
+        </div>
     </section>
 	
-<!-- NEWSLETTER SIGNUP -->
-<section class="newsletter-signup" id="newsletter">
-    <h2>Join the Cozzy Club</h2>
-    <p>Sign up to receive updates on new arrivals, curated recommendations, and exclusive guides.</p>
-    
-    <!-- Submits via Netlify Function to Brevo, not Netlify's built-in form handler -->
-    <form id="newsletter-form" name="newsletter" class="newsletter-form">
+    <!-- NEWSLETTER SIGNUP -->
+    <section class="newsletter-signup" id="newsletter">
+        <h2>Join the Cozzy Club</h2>
+        <p>Sign up to receive updates on new arrivals, curated recommendations, and exclusive guides.</p>
+        
+        <form id="newsletter-form" name="newsletter" class="newsletter-form">
+            <!-- Honeypot for bots -->
+            <p style="position: absolute; left: -9999px;" aria-hidden="true">
+                <label>Don't fill this out if you're human: <input name="bot-field" tabindex="-1" autocomplete="off"></label>
+            </p>
 
-        <!-- Honeypot for bots (mirrors contact.html's pattern) -->
-        <p style="position: absolute; left: -9999px;" aria-hidden="true">
-            <label>Don't fill this out if you're human: <input name="bot-field" tabindex="-1" autocomplete="off"></label>
-        </p>
+            <!-- Grouping inputs and button -->
+            <div class="form-fields">
+                <input type="text" name="name" placeholder="First Name" required aria-label="First Name">
+                <input type="email" name="email" placeholder="Your email address" required aria-label="Email Address">
+                <button type="submit" class="button">Subscribe</button>
+            </div>
 
-        <!-- Grouping inputs and button to stay on 1 line -->
-        <div class="form-fields">
-            <input type="text" name="name" placeholder="First Name" required aria-label="First Name">
-            <input type="email" name="email" placeholder="Your email address" required aria-label="Email Address">
-            <button type="submit" class="button">Subscribe</button>
-        </div>
-
-        <!-- Privacy & Terms Consent (rendered on a new line below) -->
-        <div class="newsletter-consent">
-            <input type="checkbox" id="privacy-consent" name="privacy-consent" required>
-            <label for="privacy-consent">
-                I agree to the <a href="privacy.html">Privacy Policy</a> and <a href="terms.html">Terms & Conditions</a>.
-            </label>
-        </div>
-    </form>
-</section>
+            <!-- Privacy & Terms Consent -->
+            <div class="newsletter-consent">
+                <input type="checkbox" id="privacy-consent" name="privacy-consent" required>
+                <label for="privacy-consent">
+                    I agree to the <a href="privacy.html">Privacy Policy</a> and <a href="terms.html">Terms & Conditions</a>.
+                </label>
+            </div>
+        </form>
+    </section>
 	
-    <!-- CONSOLIDATED SINGLE FOOTER BLOCK (Fixes VS Code Parser Error) -->
+    <!-- FOOTER -->
     <footer>
         <p class="footer-main">
-            <!-- Mandatory Amazon Affiliate Disclosure (Uses style.css class only) -->
+            <!-- Mandatory Amazon Affiliate Disclosure -->
             <span class="footer-disclosure">
                 Disclaimer: This website is a curated product discovery platform designed to share recommendations and shopping finds. We do not sell any items directly; all links redirect to third-party merchant websites where purchases are processed. While we strive to show accurate details, please verify final prices, shipping terms, and product availability directly on the merchant's website before completing your purchase.
             </span>
 
-            &copy; 2026 A&amp;J Personal Collections &middot; Handcrafted curation &middot;
+            &copy; 2026 Cozzy Collections &middot; Handcrafted curation &middot;
             <a href="privacy.html">Privacy Policy</a> &middot;
             <a href="terms.html">T's &amp; C's</a><br><br>
 
-            <!-- Bypasses Adblock Filter with updated filenames -->
+            <!-- Social Icons -->
             <a href="https://www.facebook.com/profile.php?id=61591475499934" target="_blank" title="Follow us on Facebook" rel="noopener noreferrer">
                 <img src="img/fb-icon.svg" alt="Facebook" class="footer-icon">
             </a>
-            <a href="https://www.threads.com/@sales.aud26" target="_blank" title="Follow us on Threads" rel="noopener noreferrer">
+            <a href="https://www.threads.net/@sales.aud26" target="_blank" title="Follow us on Threads" rel="noopener noreferrer">
                 <img src="img/th-icon.svg" alt="Threads" class="footer-icon">
             </a>
             <a href="https://www.instagram.com/sales.aud26/" target="_blank" title="Follow us on Instagram" rel="noopener noreferrer">
                 <img src="img/ig-icon.svg" alt="Instagram" class="footer-icon">
             </a><br><br>
-
-
-            <br><br>
 
             <em style="display: block; font-size: 0.95em; margin-top: 10px;">
                 We don't chase trends or rush what's worth doing right.
@@ -201,39 +193,40 @@
                 this is for you. Real, rooted, and made with care to stay true — just like it always was.
             </em>
         </p>
-
-
     </footer>
 
     <!-- Consolidated global script -->
     <script src="js/global.js"></script>
-	<script>
-document.addEventListener("DOMContentLoaded", function() {
-    // Your curated list of 12 images
-    const imagePool = [
-        "media/posts/18479976988102638.webp",
-        "media/posts/17905721610452627.webp",
-        "media/posts/17965284141133005.webp",
-        "media/posts/17987348270991810.webp",
-        "media/posts/18011986028731428.webp",
-        "media/posts/18065818478706295.webp",
-        "media/posts/18093358691370672.webp",
-        "media/posts/18094631219215243.webp",
-        "media/posts/18095637905258037.webp",
-        "media/posts/18104642801030224.webp",
-        "media/posts/18109619461786976.webp",
-        "media/posts/18148982854471289.webp"
-    ];
 
-    // Helper function to shuffle the array
-    const shuffled = imagePool.sort(() => 0.5 - Math.random());
+    <!-- Hero collage randomizer script -->
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // Consolidated list of your 12 unique image paths (no duplicates)
+        const imagePool = [
+            "media/hero-image-wrapper/18102284951145707.webp",
+            "media/hero-image-wrapper/17890805838588805.webp",
+            "media/hero-image-wrapper/17905721610452627.webp",
+            "media/hero-image-wrapper/17965284141133005.webp",
+            "media/hero-image-wrapper/17987348270991810.webp",
+            "media/hero-image-wrapper/18011986028731428.webp",
+            "media/hero-image-wrapper/18018865406889881.webp",
+            "media/hero-image-wrapper/18055127303607976.webp",
+            "media/hero-image-wrapper/18080363399248377.webp",
+            "media/hero-image-wrapper/18093358691370672.webp",
+            "media/hero-image-wrapper/18094631219215243.webp",
+            "media/hero-image-wrapper/18095637905258037.webp"
+        ];
 
-    // Assign the first 3 unique random images to the HTML elements
-    document.getElementById("hero-img-1").src = shuffled[0];
-    document.getElementById("hero-img-2").src = shuffled[1];
-    document.getElementById("hero-img-3").src = shuffled[2];
-});
-</script>
+        // Shuffle the array
+        const shuffled = imagePool.sort(() => 0.5 - Math.random());
+
+        // Assign first 3 unique random images
+        document.getElementById("hero-img-1").src = shuffled[0];
+        document.getElementById("hero-img-2").src = shuffled[1];
+        document.getElementById("hero-img-3").src = shuffled[2];
+    });
+    </script>
+
     <!-- Newsletter signup submit handler -->
     <script>
         const newsletterForm = document.getElementById('newsletter-form');
@@ -249,7 +242,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 button.textContent = 'Subscribing...';
 
                 try {
-                    const response = await fetch('/.netlify/functions/subscribe', {
+                    const response = await fetch('//.netlify/functions/subscribe', {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify(data),
@@ -258,7 +251,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     const result = await response.json();
 
                     if (response.ok) {
-                        alert('✅ You\'re subscribed! Welcome to the Cozzy Club.');
+                        alert("✅ You're subscribed! Welcome to the Cozzy Club.");
                         newsletterForm.reset();
                     } else {
                         alert(`❌ ${result.error || 'Something went wrong. Please try again.'}`);
@@ -274,5 +267,4 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     </script>
 </body>
-
 </html>

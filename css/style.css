@@ -1025,6 +1025,11 @@ section.contact-form {
         max-width: 320px;
         height: 320px;
     }
+
+    .main-content {
+        padding: 20px;
+        margin: 20px auto;
+    }
 }
 
 @media (max-width: 480px) {
@@ -1072,14 +1077,6 @@ section.contact-form {
 .main-content ul {
     padding-left: 20px;
     margin-bottom: 20px;
-}
-
-/* Adjust layout behavior for mobile viewports */
-@media (max-width: 768px) {
-    .main-content {
-        padding: 20px;
-        margin: 20px auto;
-    }
 }
 
 /* === NEWSLETTER SIGNUP SECTION === */
@@ -1138,12 +1135,6 @@ section.contact-form {
     font-size: 14px;
     outline: none;
     box-sizing: border-box;
-}
-
-.newsletter-form button.button {
-    cursor: pointer;
-    white-space: nowrap;
-    padding: 10px 20px; /* Ensure padding matches the input height */
 }
 
 /* Consent Checkbox Styling */
