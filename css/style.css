@@ -1,5 +1,25 @@
 /* === A&J PERSONAL COLLECTIONS – UNIFIED CSS RESET & THEME === */
 
+/* === COLOR PALETTE ===
+   Reference list of every color used across the site. Values are hardcoded
+   throughout the file below rather than using var() everywhere yet - this
+   block is the "what colors exist and what are they for" reference. */
+:root {
+    --color-charcoal: #3F3A36;      /* Primary text, nav background, buttons */
+    --color-gold: #D2A85C;          /* Brand accent - borders, links, active states */
+    --color-rose: #D8A7B1;          /* Secondary accent - active pills, New ribbon */
+    --color-cream: #F5F4F2;         /* Main page background */
+    --color-cream-warm: #F3EAE1;    /* Header background, hover states */
+    --color-cream-light: #FDFBF7;   /* Card/panel backgrounds */
+    --color-pink-light: #EACFCF;    /* Borders, dividers */
+    --color-white: #FFFFFF;
+    --color-text-muted: #6A645F;    /* Secondary/quieter text */
+    --color-text-secondary: #555555;
+    --color-taupe: #A89F91;         /* Price text, muted borders */
+    --color-skeleton: #F0EEEA;      /* Loading placeholder base */
+    --color-skeleton-highlight: #F7F5F2; /* Loading placeholder shimmer */
+}
+
 /* === GLOBAL MOBILE-SAFE RESET === */
 *,
 *::before,

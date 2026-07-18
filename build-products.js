@@ -47,9 +47,11 @@ function buildCardHtml(product, index) {
     const title = escapeHtml(product.title);
     const price = extractPrice(product.description);
     const priceHtml = price ? `<span class="product-price">${escapeHtml(price)}</span>` : '';
+    const newRibbonHtml = product.isNew ? '<div class="ribbon-new">New</div>' : '';
 
     return `
                     <div class="grid-card" onclick="openProductDetail(${index})" role="button" tabindex="0" aria-label="View details for ${title}">
+                        ${newRibbonHtml}
                         <div class="card-inner">
                             <div class="card-image-box">
                                 <img src="${escapeHtml(product.imageUrl)}" alt="${title}" loading="lazy">
