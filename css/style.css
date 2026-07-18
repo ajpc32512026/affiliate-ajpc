@@ -455,6 +455,8 @@ section.contact-form {
     flex-direction: column;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
+	position: relative; /* Allows absolute positioning of the ribbon */
+    overflow: hidden;   /* Clips the diagonal edges of the ribbon so they don't stick out of the card */
 }
 
 .grid-card:hover {
@@ -503,6 +505,24 @@ section.contact-form {
     display: -webkit-box;
     -webkit-line-clamp: 4; /* Safety net only - fits almost every real title in full; guarantees the fixed card height can never be broken by an outlier */
     -webkit-box-orient: vertical;
+}
+/* Diagonal "New" Product Ribbon */
+.ribbon-new {
+    position: absolute;
+    top: 12px;
+    right: -24px;
+    background-color: #D8A7B1; /* Cohesive brand rose color */
+    color: #3F3A36;
+    font-size: 10px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 4px 0;
+    width: 85px;
+    text-align: center;
+    transform: rotate(45deg);
+    z-index: 5;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 /* === SKELETON LOADING STATE (shown briefly while products.json fetches) === */

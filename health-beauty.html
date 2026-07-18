@@ -401,9 +401,13 @@
                 const globalIndex = affiliateProducts.findIndex(p => p.id === product.id);
                 const parsed = extractPriceAndDesc(product.description);
                 const priceHtml = parsed.price ? `<span class="product-price">${parsed.price}</span>` : '';
+                
+                // NEW: Render the diagonal ribbon only if the product is flagged as new in products.json
+                const newRibbonHtml = product.isNew ? `<div class="ribbon-new">New</div>` : '';
 
                 return `
                     <div class="grid-card" onclick="openProductDetail(${globalIndex})" role="button" tabindex="0" aria-label="View details for ${product.title}">
+                        ${newRibbonHtml}
                         <div class="card-inner">
                             <div class="card-image-box">
                                 <img src="${product.imageUrl}" alt="${product.title}" loading="lazy">
