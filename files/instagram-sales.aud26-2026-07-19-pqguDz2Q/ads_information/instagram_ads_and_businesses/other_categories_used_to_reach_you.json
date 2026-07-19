@@ -1,0 +1,121 @@
+{
+  "media": [
+    
+  ],
+  "label_values": [
+    {
+      "label": "Name",
+      "vec": [
+        {
+          "value": "Administrative services"
+        },
+        {
+          "value": "Android: 360-degree media supported"
+        },
+        {
+          "value": "Birthday in April"
+        },
+        {
+          "value": "Engaged shoppers"
+        },
+        {
+          "value": "Facebook Page admins"
+        },
+        {
+          "value": "Facebook access (mobile): Android devices"
+        },
+        {
+          "value": "Facebook access (mobile): Samsung Android mobile devices"
+        },
+        {
+          "value": "Facebook access (mobile): all mobile devices"
+        },
+        {
+          "value": "Facebook access (mobile): smartphones and tablets"
+        },
+        {
+          "value": "Facebook access (mobile): tablets"
+        },
+        {
+          "value": "Facebook access (network type): Wi-Fi"
+        },
+        {
+          "value": "Frequent international travellers"
+        },
+        {
+          "value": "Frequent travellers"
+        },
+        {
+          "value": "Friends of football fans"
+        },
+        {
+          "value": "Friends of men with a birthday in 0-7 days"
+        },
+        {
+          "value": "Friends of men with a birthday in 7-30 days"
+        },
+        {
+          "value": "Friends of people who recently moved"
+        },
+        {
+          "value": "Friends of people with birthdays in a month"
+        },
+        {
+          "value": "Friends of people with birthdays in a week"
+        },
+        {
+          "value": "Health and beauty Page admins"
+        },
+        {
+          "value": "Lived in Philippines (formerly Expats \u00e2\u0080\u0093 Philippines)"
+        },
+        {
+          "value": "Lived in the United States (formerly Ex-pats \u00e2\u0080\u0093 United States)"
+        },
+        {
+          "value": "Lived in the United States (formerly Ex-pats \u00e2\u0080\u0093 United States)"
+        },
+        {
+          "value": "Lives abroad"
+        },
+        {
+          "value": "Mobile network or device users"
+        },
+        {
+          "value": "New Page admins"
+        },
+        {
+          "value": "New active business (<12 months)"
+        },
+        {
+          "value": "New active business (<24 months)"
+        },
+        {
+          "value": "New active business (<6 months)"
+        },
+        {
+          "value": "Newly engaged (1 year)"
+        },
+        {
+          "value": "Newly engaged (6 months)"
+        },
+        {
+          "value": "People who prefer mid-value and high-value goods in the Philippines"
+        },
+        {
+          "value": "Potential mobile network or device change"
+        },
+        {
+          "value": "Recent mobile network or device change"
+        },
+        {
+          "value": "Recently detected devices"
+        },
+        {
+          "value": "Wi-Fi Usage"
+        }
+      ]
+    }
+  ],
+  "fbid": "17841443994853810"
+}
