@@ -1,0 +1,25 @@
+============================================================
+JOB 1 - Localizing legacy external images
+============================================================
+
+Already local: 375
+Newly downloaded and localized: 0
+Failed to download: 0
+
+============================================================
+JOB 2 - Auditing media/posts/ for orphaned, missing, and duplicate files
+============================================================
+
+Total files on disk in media/posts: 375
+Total unique file paths referenced by products.json: 375
+
+Orphaned files (on disk, but no product references them): 0
+
+Broken references (product points at a file that doesn't exist): 0
+
+Checking for true duplicate images (same content, different filename)...
+True duplicate pairs found: 0
+
+SUMMARY: 0 orphaned, 0 broken references, 0 exact duplicates.
+Nothing was deleted - review the list above and remove/fix manually,
+or ask for a follow-up script once you've decided what to do with each category.

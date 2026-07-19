@@ -1,0 +1,29 @@
+{
+  "timestamp": 1783256908,
+  "media": [
+    
+  ],
+  "label_values": [
+    {
+      "label": "Consent status",
+      "value": "Withdrawn"
+    },
+    {
+      "label": "Time",
+      "timestamp_value": 1783256906
+    },
+    {
+      "label": "App",
+      "value": "Chrome on Windows"
+    },
+    {
+      "label": "App version",
+      "value": "150.0.0.0"
+    },
+    {
+      "label": "Language",
+      "value": "en_US"
+    }
+  ],
+  "fbid": "1038614925383906"
+}
