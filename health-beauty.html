@@ -144,18 +144,20 @@
         <div class="expanded-card">
             <button class="close-btn" id="close-modal-btn" aria-label="Close details">&times;</button>
             <div class="expanded-inner">
-                <div class="expanded-image-box">
-                    <img id="modal-img" src="" alt="">
-                </div>
-                <div>
-                    <h3 id="modal-title" class="expanded-title"></h3>
-                    
-                    <!-- Dynamic Promo Code Display Container -->
-                    <div id="modal-code-box" class="modal-code-box">
-                        Use Code: <span id="modal-code" class="modal-code-highlight"></span>
+                <div class="expanded-top-row">
+                    <div class="expanded-image-box">
+                        <img id="modal-img" src="" alt="">
                     </div>
+                    <div class="expanded-text-col">
+                        <h3 id="modal-title" class="expanded-title"></h3>
+                        
+                        <!-- Dynamic Promo Code Display Container -->
+                        <div id="modal-code-box" class="modal-code-box">
+                            Use Code: <span id="modal-code" class="modal-code-highlight"></span>
+                        </div>
 
-                    <p id="modal-desc" class="expanded-desc"></p>
+                        <p id="modal-desc" class="expanded-desc"></p>
+                    </div>
                 </div>
                 <a id="modal-link" href="" target="_blank" rel="noopener noreferrer" class="button modal-link-button">
                     Shop Selection
@@ -262,7 +264,18 @@
             try {
                 // Fetch your clean JSON database
                 const response = await fetch('json/products.json');
-                affiliateProducts = await response.json();
+                const rawProducts = await response.json();
+
+                // Show the newest item first, in "All" and within every category.
+                // If products.json ever gains a "dateAdded" field, sort by that (most
+                // recent first). Otherwise assume new items are appended to the end
+                // of the file and simply reverse, so the last one added shows first.
+                const hasDates = Array.isArray(rawProducts) && rawProducts.every(p => p.dateAdded);
+                affiliateProducts = Array.isArray(rawProducts)
+                    ? (hasDates
+                        ? [...rawProducts].sort((a, b) => new Date(b.dateAdded) - new Date(a.dateAdded))
+                        : [...rawProducts].reverse())
+                    : rawProducts;
 
                 if (gridContainer && Array.isArray(affiliateProducts)) {
                     if (affiliateProducts.length === 0) {

@@ -605,8 +605,8 @@ section.contact-form {
     background-color: #FFFFFF;
     border: 2px solid #D2A85C;
     border-radius: 12px;
-    width: 300px;
-    min-height: 400px;
+    width: min(94vw, 760px);
+    min-height: 420px;
     height: auto;
     box-sizing: border-box;
     padding: 15px;
@@ -614,7 +614,7 @@ section.contact-form {
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-start;
     text-align: center;
 }
 
@@ -622,29 +622,46 @@ section.contact-form {
     border: 2px solid #F5F4F2;
     border-radius: 8px;
     padding: 12px;
-    flex: 1;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    gap: 10px;
+    gap: 14px;
     box-sizing: border-box;
 }
 
+.expanded-top-row {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 20px;
+}
+
 .expanded-image-box {
-    height: 140px;
+    flex: 1;
+    min-width: 0;
+    max-height: 600px;
     display: flex;
     align-items: center;
     justify-content: center;
     overflow: hidden;
-    flex-shrink: 0;
     border-radius: 6px;
     background-color: #F5F4F2;
 }
 
 .expanded-image-box img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+    display: block;
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 600px;
+    object-fit: contain;
+    border-radius: 4px;
+}
+
+.expanded-text-col {
+    width: 230px;
+    flex-shrink: 0;
+    text-align: left;
 }
 
 .expanded-title {
@@ -1059,6 +1076,20 @@ section.contact-form {
     
     .hero-collage .hero-image-wrapper:nth-child(2) {
         display: none;
+    }
+
+    .expanded-top-row {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .expanded-image-box {
+        width: 100%;
+    }
+
+    .expanded-text-col {
+        width: 100%;
+        text-align: center;
     }
 }
 /* === MAIN CONTENT (Legal & Standard Pages) === */
