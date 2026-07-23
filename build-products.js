@@ -43,6 +43,27 @@ function extractPrice(description) {
     return '';
 }
 
+// Same as extractPrice(), but strips currency symbols/letters down to a
+// plain number (e.g. "AU$17.95" -> "17.95"), since schema.org's Offer.price
+// expects a bare numeric string, not a formatted display price.
+function extractNumericPrice(description) {
+    const price = extractPrice(description);
+    const match = price.match(/[\d.]+/);
+    return match ? match[0] : '';
+}
+
+// Strips the "Price: X |" prefix off, returning just the human-readable
+// description text (mirrors extractPriceAndDesc()'s cleanDesc in the client JS).
+function extractCleanDesc(description) {
+    if (description && description.startsWith('Price:')) {
+        const parts = description.split('|');
+        if (parts.length > 1) {
+            return parts.slice(1).join('|').trim();
+        }
+    }
+    return description || '';
+}
+
 function buildCardHtml(product, index) {
     const title = escapeHtml(product.title);
     const price = extractPrice(product.description);
@@ -61,6 +82,50 @@ function buildCardHtml(product, index) {
                         </div>
                     </div>
                 `;
+}
+
+// Builds a single schema.org ItemList of Products from the same data used to
+// render the visible cards, so search engines can show price/image rich
+// snippets for individual products without any extra content to maintain.
+function buildProductJsonLd(products) {
+    const itemListElement = products.map((product, index) => {
+        const numericPrice = extractNumericPrice(product.description);
+        const offer = {
+            '@type': 'Offer',
+            url: product.affiliateLink || undefined,
+            priceCurrency: 'AUD',
+            price: numericPrice || undefined,
+            availability: 'https://schema.org/InStock',
+            seller: {
+                '@type': 'Organization',
+                name: product.source || 'Shein',
+            },
+        };
+
+        return {
+            '@type': 'ListItem',
+            position: index + 1,
+            item: {
+                '@type': 'Product',
+                name: product.title,
+                image: product.imageUrl,
+                description: extractCleanDesc(product.description),
+                offers: offer,
+            },
+        };
+    });
+
+    const jsonLd = {
+        '@context': 'https://schema.org',
+        '@type': 'ItemList',
+        itemListElement,
+    };
+
+    // Escape "<" so nothing inside product text (e.g. a stray "</script>")
+    // can break out of the script tag.
+    const safeJson = JSON.stringify(jsonLd).replace(/</g, '\\u003c');
+
+    return `<script type="application/ld+json">${safeJson}</script>`;
 }
 
 function run() {
@@ -97,7 +162,8 @@ function run() {
     }
 
     const cardsHtml = products.map(buildCardHtml).join('');
-    const injectedBlock = `${START_MARKER}\n${cardsHtml}\n                ${END_MARKER}`;
+    const productJsonLd = buildProductJsonLd(products);
+    const injectedBlock = `${START_MARKER}\n${cardsHtml}\n                ${productJsonLd}\n                ${END_MARKER}`;
 
     let html = fs.readFileSync(HTML_PATH, 'utf-8');
 

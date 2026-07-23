@@ -112,6 +112,13 @@ p, li, td, th, .tagline {
     margin: 0;
 }
 
+.page-heading .affiliate-note {
+    font-size: 0.8em;
+    color: #8A8378;
+    font-style: italic;
+    margin: 10px 0 0 0;
+}
+
 /* === SUBSCRIBE BANNER === */
 .subscribe-banner {
     background-color: #3F3A36;
