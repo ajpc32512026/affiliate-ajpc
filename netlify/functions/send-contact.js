@@ -40,14 +40,22 @@ exports.handler = async (event) => {
         body: JSON.stringify({ error: `Message exceeds ${MAX_CHARS} non-space characters.` }),
       };
     }
+    if (!process.env.BREVO_SMTP_USER || !process.env.BREVO_SMTP_PASS || !process.env.CONTACT_RECEIVER_EMAIL) {
+      console.error('[send-contact.js] Missing required environment variables (BREVO_SMTP_USER, BREVO_SMTP_PASS, CONTACT_RECEIVER_EMAIL).');
+      return {
+        statusCode: 500,
+        body: JSON.stringify({ error: 'Server is not configured correctly. Please try again later.' }),
+      };
+    }
+
     // SMTP setup (Brevo / Sendinblue)
     const transporter = nodemailer.createTransport({
       host: 'smtp-relay.brevo.com',
       port: 587,
       secure: false,
       auth: {
-        user: 'b20b03001@smtp-brevo.com',
-        pass: process.env.BREVO_SMTP_KEY,
+        user: process.env.BREVO_SMTP_USER,
+        pass: process.env.BREVO_SMTP_PASS,
       },
       tls: {
         rejectUnauthorized: false,
@@ -55,7 +63,7 @@ exports.handler = async (event) => {
       connectionTimeout: 10000, // 10 seconds timeout safeguard
     });
     const senderEmail = 'hello@cozzycollections.com.au';
-    const recipientEmail = 'sales.aud26@gmail.com';
+    const recipientEmail = process.env.CONTACT_RECEIVER_EMAIL;
     const mailOptions = {
       from: `"Cozzy Collections" <${senderEmail}>`,
       to: recipientEmail,

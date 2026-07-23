@@ -2,4 +2,3 @@ User-agent: *
 Disallow:
 
 Sitemap: https://cozzycollections.com.au/sitemap.xml
-Sitemap: https://cozzycollections.com.au/sitemap.html

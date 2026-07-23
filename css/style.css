@@ -206,6 +206,31 @@ nav.topnav a.active {
     border-color: #D8A7B1;
 }
 
+.topnav-socials {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-shrink: 0;
+}
+
+.topnav-socials a {
+    display: inline-flex;
+    line-height: 0;
+}
+
+.topnav-socials img {
+    height: 20px;
+    width: 20px;
+    opacity: 0.9;
+    transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.topnav-socials a:hover img,
+.topnav-socials a:focus img {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
 /* === MODAL POP-OUT STYLES (Mobile-Optimized & Scroll-Protected) === */
 .guidelines-trigger-btn {
     background-color: #FDFBF7;
@@ -1013,6 +1038,10 @@ section.contact-form {
 
     nav.topnav a {
         padding: 10px 18px; /* extra breathing room so text never crowds the pill border */
+    }
+
+    .topnav-socials {
+        margin-top: 2px;
     }
 
     .guidelines-trigger-btn {

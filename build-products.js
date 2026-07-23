@@ -76,7 +76,16 @@ function run() {
 
     let products;
     try {
-        products = JSON.parse(fs.readFileSync(PRODUCTS_PATH, 'utf-8'));
+        const rawProducts = JSON.parse(fs.readFileSync(PRODUCTS_PATH, 'utf-8'));
+        // Mirror the same "newest first" ordering used by the client-side JS
+        // in health-beauty.html, so crawlers/no-JS visitors see the exact
+        // same product order as everyone else.
+        const hasDates = Array.isArray(rawProducts) && rawProducts.every(p => p.dateAdded);
+        products = Array.isArray(rawProducts)
+            ? (hasDates
+                ? [...rawProducts].sort((a, b) => new Date(b.dateAdded) - new Date(a.dateAdded))
+                : [...rawProducts].reverse())
+            : rawProducts;
     } catch (err) {
         console.error('[build-products] Failed to parse products.json - leaving health-beauty.html untouched:', err.message);
         return;
