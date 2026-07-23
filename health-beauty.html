@@ -145,6 +145,12 @@
                 <div class="grid-card skeleton-card"><div class="card-inner"><div class="skeleton-box skeleton-image"></div><div class="skeleton-box skeleton-line"></div><div class="skeleton-box skeleton-line short"></div></div></div>
                 <!-- SSR_PRODUCTS_END -->
             </div>
+            <!-- SSR_PRODUCT_JSONLD_START -->
+            <!-- Netlify's build step (build-products.js) injects the Product structured
+                 data here on deploy. Deliberately placed OUTSIDE #product-grid-container
+                 so the client-side renderGrid() re-render (which replaces that div's
+                 innerHTML) never wipes it out. -->
+            <!-- SSR_PRODUCT_JSONLD_END -->
         </section>
 
     </main>

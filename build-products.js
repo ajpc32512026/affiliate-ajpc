@@ -19,6 +19,8 @@ const PRODUCTS_PATH = path.join(__dirname, 'json', 'products.json');
 const HTML_PATH = path.join(__dirname, 'health-beauty.html');
 const START_MARKER = '<!-- SSR_PRODUCTS_START -->';
 const END_MARKER = '<!-- SSR_PRODUCTS_END -->';
+const JSONLD_START_MARKER = '<!-- SSR_PRODUCT_JSONLD_START -->';
+const JSONLD_END_MARKER = '<!-- SSR_PRODUCT_JSONLD_END -->';
 
 function escapeHtml(str) {
     if (!str) return '';
@@ -163,25 +165,34 @@ function run() {
 
     const cardsHtml = products.map(buildCardHtml).join('');
     const productJsonLd = buildProductJsonLd(products);
-    const injectedBlock = `${START_MARKER}\n${cardsHtml}\n                ${productJsonLd}\n                ${END_MARKER}`;
 
     let html = fs.readFileSync(HTML_PATH, 'utf-8');
 
-    const startIdx = html.indexOf(START_MARKER);
-    const endIdx = html.indexOf(END_MARKER);
+    html = injectBetweenMarkers(html, START_MARKER, END_MARKER, `\n${cardsHtml}\n                `, HTML_PATH);
+    if (html === null) return;
 
-    if (startIdx === -1 || endIdx === -1 || endIdx < startIdx) {
-        console.error('[build-products] SSR markers not found in health-beauty.html - leaving it untouched.');
-        return;
-    }
-
-    const before = html.slice(0, startIdx);
-    const after = html.slice(endIdx + END_MARKER.length);
-
-    html = before + injectedBlock + after;
+    html = injectBetweenMarkers(html, JSONLD_START_MARKER, JSONLD_END_MARKER, `\n            ${productJsonLd}\n            `, HTML_PATH);
+    if (html === null) return;
 
     fs.writeFileSync(HTML_PATH, html, 'utf-8');
-    console.log(`[build-products] Pre-rendered ${products.length} product cards into health-beauty.html.`);
+    console.log(`[build-products] Pre-rendered ${products.length} product cards and structured data into health-beauty.html.`);
+}
+
+// Replaces everything between a pair of HTML comment markers with new content,
+// keeping the markers themselves in place so this can run again on the next build.
+function injectBetweenMarkers(html, startMarker, endMarker, content, htmlPath) {
+    const startIdx = html.indexOf(startMarker);
+    const endIdx = html.indexOf(endMarker);
+
+    if (startIdx === -1 || endIdx === -1 || endIdx < startIdx) {
+        console.error(`[build-products] Markers "${startMarker}" / "${endMarker}" not found in ${htmlPath} - leaving it untouched.`);
+        return null;
+    }
+
+    const before = html.slice(0, startIdx + startMarker.length);
+    const after = html.slice(endIdx);
+
+    return before + content + after;
 }
 
 run();
