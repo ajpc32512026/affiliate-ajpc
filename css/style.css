@@ -909,7 +909,7 @@ section.contact-form {
   max-width: 500px;
 }
 
-.hero-split-text h1 {
+.hero-split-text h3 {
   font-size: 2.8rem;
   color: #3F3A36;
   margin: 0 0 15px 0;
@@ -931,12 +931,56 @@ section.contact-form {
   border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  position: relative;
+}
+
+.hero-split-image a {
+  display: block;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
 }
 
 .hero-split-image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transition: transform 0.3s ease-in-out;
+}
+
+.hero-split-image a:hover img,
+.hero-split-image a:focus img {
+  transform: scale(1.04);
+}
+
+.featured-product-overlay {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 18px 16px 14px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0));
+  color: #FDFBF7;
+}
+
+.featured-product-title {
+  font-size: 0.9rem;
+  font-weight: 600;
+  line-height: 1.3;
+  margin: 0 0 4px 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.featured-product-cta {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #D2A85C;
+  margin: 0;
 }
 
 /* === RESPONSIVE LAYOUTS === */

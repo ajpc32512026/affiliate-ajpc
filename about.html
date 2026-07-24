@@ -22,6 +22,7 @@
 <!-- Preload (Keep these) -->
     <link rel="preload" href="img/header.svg" as="image">
     <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
+    <link rel="canonical" href="https://cozzycollections.com.au/about.html">
 
     <!-- Favicons (Updated) -->
     <link rel="icon" href="img/favicon/favicon.ico" sizes="32x32">
@@ -114,7 +115,7 @@
         <div class="intro-text">
 <h2>Our Story</h2>
             <p>
-    Cozzy Collections started as a simple way for us to share our favorite skincare and beauty finds. Since settling in Australia, we have expanded our focus to include everyday fashion and practical homewares. Today, we curate and recommend a variety of items we use in our daily lives—ranging from clothing for the whole family to kitchen and home essentials.
+    A&J Personal Collections started as a simple way for us to share our favorite skincare and beauty finds. Since settling in Australia, we have expanded our focus to include everyday fashion and practical homewares. Today, we curate and recommend a variety of items we use in our daily lives—ranging from clothing for the whole family to kitchen and home essentials.
 </p>
 <p>
     We run this platform together as a team. Anna focuses on style, design, and visual appeal, while John looks at the practical side—checking for functionality, durability, and reasonable pricing. This balance helps us make sure that every recommendation is both nice to look at and genuinely useful.
@@ -130,13 +131,22 @@
 <div class="hero-split">
   <!-- Left Side: Warm background with your page introduction -->
   <div class="hero-split-text">
-    <h1>Our Story</h1>
-    <p>Hand-picking simple, elegant essentials for your everyday life.</p>
+    <h3>Cosy Picks</h3>
+    <p>This little corner changes as often as we do &mdash; a rotating glimpse into what's making us feel cosy, stylish, and a little bit spoiled lately.</p>
   </div>
   
-  <!-- Right Side: Contained image wrapper that keeps the photo at its sharp native resolution -->
+  <!-- Right Side: Rotating "featured product" spotlight, powered by js/featured-product.js.
+       Same fixed-size container/crop as before; falls back to this jacket photo
+       if JS is disabled or products.json can't be reached. -->
   <div class="hero-split-image">
-    <img src="media/posts/18174939343425855.webp" alt="Cozzy Collections">
+    <a id="featured-product-link" href="#" target="_blank" rel="noopener noreferrer" aria-label="Shop this look">
+        <div class="ribbon-new" id="featured-product-ribbon" style="display: none;">New</div>
+        <img id="featured-product-img" src="media/posts/18174939343425855.webp" alt="Casual Elegant Beige Loose Jacket For Spring Autumn Winter">
+        <div class="featured-product-overlay">
+            <p class="featured-product-title" id="featured-product-title">Casual Elegant Beige Loose Jacket For Spring Autumn Winter</p>
+            <p class="featured-product-cta">Shop this look &rarr;</p>
+        </div>
+    </a>
   </div>
 </div>
     </section>
@@ -164,6 +174,7 @@
 
     <!-- Consolidated global script -->
     <script src="js/global.js"></script>
+    <script src="js/featured-product.js"></script>
 </body>
 
 </html>
