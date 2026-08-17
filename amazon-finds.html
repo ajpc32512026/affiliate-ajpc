@@ -1,0 +1,506 @@
+	<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-TTX18YC6KJ"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-TTX18YC6KJ');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amazon Finds – Cozzy Collections</title>
+    <meta name="description" content="Our favourite Amazon finds for the kitchen, home, and everyday life, hand-picked by Anna and John.">
+    <meta name="keywords" content="Amazon Finds, Kitchen Gadgets, Homewares, Amazon Associates, Cozzy Collections">
+    <meta name="author" content="Cozzy Collections">
+    <meta name="robots" content="index, follow">
+
+<!-- Preload (Keep these) -->
+    <link rel="preload" href="img/header.svg" as="image">
+    <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
+    <link rel="canonical" href="https://cozzycollections.com.au/amazon-finds.html">
+
+    <!-- Favicons (Updated) -->
+    <link rel="icon" href="img/favicon/favicon.ico" sizes="32x32">
+    <link rel="icon" href="img/favicon/favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="img/favicon/favicon.svg">
+    <link rel="manifest" href="img/favicon/site.webmanifest">
+    <meta name="theme-color" content="#e2c7c5">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Amazon Finds – Cozzy Collections">
+    <meta property="og:description" content="Our favourite Amazon finds for the kitchen, home, and everyday life, hand-picked by Anna and John.">
+    <meta property="og:image" content="https://cozzycollections.com.au/img/og-cozzy-collections.jpg">
+    <meta property="og:url" content="https://cozzycollections.com.au/amazon-finds.html">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Amazon Finds – Cozzy Collections">
+    <meta name="twitter:description" content="Our favourite Amazon finds for the kitchen, home, and everyday life, hand-picked by Anna and John.">
+    <meta name="twitter:image" content="https://cozzycollections.com.au/img/og-cozzy-collections.jpg">
+
+    <!-- Styles (Global Firm Stylesheet) -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Deal pricing styles (scoped additions for the deal ribbon/price display) -->
+    <style>
+        .card-image-box { position: relative; }
+        .ribbon-deal {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #B85C5C;
+            color: #FFFFFF;
+            text-align: center;
+            font-family: Tahoma, Arial, sans-serif;
+            font-size: 0.75em;
+            font-weight: bold;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            padding: 5px 0;
+        }
+        .product-price-row { display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; }
+        .price-was { text-decoration: line-through; opacity: 0.6; }
+        .price-now { color: #B85C5C; font-weight: bold; }
+        .savings-badge {
+            font-family: Tahoma, Arial, sans-serif;
+            font-size: 0.75em;
+            font-weight: bold;
+            color: #B85C5C;
+        }
+        .expanded-image-box { position: relative; }
+        .expanded-price-row { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; margin: 8px 0 12px; font-family: Tahoma, Arial, sans-serif; }
+    </style>
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Cozzy Collections",
+        "url": "https://cozzycollections.com.au",
+        "logo": "https://cozzycollections.com.au/img/logo.png",
+        "sameAs": [
+            "https://www.facebook.com/profile.php?id=61591475499934",
+            "https://www.threads.com/@sales.aud26",
+            "https://www.instagram.com/sales.aud26/"
+        ]
+    }
+    </script>
+</head>
+
+<body>
+    <!-- HEADER -->
+    <header class="hero-banner">
+        <img src="img/header.svg" alt="Cozzy Collections Banner" class="banner-img">
+    </header>
+
+    <!-- SUBSCRIBE BANNER -->
+    <div id="subscribe-banner" class="subscribe-banner">
+        <p>&#10022; Don't miss our latest curated finds &mdash; <a href="index.html#newsletter">Subscribe for updates</a> &#10022;</p>
+        <button id="dismiss-banner-btn" aria-label="Dismiss this banner">&times;</button>
+    </div>
+    <script>
+        if (localStorage.getItem('subscribeBannerDismissed') === 'true') {
+            document.getElementById('subscribe-banner').style.display = 'none';
+        }
+    </script>
+
+    <!-- NAVIGATION -->
+    <nav class="topnav">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="health-beauty.html">Products</a></li>
+            <li><a href="amazon-finds.html" class="active">Amazon Finds</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+			<li><a href="shutter-photo-print.html" target="_blank" rel="noopener noreferrer">Photo To Print</a></li>
+        </ul>
+
+        <!-- Guidelines Trigger Button -->
+        <button id="open-guidelines-btn" class="guidelines-trigger-btn" onclick="toggleGuidelinesModal(true)">
+            &#10022; Purchase Guidelines &#10022;
+        </button>
+        <div class="topnav-socials">
+            <a href="https://www.facebook.com/profile.php?id=61591475499934" target="_blank" title="Follow us on Facebook" rel="noopener noreferrer">
+                <img src="img/fb-icon.svg" alt="Facebook">
+            </a>
+            <a href="https://www.threads.com/@sales.aud26" target="_blank" title="Follow us on Threads" rel="noopener noreferrer">
+                <img src="img/th-icon.svg" alt="Threads">
+            </a>
+            <a href="https://www.instagram.com/sales.aud26/" target="_blank" title="Follow us on Instagram" rel="noopener noreferrer">
+                <img src="img/ig-icon.svg" alt="Instagram">
+            </a>
+        </div>
+    </nav>
+
+    <!-- INTRO -->
+    <section class="page-heading">
+        <h1>Amazon Finds</h1>
+        <p class="tagline">Kitchen gadgets, homewares, and everyday essentials hand-selected for quality, utility, and style &mdash; sourced through Amazon.</p>
+        <p class="affiliate-note">As an Amazon Associate, Cozzy Collections earns from qualifying purchases. Some links on this page are affiliate links, and we may earn a small commission at no extra cost to you.</p>
+    </section>
+
+    <!-- TWO-COLUMN LAYOUT WRAPPER -->
+    <main class="catalog-layout">
+
+        <!-- Mobile-only category toggle -->
+        <button type="button" class="category-filter-toggle" id="category-filter-toggle" aria-expanded="false" aria-controls="catalog-sidebar-container">
+            <span id="category-filter-label">Filter by Category</span>
+            <span class="chevron">&#9662;</span>
+        </button>
+
+        <!-- Dynamic left sidebar -->
+        <aside class="catalog-sidebar" id="catalog-sidebar-container" role="navigation" aria-label="Category Navigation">
+            <div class="sidebar-title"><strong>Categories</strong></div>
+            <!-- Dynamic Category buttons load here -->
+        </aside>
+
+        <!-- Right-side product display column -->
+        <section class="catalog-content">
+            <div class="affiliate-grid" id="product-grid-container">
+                <p style="color: #3F3A36; text-align: center; grid-column: 1/-1;">Loading our latest Amazon finds...</p>
+            </div>
+        </section>
+
+    </main>
+
+    <button id="backToTopBtn" aria-label="Back to top">&uarr; Back to Top</button>
+
+    <!-- MODAL DETAIL OVERLAY -->
+    <div id="detail-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <div class="expanded-card">
+            <button class="close-btn" id="close-modal-btn" aria-label="Close details">&times;</button>
+            <div class="expanded-inner">
+                <div class="expanded-top-row">
+                    <div class="expanded-image-box">
+                        <img id="modal-img" src="" alt="">
+                        <div id="modal-deal-ribbon" class="ribbon-deal" style="display:none;"></div>
+                    </div>
+                    <div class="expanded-text-col">
+                        <h3 id="modal-title" class="expanded-title"></h3>
+                        <div id="modal-price-row" class="expanded-price-row"></div>
+                        <p id="modal-desc" class="expanded-desc"></p>
+                    </div>
+                </div>
+                <a id="modal-link" href="" target="_blank" rel="noopener noreferrer sponsored" class="button modal-link-button">
+                    View on Amazon
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <p class="footer-main">
+            <span class="footer-disclosure">
+                As an Amazon Associate, Cozzy Collections earns from qualifying purchases. This website is a curated product discovery platform designed to share recommendations and shopping finds. We do not sell any items directly; all links redirect to third-party merchant websites where purchases are processed. While we strive to show accurate details, please verify final prices, shipping terms, and product availability directly on the merchant's website before completing your purchase.
+            </span><br><br>
+
+            &copy; 2026 Cozzy Collections &middot; Handcrafted curation &middot;
+            <a href="privacy.html">Privacy Policy</a> &middot;
+            <a href="terms.html">T's &amp; C's</a>
+
+        </p>
+    </footer>
+
+    <!-- GUIDELINES MODAL POP-OUT -->
+    <div id="guidelines-modal" class="guidelines-modal-backdrop" aria-hidden="true" onclick="handleBackdropClick(event)">
+        <div class="guidelines-modal-content">
+            <button class="guidelines-modal-close" onclick="toggleGuidelinesModal(false)" aria-label="Close guidelines">&times;</button>
+            <h3 class="guidelines-modal-header">&#10022; Purchase Guidelines &#10022;</h3>
+            <div class="guidelines-modal-body">
+                <p>Our Amazon picks are hand-selected items we'd genuinely use ourselves. When you click <strong>View on Amazon</strong>, a new secure window opens directly to the product listing on Amazon.com.au.</p>
+
+                <p>As an Amazon Associate, Cozzy Collections earns from qualifying purchases made through these links, at no extra cost to you.</p>
+
+                <p>This website is a curated product discovery platform designed to share recommendations and shopping finds. We do not sell any items directly; all links redirect to Amazon, where purchases, shipping, and returns are handled entirely under Amazon's own terms. Please verify final prices and availability directly on Amazon before completing your purchase.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/global.js"></script>
+    <script>
+        let affiliateProducts = []; // Loaded dynamically from amazon-finds.json
+        let activeCategory = 'All';
+
+        // Reliable date parser: handles dd/mm/yyyy (current format) and falls back to
+        // yyyy-mm-dd (legacy format) since the browser's native Date parser reads
+        // slash-separated dates as mm/dd/yyyy and silently breaks on dd/mm/yyyy input.
+        function parseProductDate(dateStr) {
+            if (!dateStr) return new Date(0);
+            const slashMatch = dateStr.match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})$/);
+            if (slashMatch) {
+                const [, dd, mm, yyyy] = slashMatch;
+                return new Date(Number(yyyy), Number(mm) - 1, Number(dd));
+            }
+            const isoMatch = dateStr.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+            if (isoMatch) {
+                const [, yyyy, mm, dd] = isoMatch;
+                return new Date(Number(yyyy), Number(mm) - 1, Number(dd));
+            }
+            const fallback = new Date(dateStr);
+            return isNaN(fallback.getTime()) ? new Date(0) : fallback;
+        }
+
+        // Helper function to extract price and description on the fly
+        function extractPriceAndDesc(description) {
+            const result = {
+                price: '',
+                cleanDesc: description || ''
+            };
+
+            if (description && description.startsWith('Price:')) {
+                const parts = description.split('|');
+                if (parts.length > 1) {
+                    result.price = parts[0].replace('Price:', '').trim();
+                    result.cleanDesc = parts.slice(1).join('|').trim();
+                }
+            }
+            return result;
+        }
+
+        // Guidelines Modal Toggle Logic
+        function toggleGuidelinesModal(isOpen) {
+            const modal = document.getElementById('guidelines-modal');
+            if (!modal) return;
+
+            if (isOpen) {
+                modal.classList.add('is-active');
+                modal.setAttribute('aria-hidden', 'false');
+                document.body.style.overflow = 'hidden';
+            } else {
+                modal.classList.remove('is-active');
+                modal.setAttribute('aria-hidden', 'true');
+                document.body.style.overflow = '';
+            }
+        }
+
+        function handleBackdropClick(event) {
+            const modalContent = document.querySelector('.guidelines-modal-content');
+            if (modalContent && !modalContent.contains(event.target)) {
+                toggleGuidelinesModal(false);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', async () => {
+            const gridContainer = document.getElementById('product-grid-container');
+            const sidebarContainer = document.getElementById('catalog-sidebar-container');
+            const modal = document.getElementById('detail-modal');
+            const closeModalBtn = document.getElementById('close-modal-btn');
+
+            try {
+                const response = await fetch('json/amazon-finds.json');
+                const rawProducts = await response.json();
+
+                // Newest first: keyed off an explicit dateAdded field, never a blind
+                // array reverse, so this stays correct no matter the insertion order.
+                const hasDates = Array.isArray(rawProducts) && rawProducts.every(p => p.dateAdded);
+                affiliateProducts = Array.isArray(rawProducts)
+                    ? (hasDates
+                        ? [...rawProducts].sort((a, b) => parseProductDate(b.dateAdded) - parseProductDate(a.dateAdded))
+                        : [...rawProducts])
+                    : rawProducts;
+
+                if (gridContainer && Array.isArray(affiliateProducts)) {
+                    if (affiliateProducts.length === 0) {
+                        gridContainer.innerHTML = '<p style="color: #3F3A36; text-align: center; grid-column: 1/-1;">Our Amazon picks are currently compiling. Check back shortly!</p>';
+                        return;
+                    }
+
+                    const uniqueCategories = [...new Set(affiliateProducts.map(p => p.category))].filter(Boolean).sort();
+
+                    renderSidebar(uniqueCategories);
+                    renderGrid('All');
+                }
+            } catch (err) {
+                console.error("Failed to load amazon-finds.json:", err);
+                if (gridContainer) {
+                    gridContainer.innerHTML = '<p style="color: #D8A7B1; text-align: center; grid-column: 1/-1;">Error loading products. Please refresh.</p>';
+                }
+            }
+
+            // Mobile category filter toggle
+            const filterToggleBtn = document.getElementById('category-filter-toggle');
+            if (filterToggleBtn && sidebarContainer) {
+                filterToggleBtn.addEventListener('click', () => {
+                    const isOpen = sidebarContainer.classList.toggle('is-open');
+                    filterToggleBtn.classList.toggle('is-open', isOpen);
+                    filterToggleBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+                });
+
+                document.addEventListener('click', (e) => {
+                    const clickedInsidePanel = sidebarContainer.contains(e.target);
+                    const clickedToggle = filterToggleBtn.contains(e.target);
+                    if (!clickedInsidePanel && !clickedToggle && sidebarContainer.classList.contains('is-open')) {
+                        sidebarContainer.classList.remove('is-open');
+                        filterToggleBtn.classList.remove('is-open');
+                        filterToggleBtn.setAttribute('aria-expanded', 'false');
+                    }
+                });
+            }
+
+            if (closeModalBtn) {
+                closeModalBtn.addEventListener('click', closeProductDetail);
+            }
+            if (modal) {
+                modal.addEventListener('click', (e) => {
+                    if (e.target === modal) closeProductDetail();
+                });
+            }
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    closeProductDetail();
+                    toggleGuidelinesModal(false);
+                }
+            });
+        });
+
+        function renderSidebar(categories) {
+            const sidebar = document.getElementById('catalog-sidebar-container');
+            if (!sidebar) return;
+
+            sidebar.innerHTML = '<div class="sidebar-title"><strong>Categories</strong></div>';
+
+            const allBtn = document.createElement('button');
+            allBtn.className = 'category-nav-btn active';
+            allBtn.textContent = 'All Selections';
+            allBtn.onclick = () => filterCategory('All', allBtn);
+            sidebar.appendChild(allBtn);
+
+            categories.forEach(cat => {
+                const btn = document.createElement('button');
+                btn.className = 'category-nav-btn';
+                btn.textContent = cat;
+                btn.onclick = () => filterCategory(cat, btn);
+                sidebar.appendChild(btn);
+            });
+        }
+
+        function filterCategory(categoryName, clickedBtn) {
+            document.querySelectorAll('.category-nav-btn').forEach(btn => btn.classList.remove('active'));
+            clickedBtn.classList.add('active');
+
+            renderGrid(categoryName);
+
+            const sidebarContainer = document.getElementById('catalog-sidebar-container');
+            const filterToggleBtn = document.getElementById('category-filter-toggle');
+            const filterLabel = document.getElementById('category-filter-label');
+            if (sidebarContainer) sidebarContainer.classList.remove('is-open');
+            if (filterToggleBtn) {
+                filterToggleBtn.classList.remove('is-open');
+                filterToggleBtn.setAttribute('aria-expanded', 'false');
+            }
+            if (filterLabel) {
+                filterLabel.textContent = categoryName === 'All' ? 'Filter by Category' : categoryName;
+            }
+
+            const catalogContainer = document.querySelector('.catalog-layout');
+            if (catalogContainer) {
+                catalogContainer.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        function renderGrid(categoryFilter) {
+            const gridContainer = document.getElementById('product-grid-container');
+            if (!gridContainer) return;
+
+            const filteredProducts = (categoryFilter === 'All')
+                ? affiliateProducts
+                : affiliateProducts.filter(p => p.category === categoryFilter);
+
+            if (filteredProducts.length === 0) {
+                gridContainer.innerHTML = '<p style="color: #3F3A36; text-align: center; grid-column: 1/-1;">No products found in this category.</p>';
+                return;
+            }
+
+            gridContainer.innerHTML = filteredProducts.map(product => {
+                const globalIndex = affiliateProducts.findIndex(p => p.id === product.id);
+                const parsed = extractPriceAndDesc(product.description);
+
+                let priceHtml = '';
+                let dealRibbonHtml = '';
+                if (product.deal && product.deal.price) {
+                    priceHtml = `
+                        <div class="product-price-row">
+                            <span class="product-price price-was">${parsed.price}</span>
+                            <span class="price-now">AU$${product.deal.price}</span>
+                            ${product.deal.savingsPercent ? `<span class="savings-badge">Save ${product.deal.savingsPercent}%</span>` : ''}
+                        </div>
+                    `;
+                    dealRibbonHtml = `<div class="ribbon-deal">${product.deal.savingsPercent ? `Save ${product.deal.savingsPercent}%` : 'Deal'}</div>`;
+                } else if (parsed.price) {
+                    priceHtml = `<span class="product-price">${parsed.price}</span>`;
+                }
+
+                const newRibbonHtml = product.isNew ? `<div class="ribbon-new">New</div>` : '';
+
+                return `
+                    <div class="grid-card" onclick="openProductDetail(${globalIndex})" role="button" tabindex="0" aria-label="View details for ${product.title}">
+                        ${newRibbonHtml}
+                        <div class="card-inner">
+                            <div class="card-image-box">
+                                <img src="${product.imageUrl}" alt="${product.title}" loading="lazy">
+                                ${dealRibbonHtml}
+                            </div>
+                            <h4 class="card-title">${product.title}</h4>
+                            ${priceHtml}
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function openProductDetail(index) {
+            const product = affiliateProducts[index];
+            if (!product) return;
+
+            const parsed = extractPriceAndDesc(product.description);
+
+            document.getElementById('modal-img').src = product.imageUrl;
+            document.getElementById('modal-img').alt = product.title;
+
+            document.getElementById('modal-title').textContent = product.title;
+
+            const priceRow = document.getElementById('modal-price-row');
+            const dealRibbon = document.getElementById('modal-deal-ribbon');
+            if (product.deal && product.deal.price) {
+                priceRow.innerHTML = `
+                    <span class="product-price price-was">${parsed.price}</span>
+                    <span class="price-now">AU$${product.deal.price}</span>
+                    ${product.deal.savingsPercent ? `<span class="savings-badge">Save ${product.deal.savingsPercent}%</span>` : ''}
+                `;
+                dealRibbon.textContent = product.deal.savingsPercent ? `Save ${product.deal.savingsPercent}%` : 'Deal';
+                dealRibbon.style.display = 'block';
+            } else {
+                priceRow.innerHTML = parsed.price ? `<span class="product-price">${parsed.price}</span>` : '';
+                dealRibbon.style.display = 'none';
+            }
+
+            document.getElementById('modal-desc').textContent = parsed.cleanDesc;
+            document.getElementById('modal-link').href = product.affiliateLink;
+
+            const modal = document.getElementById('detail-modal');
+            modal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeProductDetail() {
+            const modal = document.getElementById('detail-modal');
+            if (modal) {
+                modal.style.display = 'none';
+            }
+            document.body.style.overflow = '';
+        }
+    </script>
+</body>
+
+</html>

@@ -1,15 +1,4 @@
 // featured-product.js
-//
-// Powers the rotating "featured product" spotlight on about.html's hero image.
-// Picks one random product from json/products.json to showcase.
-//
-// The same pick persists across page views within one browser session (via
-// sessionStorage) - so clicking around the site doesn't reroll it every time
-// you land back on About - but opening the site again in a new tab/window
-// (or after the browser was fully closed) gets a fresh random pick.
-//
-// If products.json can't be loaded for any reason, the original hardcoded
-// jacket photo already in the HTML is left untouched as a fallback.
 
 document.addEventListener('DOMContentLoaded', () => {
     const STORAGE_KEY = 'featuredProductId';
@@ -21,8 +10,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (!link || !img) return; // Not on this page
 
-    // Mirrors extractPriceAndDesc() in health-beauty.html: strips the
-    // leading "Price: X |" segment off, leaving just the description text.
     function cleanDescription(description) {
         if (description && description.startsWith('Price:')) {
             const parts = description.split('|');
@@ -31,6 +18,13 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
         return description || '';
+    }
+
+    // Helper to resolve images to Point B destination flat folder structural layout
+    function sanitizeImageUrl(url) {
+        if (!url) return '';
+        const filename = url.split('/').pop();
+        return `media/posts/${filename}`;
     }
 
     fetch('json/products.json')
@@ -54,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const title = product.title || '';
 
-            img.src = product.imageUrl;
+            img.src = sanitizeImageUrl(product.imageUrl);
             img.alt = title;
             link.href = product.affiliateLink || '#';
             link.setAttribute('aria-label', `Shop this look: ${title}`);

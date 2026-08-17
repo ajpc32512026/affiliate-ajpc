@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-TTX18YC6KJ"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+        gtag('config', 'G-TTX18YC6KJ');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShutterPrints Gallery – Cozzy Collections</title>
+    <meta name="description" content="Explore and shop our curated collection of fine art photography, mindfulness wall art, and custom prints.">
+    <meta name="keywords" content="Photography, Wall Art, Mindfulness Prints, Dandelion Art, Home Decor, Fine Art Prints">
+    <meta name="author" content="Cozzy Collections">
+    <meta name="robots" content="index, follow">
+
+    <!-- Preload -->
+    <link rel="preload" href="img/header.svg" as="image">
+    <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
+    <link rel="canonical" href="https://cozzycollections.com.au/shutter-photo-print.html">
+
+    <!-- Favicons -->
+    <link rel="icon" href="img/favicon/favicon.ico" sizes="32x32">
+    <link rel="icon" href="img/favicon/favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="img/favicon/favicon.svg">
+    <link rel="manifest" href="img/favicon/site.webmanifest">
+    <meta name="theme-color" content="#e2c7c5">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="ShutterPrints Gallery – Cozzy Collections">
+    <meta property="og:description" content="Explore and shop our curated collection of fine art photography, mindfulness wall art, and custom prints.">
+    <meta property="og:image" content="https://cozzycollections.com.au/img/og-cozzy-collections.jpg">
+    <meta property="og:url" content="https://cozzycollections.com.au/shutter-photo-print.html">
+    <meta property="og:type" content="website">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <!-- HEADER -->
+    <header class="hero-banner">
+        <img src="img/header.svg" alt="Cozzy Collections Banner" class="banner-img">
+    </header>
+
+    <!-- SUBSCRIBE BANNER -->
+    <div id="subscribe-banner" class="subscribe-banner">
+        <p>&#10022; Don't miss our latest curated finds &mdash; <a href="index.html#newsletter">Subscribe for updates</a> &#10022;</p>
+        <button id="dismiss-banner-btn" aria-label="Dismiss this banner">&times;</button>
+    </div>
+    <script>
+        if (localStorage.getItem('subscribeBannerDismissed') === 'true') {
+            document.getElementById('subscribe-banner').style.display = 'none';
+        }
+    </script>
+
+    <!-- NAVIGATION (Includes active ShutterPrints link opening in a new tab) -->
+    <nav class="topnav">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="health-beauty.html">Products</a></li>
+			<li><a href="amazon-finds.html">Amazon Finds</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="shutter-photo-print.html" target="_blank" rel="noopener noreferrer" class="active">Photo To Print</a></li>
+        </ul>
+
+        <!-- Purchase Guidelines Button -->
+        <button id="open-guidelines-btn" class="guidelines-trigger-btn" onclick="toggleGuidelinesModal(true)">
+            ✦ Printing Guidelines ✦
+        </button>
+        <div class="topnav-socials">
+            <a href="https://www.facebook.com/profile.php?id=61591475499934" target="_blank" title="Follow us on Facebook" rel="noopener noreferrer">
+                <img src="img/fb-icon.svg" alt="Facebook">
+            </a>
+            <a href="https://www.threads.com/@sales.aud26" target="_blank" title="Follow us on Threads" rel="noopener noreferrer">
+                <img src="img/th-icon.svg" alt="Threads">
+            </a>
+            <a href="https://www.instagram.com/sales.aud26/" target="_blank" title="Follow us on Instagram" rel="noopener noreferrer">
+                <img src="img/ig-icon.svg" alt="Instagram">
+            </a>
+        </div>
+    </nav>
+
+    <!-- INTRO -->
+    <section class="page-heading">
+        <h1>ShutterPrints Gallery</h1>
+        <p class="tagline">Explore fine art photography and typography prints designed to inspire mindfulness. Tap any print for sizes and options.</p>
+        <p class="affiliate-note">Prints are available as high-resolution digital downloads. All prints available for 20" x 30" printing unless otherwise mentioned on the actual photo.</p>
+    </section>
+
+    <!-- TWO-COLUMN CATALOG WRAPPER -->
+    <main class="catalog-layout">
+
+        <!-- Mobile category toggle -->
+        <button type="button" class="category-filter-toggle" id="category-filter-toggle" aria-expanded="false" aria-controls="catalog-sidebar-container">
+            <span id="category-filter-label">Filter by Category</span>
+            <span class="chevron">&#9662;</span>
+        </button>
+
+        <!-- Sidebar category navigation -->
+        <aside class="catalog-sidebar" id="catalog-sidebar-container" role="navigation" aria-label="Category Navigation">
+            <div class="sidebar-title"><strong>Collections</strong></div>
+            <!-- Dynamic Category buttons will load here from the JavaScript below -->
+        </aside>
+
+        <!-- Print Grid Column (landscape-grid added) -->
+        <section class="catalog-content">
+            <div class="affiliate-grid landscape-grid" id="product-grid-container">
+                <!-- Fallback loading state -->
+                <p style="color: #3F3A36; text-align: center; grid-column: 1/-1;">Loading gallery collections...</p>
+            </div>
+        </section>
+
+    </main>
+
+    <button id="backToTopBtn" aria-label="Back to top">&uarr; Back to Top</button>
+
+    <!-- DYNAMIC DETAIL MODAL -->
+    <div id="detail-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <div class="expanded-card">
+            <button class="close-btn" id="close-modal-btn" aria-label="Close details">&times;</button>
+            <div class="expanded-inner">
+                <div class="expanded-top-row">
+                    <div class="expanded-image-box">
+                        <img id="modal-img" src="" alt="">
+                    </div>
+                    <div class="expanded-text-col">
+                        <h3 id="modal-title" class="expanded-title"></h3>
+                        <p id="modal-desc" class="expanded-desc"></p>
+                    </div>
+                </div>
+                <!-- Dynamic Button that redirects to your sales platform -->
+                <a id="modal-link" href="" target="_blank" rel="noopener noreferrer" class="button modal-link-button">
+                    Buy This Print
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <p class="footer-main">
+            <span class="footer-disclosure">
+                Disclaimer: Wall art files and prints offered in the ShutterPrints Gallery are properties of Cozzy Collections. Digital downloads are licensed for personal home decor use only and may not be resold, repackaged, or redistributed for commercial gain.
+            </span><br><br>
+
+            &copy; 2026 Cozzy Collections &middot; Handcrafted curation &middot;
+            <a href="privacy.html">Privacy Policy</a> &middot;
+            <a href="terms.html">T's &amp; C's</a>
+        </p>
+    </footer>
+
+    <!-- PRINTING/PURCHASE GUIDELINES MODAL POP-OUT -->
+    <div id="guidelines-modal" class="guidelines-modal-backdrop" aria-hidden="true" onclick="handleBackdropClick(event)">
+        <div class="guidelines-modal-content">
+            <button class="guidelines-modal-close" onclick="toggleGuidelinesModal(false)" aria-label="Close guidelines">&times;</button>
+            <h3 class="guidelines-modal-header">✦ Printing Guidelines ✦</h3>
+            <div class="guidelines-modal-body">
+                <p>Our fine art photography and typography prints are available as high-resolution digital downloads, giving you complete flexibility over how you display them.</p>
+
+                <p><strong>📐 Best Printing Size</strong><br>
+                    Our prints are rendered in a crisp 3:2 aspect ratio. This makes them a perfect fit for printing in high detail at larger scales, particularly <strong>20" x 30"</strong> (50cm x 76cm) or smaller ratios like 4" x 6" and 12" x 18".</p>
+
+                <p><strong>🖨️ How to Print Your Digital Files:</strong><br>
+                    1. <strong>Local Print Shop:</strong> Save your downloaded file to a USB drive and bring it to your local office store or professional photo print shop.<br>
+                    2. <strong>Online Services:</strong> Upload your file to services like Shutterfly, VistaPrint, or local photo processors and select a 20x30 poster or canvas.<br>
+                    3. <strong>Home Printing:</strong> Smaller sizes (like 4" x 6") can be printed directly on high-quality home photo paper.</p>
+
+                <p>We highly recommend selecting a <strong>matte or satin finish</strong> cardstock rather than high-gloss to preserve the soft, peaceful atmosphere of the art.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/global.js"></script>
+    <script>
+        let photoPrints = []; // Populated dynamically from json/prints.json
+        let activeCategory = 'All';
+
+        // Same escaping used server-side in build-products.js - keeps the
+        // client-side re-render safe against titles containing quotes,
+        // angle brackets, etc.
+        function escapeHtml(str) {
+            if (!str) return '';
+            return String(str)
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#39;');
+        }
+
+        // Guidelines Modal Toggle Logic
+        function toggleGuidelinesModal(isOpen) {
+            const modal = document.getElementById('guidelines-modal');
+            if (!modal) return;
+
+            if (isOpen) {
+                modal.classList.add('is-active');
+                modal.setAttribute('aria-hidden', 'false');
+                document.body.style.overflow = 'hidden';
+            } else {
+                modal.classList.remove('is-active');
+                modal.setAttribute('aria-hidden', 'true');
+                document.body.style.overflow = '';
+            }
+        }
+
+        function handleBackdropClick(event) {
+            const modalContent = document.querySelector('.guidelines-modal-content');
+            if (modalContent && !modalContent.contains(event.target)) {
+                toggleGuidelinesModal(false);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', async () => {
+            const gridContainer = document.getElementById('product-grid-container');
+            const sidebarContainer = document.getElementById('catalog-sidebar-container');
+            const modal = document.getElementById('detail-modal');
+            const closeModalBtn = document.getElementById('close-modal-btn');
+
+            try {
+                // Fetch prints dynamically from the JSON database file
+                const response = await fetch('json/prints.json');
+                const rawPrints = await response.json();
+
+                // Keeps the newest prints sorted at the top of the gallery.
+                // Sorted by numeric id (prints-manager.html always assigns new
+                // prints the next highest id) rather than raw file position,
+                // so this stays correct even if an entry is ever inserted or
+                // reordered within prints.json by hand.
+                photoPrints = Array.isArray(rawPrints)
+                    ? [...rawPrints].sort((a, b) => (b.id || 0) - (a.id || 0))
+                    : rawPrints;
+
+                if (gridContainer && Array.isArray(photoPrints)) {
+                    if (photoPrints.length === 0) {
+                        gridContainer.innerHTML = '<p style="color: #3F3A36; text-align: center; grid-column: 1/-1;">Our print collections are currently being curated. Check back soon!</p>';
+                        return;
+                    }
+
+                    // 1. Gather unique categories present in the database
+                    const uniqueCategories = [...new Set(photoPrints.map(p => p.category))].filter(Boolean).sort();
+
+                    // 2. Build Sidebar categories
+                    renderSidebar(uniqueCategories);
+
+                    // 3. Render Grid
+                    renderGrid('All');
+                }
+            } catch (err) {
+                console.error("⚠️ Failed to load prints.json:", err);
+                if (gridContainer) {
+                    gridContainer.innerHTML = '<p style="color: #D8A7B1; text-align: center; grid-column: 1/-1;">Error loading print gallery. Please refresh.</p>';
+                }
+            }
+
+            // Mobile Category Filter Toggle
+            const filterToggleBtn = document.getElementById('category-filter-toggle');
+            if (filterToggleBtn && sidebarContainer) {
+                filterToggleBtn.addEventListener('click', () => {
+                    const isOpen = sidebarContainer.classList.toggle('is-open');
+                    filterToggleBtn.classList.toggle('is-open', isOpen);
+                    filterToggleBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+                });
+
+                document.addEventListener('click', (e) => {
+                    const clickedInsidePanel = sidebarContainer.contains(e.target);
+                    const clickedToggle = filterToggleBtn.contains(e.target);
+                    if (!clickedInsidePanel && !clickedToggle && sidebarContainer.classList.contains('is-open')) {
+                        sidebarContainer.classList.remove('is-open');
+                        filterToggleBtn.classList.remove('is-open');
+                        filterToggleBtn.setAttribute('aria-expanded', 'false');
+                    }
+                });
+            }
+
+            // Modal Close Listeners
+            if (closeModalBtn) {
+                closeModalBtn.addEventListener('click', closeProductDetail);
+            }
+            if (modal) {
+                modal.addEventListener('click', (e) => {
+                    if (e.target === modal) closeProductDetail();
+                });
+            }
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    closeProductDetail();
+                    toggleGuidelinesModal(false);
+                }
+            });
+        });
+
+        // Sidebar Navigation rendering
+        function renderSidebar(categories) {
+            const sidebar = document.getElementById('catalog-sidebar-container');
+            if (!sidebar) return;
+
+            sidebar.innerHTML = '<div class="sidebar-title"><strong>Collections</strong></div>';
+
+            const allBtn = document.createElement('button');
+            allBtn.className = 'category-nav-btn active';
+            allBtn.textContent = 'All Prints';
+            allBtn.onclick = () => filterCategory('All', allBtn);
+            sidebar.appendChild(allBtn);
+
+            categories.forEach(cat => {
+                const btn = document.createElement('button');
+                btn.className = 'category-nav-btn';
+                btn.textContent = cat;
+                btn.onclick = () => filterCategory(cat, btn);
+                sidebar.appendChild(btn);
+            });
+        }
+
+        // Category Filter logic
+        function filterCategory(categoryName, clickedBtn) {
+            document.querySelectorAll('.category-nav-btn').forEach(btn => btn.classList.remove('active'));
+            clickedBtn.classList.add('active');
+
+            renderGrid(categoryName);
+
+            const sidebarContainer = document.getElementById('catalog-sidebar-container');
+            const filterToggleBtn = document.getElementById('category-filter-toggle');
+            const filterLabel = document.getElementById('category-filter-label');
+            if (sidebarContainer) sidebarContainer.classList.remove('is-open');
+            if (filterToggleBtn) {
+                filterToggleBtn.classList.remove('is-open');
+                filterToggleBtn.setAttribute('aria-expanded', 'false');
+            }
+            if (filterLabel) {
+                filterLabel.textContent = categoryName === 'All' ? 'Filter by Category' : categoryName;
+            }
+
+            const catalogContainer = document.querySelector('.catalog-layout');
+            if (catalogContainer) {
+                catalogContainer.scrollIntoView({
+                    behavior: 'smooth'
+                });
+            }
+        }
+
+        // Grid Rendering
+        function renderGrid(categoryFilter) {
+            const gridContainer = document.getElementById('product-grid-container');
+            if (!gridContainer) return;
+
+            const filteredProducts = (categoryFilter === 'All') ?
+                photoPrints :
+                photoPrints.filter(p => p.category === categoryFilter);
+
+            if (filteredProducts.length === 0) {
+                gridContainer.innerHTML = '<p style="color: #3F3A36; text-align: center; grid-column: 1/-1;">No prints available in this collection.</p>';
+                return;
+            }
+
+            gridContainer.innerHTML = filteredProducts.map(product => {
+                const globalIndex = photoPrints.findIndex(p => p.id === product.id);
+                const title = escapeHtml(product.title);
+                const priceHtml = product.price ? `<span class="product-price">${escapeHtml(product.price)}</span>` : '';
+                const newRibbonHtml = product.isNew ? `<div class="ribbon-new">New</div>` : '';
+
+                return `
+                    <div class="grid-card landscape-card" onclick="openProductDetail(${globalIndex})" role="button" tabindex="0" aria-label="View details for ${title}">
+                        ${newRibbonHtml}
+                        <div class="card-inner">
+                            <div class="card-image-box">
+                                <img src="${escapeHtml(product.imageUrl)}" alt="${title}" loading="lazy">
+                            </div>
+                            <h4 class="card-title">${title}</h4>
+                            ${priceHtml}
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Open Detail Modal
+        function openProductDetail(index) {
+            const product = photoPrints[index];
+            if (!product) return;
+
+            document.getElementById('modal-img').src = product.imageUrl;
+            document.getElementById('modal-img').alt = product.title;
+
+            const modalTitleText = product.price ? `${product.title} (${product.price})` : product.title;
+            document.getElementById('modal-title').textContent = modalTitleText;
+
+            document.getElementById('modal-desc').textContent = product.description;
+            document.getElementById('modal-link').href = product.affiliateLink;
+
+            const platform = product.source || 'our shop';
+            document.getElementById('modal-link').textContent = `Download on ${platform}`;
+
+            const modal = document.getElementById('detail-modal');
+            modal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Close Detail Modal
+        function closeProductDetail() {
+            const modal = document.getElementById('detail-modal');
+            if (modal) {
+                modal.style.display = 'none';
+            }
+            document.body.style.overflow = '';
+        }
+    </script>
+</body>
+
+</html>

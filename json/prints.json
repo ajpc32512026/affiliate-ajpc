@@ -1,0 +1,46 @@
+[
+    {
+        "id": 1,
+        "title": "Quiet Growth",
+        "category": "Mindfulness",
+        "imageUrl": "img/photos/dandelion-preview.jpg",
+        "price": "AU$20.00 Inc. GST",
+        "description": "A soft, warm macro-photograph of a delicate dandelion seed head. This design features the gentle reminder that 'Quiet growth is still growth.' Rendered in a high-quality 3:2 ratio, perfect for printing at sizes up to 20x30 inches.",
+        "affiliateLink": "https://buy.stripe.com/4gM4gt3ske9E4kR7zS2oE00",
+        "source": "Stripe",
+		"isNew": true
+    },
+    {
+        "id": 2,
+        "title": "Steady Progress",
+        "category": "Mindfulness",
+        "imageUrl": "img/photos/Ana_0006.jpg",
+        "price": "AU$20.00 Inc. GST",
+        "description": "An award-winning, high-resolution macro photograph of a garden snail moving gracefully along a natural branch. This calming print serves as a gentle reminder to embrace patience, find beauty in the slow moments, and trust your own pace. Delivered instantly as a secure digital download, perfect for printing at sizes up to 20x30 inches.",
+        "affiliateLink": "https://buy.stripe.com/8x2fZb4wofdI6sZaM42oE02",
+        "source": "Stripe",
+		"isNew": true
+    },
+    {
+        "id": 3,
+        "title": "Delicate Balance (Size 8in x 12in)",
+        "category": "Mindfulness",
+        "imageUrl": "img/photos/spider-preview.jpg",
+        "price": "AU$15.00 Inc. GST",
+        "description": "An award-winning, high-contrast monochrome macro photograph capturing a spider poised on its web. This atmospheric print serves as a gentle reminder to appreciate the quiet strength, focus, and delicate balance within our lives. Delivered instantly as a secure digital download, recommended for printing at sizes up to 8x12 inches.",
+        "affiliateLink": "https://buy.stripe.com/dRm28le6Y4z4dVraM42oE03",
+        "source": "Stripe",
+		"isNew": true
+    },
+    {
+        "id": 4,
+        "title": "Quiet Reflection",
+        "category": "Mindfulness",
+        "imageUrl": "img/photos/Ana_0014.jpg",
+        "price": "AU$20.00 Inc. GST",
+        "description": "A soft, high-key photograph of an Australian pelican resting on calm, shimmering water. This serene print serves as a gentle reminder to embrace moments of self-reflection, find peace in quiet stillness, and trust the flow of your journey. Delivered instantly as a secure digital download, highly suitable for printing at sizes up to 20x30 inches.",
+        "affiliateLink": "https://buy.stripe.com/00w5kxgf6aXs2cJ5rK2oE04",
+        "source": "Stripe",
+        "isNew": true
+    }
+]

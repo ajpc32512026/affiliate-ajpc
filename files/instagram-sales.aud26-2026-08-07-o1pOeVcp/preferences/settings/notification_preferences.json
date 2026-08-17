@@ -1,0 +1,30 @@
+{
+  "timestamp": 1785971768,
+  "media": [
+    
+  ],
+  "label_values": [
+    {
+      "label": "Preferences",
+      "dict": [
+        {
+          "label": "Channel",
+          "value": "Email notifications"
+        },
+        {
+          "label": "Notification type",
+          "value": "Promotional emails"
+        },
+        {
+          "label": "Value",
+          "value": "Off"
+        }
+      ]
+    },
+    {
+      "label": "Update time",
+      "timestamp_value": 1785971768
+    }
+  ],
+  "fbid": "1422076706509104"
+}

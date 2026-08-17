@@ -46,14 +46,24 @@
         <p>&#10022; Don't miss our latest curated finds &mdash; <a href="index.html#newsletter">Subscribe for updates</a> &#10022;</p>
         <button id="dismiss-banner-btn" aria-label="Dismiss this banner">&times;</button>
     </div>
+    <script>
+        // Runs immediately (not waiting for global.js at the bottom of the page)
+        // so a returning visitor who already dismissed this never sees it flash
+        // into view before it gets hidden again.
+        if (localStorage.getItem('subscribeBannerDismissed') === 'true') {
+            document.getElementById('subscribe-banner').style.display = 'none';
+        }
+    </script>
 
     <!-- NAVIGATION -->
     <nav class="topnav">
         <ul>
             <li><a href="index.html">Home</a></li>
             <li><a href="health-beauty.html">Products</a></li>
+			<li><a href="amazon-finds.html">Amazon Finds</a></li>
             <li><a href="about.html">About</a></li>
             <li><a href="contact.html">Contact</a></li>
+			<li><a href="shutter-photo-print.html" target="_blank" rel="noopener noreferrer">Photo To Print</a></li>
         </ul>
         <div class="topnav-socials">
             <a href="https://www.facebook.com/profile.php?id=61591475499934" target="_blank" title="Follow us on Facebook" rel="noopener noreferrer">

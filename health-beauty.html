@@ -76,9 +76,6 @@
         <button id="dismiss-banner-btn" aria-label="Dismiss this banner">&times;</button>
     </div>
     <script>
-        // Runs immediately (not waiting for global.js at the bottom of the page)
-        // so a returning visitor who already dismissed this never sees it flash
-        // into view before it gets hidden again.
         if (localStorage.getItem('subscribeBannerDismissed') === 'true') {
             document.getElementById('subscribe-banner').style.display = 'none';
         }
@@ -89,11 +86,13 @@
         <ul>
             <li><a href="index.html">Home</a></li>
             <li><a href="health-beauty.html" class="active">Products</a></li>
+			<li><a href="amazon-finds.html">Amazon Finds</a></li>
             <li><a href="about.html">About</a></li>
             <li><a href="contact.html">Contact</a></li>
+			<li><a href="shutter-photo-print.html" target="_blank" rel="noopener noreferrer">Photo To Print</a></li>
         </ul>
         
-        <!-- Guidelines Trigger Button (Kept high in the navigation header) -->
+        <!-- Guidelines Trigger Button -->
         <button id="open-guidelines-btn" class="guidelines-trigger-btn" onclick="toggleGuidelinesModal(true)">
             ✦ Purchase Guidelines ✦
         </button>
@@ -117,11 +116,9 @@
         <p class="affiliate-note">Some links on this page are affiliate links. If you shop through them, we may earn a small commission at no extra cost to you.</p>
     </section>
 
-    <!-- TWO-COLUMN LAYOUT WRAPPER (No inline styles) -->
+    <!-- TWO-COLUMN LAYOUT WRAPPER -->
     <main class="catalog-layout">
 
-        <!-- Mobile-only: expands/collapses the category list below.
-             Hidden on desktop, where the sidebar is always visible. -->
         <button type="button" class="category-filter-toggle" id="category-filter-toggle" aria-expanded="false" aria-controls="catalog-sidebar-container">
             <span id="category-filter-label">Filter by Category</span>
             <span class="chevron">&#9662;</span>
@@ -130,14 +127,12 @@
         <!-- Dynamic left sidebar -->
         <aside class="catalog-sidebar" id="catalog-sidebar-container" role="navigation" aria-label="Category Navigation">
             <div class="sidebar-title"><strong>Categories</strong></div>
-            <!-- Dynamic Category buttons load here -->
         </aside>
 
         <!-- Right-side product display column -->
         <section class="catalog-content">
             <div class="affiliate-grid" id="product-grid-container">
                 <!-- SSR_PRODUCTS_START -->
-                <!-- Skeleton placeholders shown here in local dev; Netlify's build step (build-products.js) replaces this whole block with real product HTML on deploy, so search engines see actual content immediately -->
                 <div class="grid-card skeleton-card"><div class="card-inner"><div class="skeleton-box skeleton-image"></div><div class="skeleton-box skeleton-line"></div><div class="skeleton-box skeleton-line short"></div></div></div>
                 <div class="grid-card skeleton-card"><div class="card-inner"><div class="skeleton-box skeleton-image"></div><div class="skeleton-box skeleton-line"></div><div class="skeleton-box skeleton-line short"></div></div></div>
                 <div class="grid-card skeleton-card"><div class="card-inner"><div class="skeleton-box skeleton-image"></div><div class="skeleton-box skeleton-line"></div><div class="skeleton-box skeleton-line short"></div></div></div>
@@ -146,17 +141,12 @@
                 <!-- SSR_PRODUCTS_END -->
             </div>
             <!-- SSR_PRODUCT_JSONLD_START -->
-            <!-- Netlify's build step (build-products.js) injects the Product structured
-                 data here on deploy. Deliberately placed OUTSIDE #product-grid-container
-                 so the client-side renderGrid() re-render (which replaces that div's
-                 innerHTML) never wipes it out. -->
             <!-- SSR_PRODUCT_JSONLD_END -->
         </section>
 
     </main>
 
     <button id="backToTopBtn" aria-label="Back to top">&uarr; Back to Top</button>
-
 
     <!-- MODAL DETAIL OVERLAY (300px x 400px Expanded View) -->
     <div id="detail-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-title">
@@ -170,7 +160,6 @@
                     <div class="expanded-text-col">
                         <h3 id="modal-title" class="expanded-title"></h3>
                         
-                        <!-- Dynamic Promo Code Display Container -->
                         <div id="modal-code-box" class="modal-code-box">
                             Use Code: <span id="modal-code" class="modal-code-highlight"></span>
                         </div>
@@ -188,7 +177,6 @@
     <!-- FOOTER -->
     <footer>
         <p class="footer-main">
-            <!-- Cleaned disclosure text aligning with your preferred branding -->
             <span class="footer-disclosure">
                 Disclaimer: This website is a curated product discovery platform designed to share recommendations and shopping finds. We do not sell any items directly; all links redirect to third-party merchant websites where purchases are processed. While we strive to show accurate details, please verify final prices, shipping terms, and product availability directly on the merchant's site before completing your purchase.
             </span><br><br>
@@ -196,20 +184,17 @@
             &copy; 2026 Cozzy Collections &middot; Handcrafted curation &middot;
             <a href="privacy.html">Privacy Policy</a> &middot;
             <a href="terms.html">T's &amp; C's</a>
-
         </p>
     </footer>
 
-    <!-- GUIDELINES MODAL POP-OUT (Now safely placed at the root level before Scripts) -->
+    <!-- GUIDELINES MODAL POP-OUT -->
     <div id="guidelines-modal" class="guidelines-modal-backdrop" aria-hidden="true" onclick="handleBackdropClick(event)">
         <div class="guidelines-modal-content">
             <button class="guidelines-modal-close" onclick="toggleGuidelinesModal(false)" aria-label="Close guidelines">&times;</button>
             <h3 class="guidelines-modal-header">✦ Purchase Guidelines ✦</h3>
             <div class="guidelines-modal-body">
                 <p>Our catalog contains hand-selected recommendations. When you click <strong>Check Price</strong>, a new secure window opens directly to the product store.</p>
-                
                 <p><strong>🔍 Shopping on the SHEIN App?</strong> You can search our personal code <strong class="modal-code-highlight">ZVE2Y</strong> directly in the SHEIN search bar to instantly load our entire curated boards and picks!</p>
-                
                 <p>This website is a curated product discovery platform designed to share recommendations and shopping finds. We do not sell any items directly; all links redirect to third-party merchant websites where purchases are processed. While we strive to show accurate details, please verify final prices, shipping terms, and product availability directly on the merchant's site before completing your purchase.</p>
             </div>
         </div>
@@ -221,7 +206,23 @@
         let affiliateProducts = []; // Loaded dynamically from products.json
         let activeCategory = 'All';   // Currently active filter
 
-        // Helper function to extract price and description on the fly
+        function escapeHtml(str) {
+            if (!str) return '';
+            return String(str)
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#39;');
+        }
+
+        // Helper function to force relative image path matching Point B layout
+        function sanitizeImageUrl(url) {
+            if (!url) return '';
+            const filename = url.split('/').pop();
+            return `media/posts/${filename}`;
+        }
+
         function extractPriceAndDesc(description) {
             const result = {
                 price: '',
@@ -231,14 +232,34 @@
             if (description && description.startsWith('Price:')) {
                 const parts = description.split('|');
                 if (parts.length > 1) {
-                    result.price = parts[0].replace('Price:', '').trim(); // Extracts "AU$1.95"
-                    result.cleanDesc = parts.slice(1).join('|').trim();    // Extracts description body
+                    result.price = parts[0].replace('Price:', '').trim(); 
+                    result.cleanDesc = parts.slice(1).join('|').trim();    
                 }
             }
             return result;
         }
 
-        // Guidelines Modal Toggle Logic
+        // Reliable date parser: handles dd/mm/yyyy and falls back to yyyy-mm-dd, since the
+        // browser's native Date parser reads slash-separated dates as mm/dd/yyyy and silently
+        // breaks on dd/mm/yyyy input (e.g. any day above 12). Not currently exercised because
+        // products.json has no dateAdded field yet, but kept here so sorting stays correct
+        // the moment one is added, rather than breaking silently like it did on Amazon Finds.
+        function parseProductDate(dateStr) {
+            if (!dateStr) return new Date(0);
+            const slashMatch = dateStr.match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})$/);
+            if (slashMatch) {
+                const [, dd, mm, yyyy] = slashMatch;
+                return new Date(Number(yyyy), Number(mm) - 1, Number(dd));
+            }
+            const isoMatch = dateStr.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+            if (isoMatch) {
+                const [, yyyy, mm, dd] = isoMatch;
+                return new Date(Number(yyyy), Number(mm) - 1, Number(dd));
+            }
+            const fallback = new Date(dateStr);
+            return isNaN(fallback.getTime()) ? new Date(0) : fallback;
+        }
+
         function toggleGuidelinesModal(isOpen) {
             const modal = document.getElementById('guidelines-modal');
             if (!modal) return;
@@ -246,15 +267,14 @@
             if (isOpen) {
                 modal.classList.add('is-active');
                 modal.setAttribute('aria-hidden', 'false');
-                document.body.style.overflow = 'hidden'; // Prevents background body scrolling
+                document.body.style.overflow = 'hidden'; 
             } else {
                 modal.classList.remove('is-active');
                 modal.setAttribute('aria-hidden', 'true');
-                document.body.style.overflow = ''; // Restores scrolling
+                document.body.style.overflow = ''; 
             }
         }
 
-        // Close guidelines modal when clicking background backdrop
         function handleBackdropClick(event) {
             const modalContent = document.querySelector('.guidelines-modal-content');
             if (modalContent && !modalContent.contains(event.target)) {
@@ -269,18 +289,13 @@
             const closeModalBtn = document.getElementById('close-modal-btn');
 
             try {
-                // Fetch your clean JSON database
                 const response = await fetch('json/products.json');
                 const rawProducts = await response.json();
 
-                // Show the newest item first, in "All" and within every category.
-                // If products.json ever gains a "dateAdded" field, sort by that (most
-                // recent first). Otherwise assume new items are appended to the end
-                // of the file and simply reverse, so the last one added shows first.
                 const hasDates = Array.isArray(rawProducts) && rawProducts.every(p => p.dateAdded);
                 affiliateProducts = Array.isArray(rawProducts)
                     ? (hasDates
-                        ? [...rawProducts].sort((a, b) => new Date(b.dateAdded) - new Date(a.dateAdded))
+                        ? [...rawProducts].sort((a, b) => parseProductDate(b.dateAdded) - parseProductDate(a.dateAdded))
                         : [...rawProducts].reverse())
                     : rawProducts;
 
@@ -290,13 +305,8 @@
                         return;
                     }
 
-                    // 1. Find all unique categories present in the file
                     const uniqueCategories = [...new Set(affiliateProducts.map(p => p.category))].filter(Boolean).sort();
-
-                    // 2. Build the sidebar navigation buttons
                     renderSidebar(uniqueCategories);
-
-                    // 3. Render all products initially
                     renderGrid('All');
                 }
             } catch (err) {
@@ -306,7 +316,6 @@
                 }
             }
 
-            // Mobile category filter toggle (collapsed panel, expands on tap)
             const filterToggleBtn = document.getElementById('category-filter-toggle');
             if (filterToggleBtn && sidebarContainer) {
                 filterToggleBtn.addEventListener('click', () => {
@@ -315,8 +324,6 @@
                     filterToggleBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
                 });
 
-                // Since the panel now floats over the page, close it if you tap
-                // anywhere outside it instead of leaving it open over the content.
                 document.addEventListener('click', (e) => {
                     const clickedInsidePanel = sidebarContainer.contains(e.target);
                     const clickedToggle = filterToggleBtn.contains(e.target);
@@ -328,7 +335,6 @@
                 });
             }
 
-            // Close Modal Listeners
             if (closeModalBtn) {
                 closeModalBtn.addEventListener('click', closeProductDetail);
             }
@@ -338,7 +344,6 @@
                 });
             }
             
-            // Unified keydown listener to dismiss active modals
             document.addEventListener('keydown', (e) => {
                 if (e.key === 'Escape') {
                     closeProductDetail();
@@ -347,22 +352,18 @@
             });
         });
 
-        // Render the navigation buttons inside the left sidebar (Horizontal swipe-bar on mobile)
         function renderSidebar(categories) {
             const sidebar = document.getElementById('catalog-sidebar-container');
             if (!sidebar) return;
             
-            // Rebuild with static vertical header
             sidebar.innerHTML = '<div class="sidebar-title"><strong>Categories</strong></div>';
 
-            // Add the default "All Items" button first
             const allBtn = document.createElement('button');
             allBtn.className = 'category-nav-btn active';
             allBtn.textContent = 'All Selections';
             allBtn.onclick = () => filterCategory('All', allBtn);
             sidebar.appendChild(allBtn);
 
-            // Dynamically add a button for each unique category detected
             categories.forEach(cat => {
                 const btn = document.createElement('button');
                 btn.className = 'category-nav-btn';
@@ -372,16 +373,12 @@
             });
         }
 
-        // Handle category selection
         function filterCategory(categoryName, clickedBtn) {
-            // Update active state classes across buttons
             document.querySelectorAll('.category-nav-btn').forEach(btn => btn.classList.remove('active'));
             clickedBtn.classList.add('active');
 
-            // Render matching products
             renderGrid(categoryName);
 
-            // On mobile: collapse the filter panel and show the selection on the toggle button
             const sidebarContainer = document.getElementById('catalog-sidebar-container');
             const filterToggleBtn = document.getElementById('category-filter-toggle');
             const filterLabel = document.getElementById('category-filter-label');
@@ -394,19 +391,16 @@
                 filterLabel.textContent = categoryName === 'All' ? 'Filter by Category' : categoryName;
             }
 
-            // Smoothly scroll down to the top of the category grid layout
             const catalogContainer = document.querySelector('.catalog-layout');
             if (catalogContainer) {
                 catalogContainer.scrollIntoView({ behavior: 'smooth' });
             }
         }
 
-        // Render product cards belonging ONLY to selected category
         function renderGrid(categoryFilter) {
             const gridContainer = document.getElementById('product-grid-container');
             if (!gridContainer) return;
             
-            // Filter array
             const filteredProducts = (categoryFilter === 'All') 
                 ? affiliateProducts 
                 : affiliateProducts.filter(p => p.category === categoryFilter);
@@ -416,24 +410,21 @@
                 return;
             }
 
-            // Render filtered cards
             gridContainer.innerHTML = filteredProducts.map(product => {
-                // Find true global index so details open correctly
                 const globalIndex = affiliateProducts.findIndex(p => p.id === product.id);
                 const parsed = extractPriceAndDesc(product.description);
-                const priceHtml = parsed.price ? `<span class="product-price">${parsed.price}</span>` : '';
-                
-                // NEW: Render the diagonal ribbon only if the product is flagged as new in products.json
+                const title = escapeHtml(product.title);
+                const priceHtml = parsed.price ? `<span class="product-price">${escapeHtml(parsed.price)}</span>` : '';
                 const newRibbonHtml = product.isNew ? `<div class="ribbon-new">New</div>` : '';
 
                 return `
-                    <div class="grid-card" onclick="openProductDetail(${globalIndex})" role="button" tabindex="0" aria-label="View details for ${product.title}">
+                    <div class="grid-card" onclick="openProductDetail(${globalIndex})" role="button" tabindex="0" aria-label="View details for ${title}">
                         ${newRibbonHtml}
                         <div class="card-inner">
                             <div class="card-image-box">
-                                <img src="${product.imageUrl}" alt="${product.title}" loading="lazy">
+                                <img src="${escapeHtml(sanitizeImageUrl(product.imageUrl))}" alt="${title}" loading="lazy">
                             </div>
-                            <h4 class="card-title">${product.title}</h4>
+                            <h4 class="card-title">${title}</h4>
                             ${priceHtml}
                         </div>
                     </div>
@@ -441,14 +432,13 @@
             }).join('');
         }
 
-        // Open 300px x 400px Detail Modal
         function openProductDetail(index) {
             const product = affiliateProducts[index];
             if (!product) return;
 
             const parsed = extractPriceAndDesc(product.description);
 
-            document.getElementById('modal-img').src = product.imageUrl;
+            document.getElementById('modal-img').src = sanitizeImageUrl(product.imageUrl);
             document.getElementById('modal-img').alt = product.title;
             
             const modalTitleText = parsed.price ? `${product.title} (${parsed.price})` : product.title;
@@ -476,7 +466,6 @@
             document.body.style.overflow = 'hidden';
         }
 
-        // Close Detail Modal
         function closeProductDetail() {
             const modal = document.getElementById('detail-modal');
             if (modal) {

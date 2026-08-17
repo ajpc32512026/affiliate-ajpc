@@ -1,0 +1,42 @@
+{
+  "account_history_login_history": [
+    {
+      "title": "2026-07-14T04:00:26+00:00",
+      "media_map_data": {
+        
+      },
+      "string_map_data": {
+        "Cookie Name": {
+          "href": "",
+          "value": "*************************MRD",
+          "timestamp": 0
+        },
+        "IP Address": {
+          "href": "",
+          "value": "2001:8003:c327:5001:4835:ea14:411:39fd",
+          "timestamp": 0
+        },
+        "Port": {
+          "href": "",
+          "value": "50674",
+          "timestamp": 0
+        },
+        "Language Code": {
+          "href": "",
+          "value": "en",
+          "timestamp": 0
+        },
+        "Time": {
+          "href": "",
+          "value": "",
+          "timestamp": 1784001626
+        },
+        "User Agent": {
+          "href": "",
+          "value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36",
+          "timestamp": 0
+        }
+      }
+    }
+  ]
+}

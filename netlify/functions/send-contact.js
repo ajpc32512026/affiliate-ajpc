@@ -40,8 +40,8 @@ exports.handler = async (event) => {
         body: JSON.stringify({ error: `Message exceeds ${MAX_CHARS} non-space characters.` }),
       };
     }
-    if (!process.env.BREVO_SMTP_USER || !process.env.BREVO_SMTP_PASS || !process.env.CONTACT_RECEIVER_EMAIL) {
-      console.error('[send-contact.js] Missing required environment variables (BREVO_SMTP_USER, BREVO_SMTP_PASS, CONTACT_RECEIVER_EMAIL).');
+    if (!process.env.BREVO_SMTP_USER || !process.env.BREVO_SMTP_KEY || !process.env.CONTACT_RECEIVER_EMAIL) {
+      console.error('[send-contact.js] Missing required environment variables (BREVO_SMTP_USER, BREVO_SMTP_KEY, CONTACT_RECEIVER_EMAIL).');
       return {
         statusCode: 500,
         body: JSON.stringify({ error: 'Server is not configured correctly. Please try again later.' }),
@@ -55,7 +55,7 @@ exports.handler = async (event) => {
       secure: false,
       auth: {
         user: process.env.BREVO_SMTP_USER,
-        pass: process.env.BREVO_SMTP_PASS,
+        pass: process.env.BREVO_SMTP_KEY,
       },
       tls: {
         rejectUnauthorized: false,
