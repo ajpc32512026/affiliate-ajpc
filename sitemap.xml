@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-
   <!-- Core Content Pages -->
   <url>
     <loc>https://cozzycollections.com.au/index.html</loc>
@@ -9,10 +8,19 @@
     <loc>https://cozzycollections.com.au/health-beauty.html</loc>
   </url>
   <url>
+    <loc>https://cozzycollections.com.au/amazon-finds.html</loc>
+  </url>
+  <url>
+    <loc>https://cozzycollections.com.au/shutter-photo-print.html</loc>
+  </url>
+  <url>
     <loc>https://cozzycollections.com.au/about.html</loc>
   </url>
   <url>
     <loc>https://cozzycollections.com.au/contact.html</loc>
+  </url>
+  <url>
+    <loc>https://cozzycollections.com.au/sitemap.html</loc>
   </url>
 
   <!-- Legal & Compliance Policies -->
@@ -22,5 +30,4 @@
   <url>
     <loc>https://cozzycollections.com.au/terms.html</loc>
   </url>
-
 </urlset>
